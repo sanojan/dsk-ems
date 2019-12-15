@@ -122,6 +122,9 @@ class QualificationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $qualification = Qualification::find($id);
+        $qualification->delete();
+
+        return redirect('/staff/' . $qualification->staff->id . '/edit')->with('success', 'Qualification deleted sucessfully');
     }
 }

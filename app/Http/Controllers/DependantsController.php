@@ -55,7 +55,7 @@ class DependantsController extends Controller
         $dep->staff_id = $request->staff_id;
         $dep->save();
 
-        return redirect('/staff/' . $request->staff_id)->with('success', 'Dependant added sucessfully');
+        return redirect('/staff/' . $request->staff_id . '/edit')->with('success', 'Dependant added sucessfully');
     }
 
     /**
@@ -118,6 +118,9 @@ class DependantsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dependant = Dependant::find($id);
+        $dependant->delete();
+
+        return redirect('/staff/' . $dependant->staff->id . '/edit')->with('success', 'Dependant deleted sucessfully');
     }
 }

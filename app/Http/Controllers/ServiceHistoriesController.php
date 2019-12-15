@@ -120,6 +120,9 @@ class ServiceHistoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service_histories = ServiceHistory::find($id);
+        $service_histories->delete();
+
+        return redirect('/staff/' . $service_histories->staff->id . '/edit')->with('success', 'Service history deleted sucessfully');
     }
 }

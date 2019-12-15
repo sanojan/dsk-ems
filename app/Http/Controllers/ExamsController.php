@@ -97,6 +97,9 @@ class ExamsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $exams = Exam::find($id);
+        $exams->delete();
+
+        return redirect('/staff/' . $exams->staff->id . '/edit')->with('success', 'Exam deleted sucessfully');
     }
 }

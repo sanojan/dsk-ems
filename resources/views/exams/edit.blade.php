@@ -193,9 +193,16 @@
                   </div>          
                 </div> 
                 <div class="card-footer">          
-                    {{Form::submit('Submit', ['class' =>  'btn btn-secondary'])}}
-                    </div>
+                    {{Form::submit('Submit', ['class' =>  'btn btn-secondary float-left'])}}
                     {!! Form::close() !!}
+
+                    {!! Form::open(['action' => ['ExamsController@destroy', $examinations->id], 'method' => 'POST', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
+                              {{Form::hidden('_method', 'DELETE')}}
+                              {{Form::submit('Delete', ['class' =>  'btn btn-danger '])}}
+                              
+                    {!! Form::close() !!}
+                    </div>
+                    
                 </div>
                       
                   </div>

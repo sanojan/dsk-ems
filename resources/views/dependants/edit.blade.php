@@ -184,9 +184,16 @@
                             
                         </div>
                         <div class="card-footer">          
-                            {{Form::submit('Submit', ['class' =>  'btn btn-success'])}}
-                        </div>
+                            {{Form::submit('Submit', ['class' =>  'btn btn-success float-left'])}}
                             {!! Form::close() !!}
+
+                            {!! Form::open(['action' => ['DependantsController@destroy', $dependants->id], 'method' => 'POST', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
+                              {{Form::hidden('_method', 'DELETE')}}
+                              {{Form::submit('Delete', ['class' =>  'btn btn-danger '])}}
+                              
+                            {!! Form::close() !!}
+                        </div>
+                           
                       
                     </div>
               <!-- col end -->    

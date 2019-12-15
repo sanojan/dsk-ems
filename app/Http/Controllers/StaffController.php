@@ -120,11 +120,13 @@ class StaffController extends Controller
     {
         $staff = Staff::find($id);
         $dt = Carbon::create($staff->dob)->addYears(60)->toDateString();
-
+        $xp = 'N/A';
+      
         foreach($staff->service_histories as $serv){
             $exp[] = $serv->start_date;
         }
         $xp = Carbon::now()->diffInYears(min($exp));
+        
         
         $dependants = $staff->dependants;
         $service_histories = collect($staff->service_histories)->sortByDesc('start_date');
