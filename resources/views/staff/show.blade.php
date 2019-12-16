@@ -248,12 +248,7 @@
                         <b>Class: </b>{{$staff->class}}<br />
                         <b>Joined Date: </b><br />
                         <b>Total Service: </b>
-                        @if(count($staff->service_histories))
-                        {{ $exp }} Years<br />
-                        @else
-                        Not Available<br />
-                        @endif
-
+                        {{ $exp }}<br />
                         <b>Retirement Date: </b>{{$retirement_date}}<br />
                       </div>
                     </div>
