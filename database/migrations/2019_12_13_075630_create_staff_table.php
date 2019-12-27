@@ -32,7 +32,7 @@ class CreateStaffTable extends Migration
             $table->string('service');
             $table->string('designation');
             $table->string('class');
-            $table->string('profile_pic')->nullable();
+            $table->string('profile_pic')->nullable()->default('noimage.png');
             $table->timestamps();
 
         });
