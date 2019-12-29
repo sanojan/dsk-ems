@@ -81,7 +81,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{route('designations.create')}}" class="nav-link active">
+                    <a href="{{route('designations.create')}}" class="nav-link">
                       <i class="fas fa-briefcase nav-icon"></i>
                       <p>Designations</p>
                     </a>
@@ -90,7 +90,7 @@
                 </ul>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{route('services.create')}}" class="nav-link">
+                    <a href="{{route('services.create')}}" class="nav-link active">
                       <i class="fas fa-tools nav-icon"></i>
                       <p>Services</p>
                     </a>
@@ -149,12 +149,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Add New Designation</h1>
+            <h1 class="m-0 text-dark">Add New Service</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-            <li class="breadcrumb-item active">Add New Designation</li>
+            <li class="breadcrumb-item active">Add New Service</li>
             </ol>
         </div><!-- /.col -->
         </div><!-- /.row -->
@@ -170,15 +170,15 @@
               <!-- existing designations end -->
                   <div class="card card-dark">
                       <div class="card-header">
-                          <h3 class="card-title">Designations</h3>
+                          <h3 class="card-title">Services</h3>
                       </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <div class="container">
-                            {!! Form::open(['action' => 'DesignationController@store', 'method' => 'POST']) !!}
+                            {!! Form::open(['action' => 'ServiceController@store', 'method' => 'POST']) !!}
                                   <div class="form-group">
-                                    {{Form::label('name', 'Enter designation name')}}
-                                    {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Designation'])}}
+                                    {{Form::label('name', 'Enter service name')}}
+                                    {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Service'])}}
                                   </div>
                         </div>
                         <div class="card-footer">          
@@ -189,18 +189,20 @@
                     </div>
                     <div class="card">
                       <div class="card-header">
-                        <h3 class="card-title">Existing designations on system</h3>
+                        <h3 class="card-title">Existing services on system</h3>
                       </div>
                       <!-- /.card-header -->
+                      @if(count($services) > 0)
                       <div class="card-body p-0">
                           <div class="container">
                               <ul>
-                              @foreach ($designations as $designation) 
-                                <li>{{$designation->name}}
+                            
+                              @foreach ($services as $service) 
+                                <li>{{$service->name}}
                                   
-                                  {!! Form::open(['action' => ['DesignationController@destroy', $designation->id], 'method' => 'POST']) !!}
+                                  {!! Form::open(['action' => ['ServiceController@destroy', $service->id], 'method' => 'POST']) !!}
                                   {{Form::hidden('_method', 'DELETE')}}
-                                  <a href="{{route('designations.edit', $designation->id)}}" class="btn btn-default btn-xs">Edit</a>  
+                                  <a href="{{route('services.edit', $service->id)}}" class="btn btn-default btn-xs">Edit</a>  
                                   {{Form::submit('Delete', ['class' => 'btn btn-danger btn-xs', 'onclick' => 'return confirm(\'Are you sure?\')'])}}
                                 {!! Form::close() !!}
                                 
@@ -209,9 +211,14 @@
                               </ul>
                           </div>
                       </div>
+                      @else
+                        <div class="card-body">
+                        <p>No services found!</p>
+                        </div>
+                      @endif
                       <!-- /.card-body -->
                     </div>
-                    {{$designations->links()}}
+                    {{$services->links()}}
               <!-- col end -->    
               </div>
                 <!-- /.card-body -->

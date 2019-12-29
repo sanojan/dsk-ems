@@ -25,10 +25,10 @@ class CreateStaffTable extends Migration
             $table->date('dob');
             $table->mediumText('permanant_address')->nullable();
             $table->mediumText('temporary_address')->nullable();
-            $table->integer('mobile_no')->nullable();
-            $table->integer('landline_no')->nullable();
+            $table->string('mobile_no', 10)->nullable();
+            $table->string('landline_no', 10)->nullable();
             $table->string('email')->nullable();
-            $table->string('nic');
+            $table->string('nic', 12);
             $table->string('service');
             $table->string('designation');
             $table->string('class');

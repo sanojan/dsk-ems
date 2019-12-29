@@ -28,7 +28,7 @@
              with font-awesome or any other icon font library -->
         <li class="nav-item">
           <a href="/dashboard" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt text-primary"></i>
+            <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
               
@@ -37,7 +37,7 @@
         </li>
         <li class="nav-item has-treeview menu-open">
           <a href="#" class="nav-link">
-            <i class="nav-icon far fa-address-card text-warning"></i>
+            <i class="nav-icon far fa-address-card"></i>
             <p>
               Staff Management
               <i class="fas fa-angle-left right"></i>
@@ -47,13 +47,13 @@
           <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="{{route('staff.index')}}" class="nav-link active">
-              <i class="nav-icon fas fa-table text-warning"></i>
+              <i class="nav-icon fas fa-table"></i>
               <p>View Staff Info</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{route('staff.create')}}" class="nav-link">
-              <i class="nav-icon fas fa-user-plus text-warning"></i>
+              <i class="nav-icon fas fa-user-plus"></i>
               <p>Add Staff Info</p>
             </a>
           </li>
@@ -63,23 +63,11 @@
         
         <li class="nav-header">ACCOUNT SETTINGS</li>
         
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-cog"></i>
-            <p>
-              Extras
-              <i class="fas fa-angle-left right"></i>
-            </p>
+        <li class="nav-item">
+          <a href="{{route('change.passwordview')}}" class="nav-link">
+            <i class="fas fa-key nav-icon"></i>
+            <p>Change Password</p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="pages/examples/login.html" class="nav-link">
-                <i class="fas fa-key nav-icon"></i>
-                <p>Change Password</p>
-              </a>
-            </li>            
-            
-          </ul>
         </li>
 
         <li class="nav-header">SYSTEM SETTINGS</li>
@@ -100,8 +88,24 @@
             </li>            
             
           </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('services.create')}}" class="nav-link">
+                <i class="fas fa-tools nav-icon"></i>
+                <p>Services</p>
+              </a>
+            </li>            
+            
+          </ul>
         </li>
-
+        <li class="nav-item">
+          <a href="{{route('admin.users.index')}}" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Users
+            </p>
+          </a>
+        </li>
         <li class="nav-item">
           <a href="https://adminlte.io/docs/3.0" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
@@ -114,7 +118,7 @@
           <a href="{{ route('logout') }}" class="nav-link" 
           onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">
-          <i class="fas fa-sign-out-alt text-danger nav-icon "></i>
+          <i class="fas fa-sign-out-alt nav-icon "></i>
           {{ __('Logout') }}
           </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -166,11 +170,10 @@
         <!-- staff list -->
         <div class="card">
             <div class="card-header">
-              @if(count($staff) > 0)
                   <h3 class="card-title">Staff List</h3>
                   <div class="card-tools">
                       <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <input type="text" name="table_search" id="search" class="form-control float-right" placeholder="Search">
                         <div class="input-group-append">
                           <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                         </div>
@@ -184,40 +187,14 @@
                           <th>Profile picture</th>
                           <th>Fullname</th>
                           <th>Designation</th>
-                          <th></th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                  @foreach($staff as $employers)     
-                    <tr>
-                      <td>{{$employers->id}}</td>
-                      <td><img src="{{ Storage::url("profile_pics/{$employers->profile_pic}") }}" alt="User Avatar" 
-                        class="img-size-50 img-circle mr-3">
-                      </td>
-                      <td>{{$employers->firstname}} {{$employers->lastname}}</td>
-                      <td>{{$employers->designation}}</td>
-                      <td><a class="btn btn-app btn-success" href="{{route('staff.edit', $employers->id)}}">
-                          <i class="fas fa-edit"></i> Edit
-                        </a>
-                      <a class="btn btn-app btn-primary" href="{{route('staff.show', $employers->id)}}">
-                            <i class="fas fa-eye"></i> View Profile
-                          </a>
-                            {!! Form::open(['action' => ['StaffController@destroy', $employers->id], 'method' => 'POST', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
-                              {{Form::hidden('_method', 'DELETE')}}
-                              {{Form::submit('Delete', ['class' =>  'btn btn-app btn-danger'])}}
-                              <i class="fas fa-edit"></i>
-                            {!! Form::close() !!}
-                      </td>
-                    </tr>           
-                  @endforeach
+                        
                       </tbody>
                     </table>
                   </div>
-                    @else
-                        <div class="card-body">
-                            <p>No Staff Data found!</p>
-                        </div>
-                    @endif
                 </div>
                 <!-- /.card-header -->
                 <!-- /.card-body -->
@@ -227,4 +204,5 @@
       <div class="col"></div>
     </div>
     </div>
+    
 @endsection

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Designation;
+use App\Service;
 
-class DesignationController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,8 +24,8 @@ class DesignationController extends Controller
      */
     public function create()
     {
-        $designations = Designation::paginate(5);
-        return view('designations.create')->with('designations', $designations);
+        $services = Service::paginate(5);
+        return view('services.create')->with('services', $services);
     }
 
     /**
@@ -37,15 +37,15 @@ class DesignationController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'name' => 'bail|required|alpha_spaces',],
-        
-        ['name.required' => 'Designation name is required']);
-
-        $designation = new Designation;
-        $designation->name = $request->name;
-        $designation->save();
-
-        return redirect('/designations/create')->with('success', 'Designation added sucessfully');
+            'name' => 'bail|required|alpha_spaces',],
+            
+            ['name.required' => 'Service name is required']);
+    
+            $service = new Service;
+            $service->name = $request->name;
+            $service->save();
+    
+            return redirect('/services/create')->with('success', 'Service added sucessfully');
     }
 
     /**
@@ -67,8 +67,8 @@ class DesignationController extends Controller
      */
     public function edit($id)
     {
-        $designation = Designation::find($id);
-        return view('designations.edit')->with('designation', $designation);
+        $service = Service::find($id);
+        return view('services.edit')->with('service', $service);
     }
 
     /**
@@ -83,13 +83,13 @@ class DesignationController extends Controller
         $this->validate($request, [
             'name' => 'bail|required|alpha_spaces',],
             
-            ['name.required' => 'Designation name is required']);
+            ['name.required' => 'Service name is required']);
     
-            $designation = Designation::find($id);
-            $designation->name = $request->name;
-            $designation->save();
+            $service = Service::find($id);
+            $service->name = $request->name;
+            $service->save();
     
-            return redirect('/designations/create')->with('success', 'Designation updated sucessfully');
+            return redirect('/services/create')->with('success', 'Service updated sucessfully');
     }
 
     /**
@@ -100,9 +100,9 @@ class DesignationController extends Controller
      */
     public function destroy($id)
     {
-        $designation = Designation::find($id);
-        $designation->delete();
+        $service = Service::find($id);
+        $service->delete();
 
-        return redirect('/designations/create')->with('success', 'Designation deleted sucessfully');
+        return redirect('/services/create')->with('success', 'Service deleted sucessfully');
     }
 }

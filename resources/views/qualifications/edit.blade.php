@@ -28,7 +28,7 @@
              with font-awesome or any other icon font library -->
         <li class="nav-item">
           <a href="/dashboard" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt text-primary"></i>
+            <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
               
@@ -37,7 +37,7 @@
         </li>
         <li class="nav-item has-treeview menu-open">
           <a href="#" class="nav-link">
-            <i class="nav-icon far fa-address-card text-warning"></i>
+            <i class="nav-icon far fa-address-card"></i>
             <p>
               Staff Management
               <i class="fas fa-angle-left right"></i>
@@ -47,13 +47,13 @@
           <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="{{route('staff.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-table text-warning"></i>
+              <i class="nav-icon fas fa-table"></i>
               <p>View Staff Info</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{route('staff.create')}}" class="nav-link active">
-              <i class="nav-icon fas fa-user-plus text-warning"></i>
+              <i class="nav-icon fas fa-user-plus"></i>
               <p>Add Staff Info</p>
             </a>
           </li>
@@ -62,24 +62,12 @@
         
         
         <li class="nav-header">ACCOUNT SETTINGS</li>
-        
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-cog"></i>
-            <p>
-              Extras
-              <i class="fas fa-angle-left right"></i>
-            </p>
+          
+        <li class="nav-item">
+          <a href="{{route('change.passwordview')}}" class="nav-link">
+            <i class="fas fa-key nav-icon"></i>
+            <p>Change Password</p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="pages/examples/login.html" class="nav-link">
-                <i class="fas fa-key nav-icon"></i>
-                <p>Change Password</p>
-              </a>
-            </li>            
-            
-          </ul>
         </li>
 
         <li class="nav-header">SYSTEM SETTINGS</li>
@@ -100,8 +88,24 @@
             </li>            
             
           </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('services.create')}}" class="nav-link">
+                <i class="fas fa-tools nav-icon"></i>
+                <p>Services</p>
+              </a>
+            </li>            
+            
+          </ul>
         </li>
-
+        <li class="nav-item">
+          <a href="{{route('admin.users.index')}}" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Users
+            </p>
+          </a>
+        </li>
         <li class="nav-item">
           <a href="https://adminlte.io/docs/3.0" class="nav-link">
             <i class="nav-icon fas fa-file"></i>

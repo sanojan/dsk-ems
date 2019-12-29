@@ -7,6 +7,7 @@ use App\Staff;
 use App\Dependant;
 use App\Designation;
 use App\ServiceHistory;
+use App\Service;
 
 class ServiceHistoriesController extends Controller
 {
@@ -29,7 +30,8 @@ class ServiceHistoriesController extends Controller
     {
         $staff = Staff::find($request->staff_id);
         $designations = Designation::all();
-        return view('servicehistories.create')->with('staff', $staff)->with('designations', $designations);
+        $services = Service::all();
+        return view('servicehistories.create')->with('staff', $staff)->with('designations', $designations)->with('services', $services);
     }
 
     /**
@@ -81,7 +83,8 @@ class ServiceHistoriesController extends Controller
     {
         $servicehistories = ServiceHistory::find($id);
         $designations = Designation::all();
-        return view('servicehistories.edit')->with('servicehistories', $servicehistories)->with('designations', $designations);
+        $services = Service::all();
+        return view('servicehistories.edit')->with('servicehistories', $servicehistories)->with('designations', $designations)->with('services', $services);
     }
 
     /**

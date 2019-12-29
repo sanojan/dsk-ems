@@ -61,26 +61,51 @@
               </li>
               
               <li class="nav-header">ACCOUNT SETTINGS</li>
-              
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-plus-square"></i>
-                  <p>
-                    Extras
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
+          
+          <li class="nav-item">
+            <a href="{{route('change.passwordview')}}" class="nav-link">
+              <i class="fas fa-key nav-icon"></i>
+              <p>Change Password</p>
+            </a>
+          </li>
+  
+          <li class="nav-header">SYSTEM SETTINGS</li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Form Data
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('designations.create')}}" class="nav-link">
+                  <i class="fas fa-briefcase nav-icon"></i>
+                  <p>Designations</p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="pages/examples/login.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Change Password</p>
-                    </a>
-                  </li>            
-                  
-                </ul>
-              </li>
-              <li class="nav-header">MISCELLANEOUS</li>
+              </li>            
+              
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('services.create')}}" class="nav-link">
+                  <i class="fas fa-tools nav-icon"></i>
+                  <p>Services</p>
+                </a>
+              </li>            
+              
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('admin.users.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
+              
               <li class="nav-item">
                 <a href="https://adminlte.io/docs/3.0" class="nav-link">
                   <i class="nav-icon fas fa-file"></i>

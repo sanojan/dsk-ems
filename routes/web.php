@@ -40,5 +40,12 @@ Route::resources([
     'servicehistories' => 'ServiceHistoriesController',
     'designations' => 'DesignationController',
     'qualifications' => 'QualificationsController',
-    'exams' => 'ExamsController'
+    'exams' => 'ExamsController',
+    'services' => 'ServiceController'
 ]);
+
+Route::get('change-password', 'ChangePasswordController@index')->name('change.passwordview');
+Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
+
+//Route::get('/live_search', 'LiveSearch@index');
+Route::get('', 'LiveSearch@action')->name('live_search.action');

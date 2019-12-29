@@ -35,7 +35,7 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item has-treeview menu-open">
+              <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon far fa-address-card"></i>
                   <p>
@@ -46,7 +46,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{route('staff.index')}}" class="nav-link active">
+                  <a href="{{route('staff.index')}}" class="nav-link">
                     <i class="nav-icon fas fa-table"></i>
                     <p>View Staff Info</p>
                   </a>
@@ -61,6 +61,8 @@
               </li>
               
               
+            
+      
               <li class="nav-header">ACCOUNT SETTINGS</li>
           
           <li class="nav-item">
@@ -71,7 +73,7 @@
           </li>
   
           <li class="nav-header">SYSTEM SETTINGS</li>
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
               <p>
@@ -81,7 +83,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('designations.create')}}" class="nav-link">
+                <a href="{{route('designations.create')}}" class="nav-link active">
                   <i class="fas fa-briefcase nav-icon"></i>
                   <p>Designations</p>
                 </a>
@@ -106,6 +108,7 @@
               </p>
             </a>
           </li>
+      
               <li class="nav-item">
                 <a href="https://adminlte.io/docs/3.0" class="nav-link">
                   <i class="nav-icon fas fa-file"></i>
@@ -149,12 +152,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Add New Service History</h1>
+            <h1 class="m-0 text-dark">Edit Service</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-            <li class="breadcrumb-item active">Add New Service History</li>
+            <li class="breadcrumb-item active">Edit Service</li>
             </ol>
         </div><!-- /.col -->
         </div><!-- /.row -->
@@ -165,74 +168,33 @@
             <!-- ./col -->
             <div class="col"></div>
             <div class="col-10">
-              <!-- Staff search card -->
-              <!-- staff search end -->
-
-              <div class="card card-info">
-                    <div class="card-header">
-                    <h3 class="card-title">Add Service History of {{$staff->firstname}}</h3>
-                    </div>
-                      <!-- /.card-header -->
-                      <!-- form start -->
-                      <div class="container">
-                        {!! Form::open(['action' => 'ServiceHistoriesController@store', 'method' => 'POST']) !!}
-                          <div class="row">
-                              <table class="table table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th>Workplace</th>
-                                      <th>Designation</th>
-                                      <th>Start Date</th>
-                                      <th>End Date</th>
-                                      <th>Service Name</th>
-                                      <th>Service Class</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>
-                                          {{Form::text('workplace', '', ['class' => 'form-control'])}}</td>
-                                      <td>
-                                            <select class="form-control" name="designation" id="designation">
-                                                @foreach ($designations as $designation) 
-                                                    <option value="{{$designation->name}}">
-                                                      {{$designation->name}}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                      </td>
-                                      <td>
-                                          {{Form::date('start_date', \Carbon\Carbon::now())}}</td>
-                                        <td>
-                                          {{Form::date('end_date', \Carbon\Carbon::now())}}</td>
-                                      <td>
-                                        <select class="form-control" name="service" id="service">
-                                          @foreach ($services as $service) 
-                                              <option value="{{$service->name}}">
-                                                {{$service->name}}
-                                              </option>
-                                          @endforeach
-                                      </select></td>
-                                      <td>
-                                          {{Form::select('class', ['Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], 'Class III', ['class' => 'form-control'])}}
-                                          {{Form::hidden('staff_id', $staff->id, ['class' => 'form-control'])}}</td>
-                                      
-                                    </tr>    
-                                  </tbody>
-                                </table>
-                          </div>
-                      
+              <!-- existing designations card -->
+              
+              <!-- existing designations end -->
+                  <div class="card card-dark">
+                      <div class="card-header">
+                          <h3 class="card-title">Services</h3>
                       </div>
-                    <div class="card-footer">          
-                        {{Form::submit('Submit', ['class' =>  'btn btn-info'])}}
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <div class="container">
+                            {!! Form::model($service, ['method' => 'PATCH', 'route' => ['services.update', $service->id]]) !!}
+                                  <div class="form-group">
+                                    {{Form::label('name', 'Service name')}}
+                                    {{Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Service'])}}
+                                  </div>
                         </div>
-                        {!! Form::close() !!}
-                </div>
+                        <div class="card-footer">          
+                            {{Form::submit('Update', ['class' =>  'btn btn-dark'])}}
+                        </div>
+                            {!! Form::close() !!}
+                      
+                    </div>
               <!-- col end -->    
               </div>
                 <!-- /.card-body -->
                 <div class="col"></div>
-              </div>
+              
             
                 
                 

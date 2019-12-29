@@ -28,7 +28,7 @@
                    with font-awesome or any other icon font library -->
               <li class="nav-item">
                 <a href="/dashboard" class="nav-link">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <i class="nav-icon fas fa-tachometer-alt text-primary"></i>
                   <p>
                     Dashboard
                     
@@ -37,7 +37,7 @@
               </li>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-address-card"></i>
+                  <i class="nav-icon far fa-address-card text-warning"></i>
                   <p>
                     Staff Management
                     <i class="fas fa-angle-left right"></i>
@@ -47,13 +47,13 @@
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{route('staff.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
+                    <i class="nav-icon fas fa-table text-warning"></i>
                     <p>View Staff Info</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{route('staff.create')}}" class="nav-link">
-                    <i class="nav-icon fas fa-user-plus"></i>
+                    <i class="nav-icon fas fa-user-plus text-warning"></i>
                     <p>Add Staff Info</p>
                   </a>
                 </li>
@@ -64,14 +64,14 @@
               <li class="nav-header">ACCOUNT SETTINGS</li>
               
               <li class="nav-item">
-                <a href="{{route('change.passwordview')}}" class="nav-link">
+                <a href="{{route('change.passwordview')}}" class="nav-link active">
                   <i class="fas fa-key nav-icon"></i>
                   <p>Change Password</p>
                 </a>
-              </li>
+              </li>  
       
               <li class="nav-header">SYSTEM SETTINGS</li>
-              <li class="nav-item has-treeview menu-open">
+              <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-cog"></i>
                   <p>
@@ -81,7 +81,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{route('designations.create')}}" class="nav-link active">
+                    <a href="{{route('designations.create')}}" class="nav-link">
                       <i class="fas fa-briefcase nav-icon"></i>
                       <p>Designations</p>
                     </a>
@@ -90,7 +90,7 @@
                 </ul>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{route('services.create')}}" class="nav-link">
+                    <a href="{{route('designations.create')}}" class="nav-link">
                       <i class="fas fa-tools nav-icon"></i>
                       <p>Services</p>
                     </a>
@@ -149,12 +149,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Add New Designation</h1>
+            <h1 class="m-0 text-dark">Change Password</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-            <li class="breadcrumb-item active">Add New Designation</li>
+            <li class="breadcrumb-item active">Change Password</li>
             </ol>
         </div><!-- /.col -->
         </div><!-- /.row -->
@@ -168,50 +168,55 @@
               <!-- existing designations card -->
               
               <!-- existing designations end -->
-                  <div class="card card-dark">
+                  <div class="card card-primary">
                       <div class="card-header">
-                          <h3 class="card-title">Designations</h3>
+                          <h3 class="card-title">Change Password</h3>
                       </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <div class="container">
-                            {!! Form::open(['action' => 'DesignationController@store', 'method' => 'POST']) !!}
-                                  <div class="form-group">
-                                    {{Form::label('name', 'Enter designation name')}}
-                                    {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Designation'])}}
-                                  </div>
+                          <br/>
+                            <form method="POST" action="{{ route('change.password') }}">
+                                @csrf 
+           
+                                
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Current Password</label>
+          
+                                    <div class="col-md-6">
+                                        <input id="password" type="password" class="form-control" name="current_password" autocomplete="current-password">
+                                    </div>
+                                </div>
+          
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">New Password</label>
+          
+                                    <div class="col-md-6">
+                                        <input id="new_password" type="password" class="form-control" name="new_password" autocomplete="current-password">
+                                    </div>
+                                </div>
+          
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">New Confirm Password</label>
+            
+                                    <div class="col-md-6">
+                                        <input id="new_confirm_password" type="password" class="form-control" name="new_confirm_password" autocomplete="current-password">
+                                    </div>
+                                </div>
+                            
                         </div>
                         <div class="card-footer">          
-                            {{Form::submit('Add', ['class' =>  'btn btn-dark'])}}
+                            <div class="form-group row mb-0">
+                                    <div class="col-md-8 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            Update Password
+                                        </button>
+                                    </div>
+                            </div>
                         </div>
-                            {!! Form::close() !!}
-                      
+                      </form>
                     </div>
-                    <div class="card">
-                      <div class="card-header">
-                        <h3 class="card-title">Existing designations on system</h3>
-                      </div>
-                      <!-- /.card-header -->
-                      <div class="card-body p-0">
-                          <div class="container">
-                              <ul>
-                              @foreach ($designations as $designation) 
-                                <li>{{$designation->name}}
-                                  
-                                  {!! Form::open(['action' => ['DesignationController@destroy', $designation->id], 'method' => 'POST']) !!}
-                                  {{Form::hidden('_method', 'DELETE')}}
-                                  <a href="{{route('designations.edit', $designation->id)}}" class="btn btn-default btn-xs">Edit</a>  
-                                  {{Form::submit('Delete', ['class' => 'btn btn-danger btn-xs', 'onclick' => 'return confirm(\'Are you sure?\')'])}}
-                                {!! Form::close() !!}
-                                
-                              </li>
-                              @endforeach
-                              </ul>
-                          </div>
-                      </div>
-                      <!-- /.card-body -->
-                    </div>
-                    {{$designations->links()}}
+                    
               <!-- col end -->    
               </div>
                 <!-- /.card-body -->

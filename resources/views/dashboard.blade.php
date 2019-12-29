@@ -37,7 +37,7 @@
         </li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="nav-icon far fa-address-card text-warning"></i>
+            <i class="nav-icon far fa-address-card"></i>
             <p>
               Staff Management
               <i class="fas fa-angle-left right"></i>
@@ -47,13 +47,13 @@
           <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="{{route('staff.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-table text-warning"></i>
+              <i class="nav-icon fas fa-table"></i>
               <p>View Staff Info</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{route('staff.create')}}" class="nav-link">
-              <i class="nav-icon fas fa-user-plus text-warning"></i>
+              <i class="nav-icon fas fa-user-plus"></i>
               <p>Add Staff Info</p>
             </a>
           </li>
@@ -61,47 +61,53 @@
         </li>
         
         
+     
+
         <li class="nav-header">ACCOUNT SETTINGS</li>
-        
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-cog"></i>
-            <p>
-              Extras
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="pages/examples/login.html" class="nav-link">
-                <i class="fas fa-key nav-icon"></i>
-                <p>Change Password</p>
-              </a>
-            </li>            
-            
-          </ul>
-        </li>
-
-        <li class="nav-header">SYSTEM SETTINGS</li>
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-cog"></i>
-            <p>
-              Form Data
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{route('designations.create')}}" class="nav-link">
-                <i class="fas fa-briefcase nav-icon"></i>
-                <p>Designations</p>
-              </a>
-            </li>            
-            
-          </ul>
-        </li>
-
+              
+              <li class="nav-item">
+                <a href="{{route('change.passwordview')}}" class="nav-link">
+                  <i class="fas fa-key nav-icon"></i>
+                  <p>Change Password</p>
+                </a>
+              </li>
+              
+              <li class="nav-header">SYSTEM SETTINGS</li>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-file-invoice"></i>
+                  <p>
+                    Form Data
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('designations.create')}}" class="nav-link">
+                      <i class="fas fa-briefcase nav-icon"></i>
+                      <p>Designations</p>
+                    </a>
+                  </li>            
+                  
+                </ul>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('services.create')}}" class="nav-link">
+                      <i class="fas fa-tools nav-icon"></i>
+                      <p>Services</p>
+                    </a>
+                  </li>            
+                  
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('admin.users.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>
+                    Users
+                  </p>
+                </a>
+              </li>
         <li class="nav-item">
           <a href="https://adminlte.io/docs/3.0" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
@@ -114,7 +120,7 @@
           <a href="{{ route('logout') }}" class="nav-link" 
           onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">
-          <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
+          <i class="nav-icon fas fa-sign-out-alt"></i>
           {{ __('Logout') }}
           </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

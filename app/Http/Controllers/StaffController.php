@@ -8,7 +8,10 @@ use App\Staff;
 use App\Dependant;
 use App\ServiceHistory;
 use App\Designation;
+use App\Service;
 use Carbon\Carbon;
+use File;
+use Storage;
 
 class StaffController extends Controller
 {
@@ -30,7 +33,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-        $staff = Staff::all();
+        $staff = Staff::paginate(1);
         return view('staff.index')->with('staff', $staff);
     }
 
@@ -43,7 +46,8 @@ class StaffController extends Controller
     {
         $staff = new Staff;
         $designations = Designation::all();
-        return view('staff.create')->with('staff', $staff)->with('designations', $designations);
+        $services = Service::all();
+        return view('staff.create')->with('staff', $staff)->with('designations', $designations)->with('services', $services);
     }
 
     /**
@@ -56,7 +60,7 @@ class StaffController extends Controller
     {
         $this->validate($request, [
             'firstname' => 'bail|required|alpha',
-            'lastname' => 'alpha',
+            'lastname' => 'alpha|nullable',
             'mobile_no' => 'digits:10|nullable',
             'landline_no' => 'digits:10|nullable',
             'email' => 'email:rfc|nullable',
@@ -148,7 +152,8 @@ class StaffController extends Controller
     {
         $staff = Staff::find($id);
         $designations = Designation::all();
-        return view('staff.edit')->with('staff', $staff)->with('designations', $designations);
+        $services = Service::all();
+        return view('staff.edit')->with('staff', $staff)->with('designations', $designations)->with('services', $services);
     }
 
     /**
@@ -162,7 +167,7 @@ class StaffController extends Controller
     {
         $this->validate($request, [
             'firstname' => 'bail|required|alpha',
-            'lastname' => 'alpha',
+            'lastname' => 'alpha|nullable',
             'mobile_no' => 'digits:10|nullable',
             'landline_no' => 'digits:10|nullable',
             'email' => 'email:rfc|nullable',
@@ -171,7 +176,7 @@ class StaffController extends Controller
         ],
         ['nic.required' => 'NIC is required']);
         
-        
+        $staff = Staff::find($id);
 
         //Handle File Upload
         if($request->hasFile('profile_pic')){
@@ -185,11 +190,17 @@ class StaffController extends Controller
             $fileNameToStore = time() . '.' . $extension;
             //UploadImage
             $path = $request->profile_pic->storeAs('public/profile_pics', $fileNameToStore);
+            
+            if($staff->profile_pic != 'noimage.png'){
+                $oldpic = 'public/profile_pics/' . $staff->profile_pic;
+                Storage::delete($oldpic);
+            }
+
         }else{
-            $fileNameToStore = 'noimage.png';
+            
+            $fileNameToStore = $staff->profile_pic;
         }
 
-        $staff = Staff::find($id);
         $staff->title = $request->title;
         $staff->firstname = $request->firstname;
         $staff->lastname = $request->lastname;
