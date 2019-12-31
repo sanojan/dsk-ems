@@ -190,7 +190,7 @@
                           <th>Action</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="stafftable">
                         
                       </tbody>
                     </table>
@@ -199,6 +199,7 @@
                 <!-- /.card-header -->
                 <!-- /.card-body -->
               </div>
+              
               <!-- /.card -->     
       </div>
       <div class="col"></div>

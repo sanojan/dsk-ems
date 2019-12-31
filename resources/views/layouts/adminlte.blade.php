@@ -121,9 +121,9 @@
 <script>
   $(document).ready(function(){
   
-   fetch_customer_data();
+   fetch_staff_data();
   
-   function fetch_customer_data(query = '')
+   function fetch_staff_data(query = '')
    {
     $.ajax({
      url:"{{ route('live_search.action') }}",
@@ -132,7 +132,7 @@
      dataType:'json',
      success:function(data)
      {
-      $('tbody').html(data.table_data);
+      $('#stafftable').html(data.table_data);
       $('#total_records').text(data.total_data);
      }
     })
@@ -140,7 +140,7 @@
   
    $(document).on('keyup', '#search', function(){
     var query = $(this).val();
-    fetch_customer_data(query);
+    fetch_staff_data(query);
    });
   });
   </script>

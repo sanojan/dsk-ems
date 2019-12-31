@@ -26,14 +26,14 @@ class LiveSearch extends Controller
          ->where('firstname', 'like', '%'.$query.'%')
          ->orWhere('lastname', 'like', '%'.$query.'%')
          ->orWhere('nic', 'like', '%'.$query.'%')
-         ->orderBy('id', 'desc')
+         ->orderBy('id', 'ASC')
          ->get();
          
       }
       else
       {
        $data = DB::table('staff')
-         ->orderBy('id', 'desc')
+         ->orderBy('id', 'ASC')
          ->get();
       }
 
