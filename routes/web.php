@@ -48,4 +48,4 @@ Route::get('change-password', 'ChangePasswordController@index')->name('change.pa
 Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
 
 //Route::get('/live_search', 'LiveSearch@index');
-Route::get('', 'LiveSearch@action')->name('live_search.action');
+Route::get('/livesearch', 'LiveSearch@action')->name('live_search.action');
