@@ -31,13 +31,7 @@ class CreateStaffTable extends Migration
             $table->string('nic', 12);
             $table->string('service');
             $table->string('designation');
-            $table->string('class');
-            $table->string('recruitment_type')->nullable();
-            $table->string('appointment_no')->nullable();
-            $table->date('appointment_date')->nullable();
-            $table->string('personal_file_no')->nullable();
-            $table->string('officer_subject')->nullable();
-            $table->string('officer_branch')->nullable();
+            $table->string('class');            
             $table->string('profile_pic')->nullable()->default('noimage.png');
             $table->timestamps();
 
