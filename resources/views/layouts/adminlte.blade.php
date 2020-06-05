@@ -143,4 +143,14 @@
     fetch_staff_data(query);
    });
   });
+
+$("[name='current_wp']").change(function(){
+    if($(this).is(":checked")){
+      $("[name='end_date']").prop("disabled", true);
+  
+    }else{
+      $("[name='end_date']").prop("disabled", false);
+  
+}
+});
   </script>

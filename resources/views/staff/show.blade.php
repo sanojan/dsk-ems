@@ -177,7 +177,7 @@
                        alt="User profile picture">
                 </div>
 
-              <h3 class="profile-username text-center">{{$staff->firstname}} {{$staff->lastname}}</h3>
+              <h3 class="profile-username text-center">{{$staff->title}} {{$staff->firstname}} {{$staff->lastname}}</h3>
 
                 <p class="text-muted text-center">{{$staff->designation}}</p>
 
@@ -186,10 +186,10 @@
                     <b>Age</b> <a class="float-right">{{\Carbon\Carbon::parse($staff->dob)->age}}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Total Leaves</b> <a class="float-right">543</a>
+                    <b>Total Leaves</b> <a class="float-right">Not Updated!</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Tasks</b> <a class="float-right">13,287</a>
+                    <b>Tasks</b> <a class="float-right">Not Updated!</a>
                   </li>
                 </ul>
 
@@ -235,26 +235,55 @@
                   <div class="tab-pane fade show active" id="custom-tabs-two-personal" role="tabpanel" aria-labelledby="custom-tabs-two-personal-tab">
                     <div class="row">
                       <div class="col">
-                        <b>Title: </b>{{$staff->title}}<br />
-                        <b>Firstname: </b>{{$staff->firstname}}<br />
-                        <b>Lastname: </b>{{$staff->lastname}}<br />
-                        <b>Gender: </b>{{$staff->gender}}<br />
-                        <b>Date of Birth: </b>{{$staff->dob}}<br />
-                        <b>Civil Status: </b>{{$staff->civil_status}}<br />
-                        <b>Religion: </b>{{$staff->religion}}<br />
-                        <b>Nationality: </b>{{$staff->nationality}}<br />
-                        <b>NIC No: </b>{{$staff->nic}}<br />
+                      <div class="row">
+                      <div class="col-4">
                         
+                        <b>Firstname: </b><br />
+                        <b>Lastname: </b><br />
+                        <b>Gender: </b><br />
+                        <b>Date of Birth: </b><br />
+                        <b>Civil Status: </b><br />
+                        <b>Religion: </b><br />
+                        <b>Nationality: </b><br />
+                        <b>NIC No: </b><br />
+                        <b>Designation: </b><br />
+                        <b>Service: </b><br />
+                        <b>Class: </b><br />                        
+                        <b>Appointment Date: </b><br />
+                        <b>Appointment No: </b><br />
+                        <b>Personal File No: </b><br />
+                        <b>Officer Subject: </b><br />
+                        <b>Officer Branch: </b><br />
+                        <b>Total Service: </b><br />
+                        <b>Retirement Date: </b><br />
                       </div>
-                      <div class="col">
-                        <b>Designation: </b>{{$staff->designation}}<br />
-                        <b>Service: </b>{{$staff->service}}<br />
-                        <b>Class: </b>{{$staff->class}}<br />
-                        <b>Joined Date: </b><br />
-                        <b>Total Service: </b>
+
+                      <div class="col-8">
+                        
+                        {{$staff->firstname}}<br />
+                        {{$staff->lastname}}<br />
+                        {{$staff->gender}}<br />
+                        {{$staff->dob}}<br />
+                        {{$staff->civil_status}}<br />
+                        {{$staff->religion}}<br />
+                        {{$staff->nationality}}<br />
+                        {{$staff->nic}}<br />
+                        {{$staff->designation}}<br />
+                        {{$staff->service}}<br />
+                        {{$staff->class}}<br />
+                        {{$staff->appointment_date}}<br />
+                        {{$staff->appointment_no}}<br />
+                        {{$staff->personal_file_no}}<br />
+                        {{$staff->officer_subject}}<br />
+                        {{$staff->officer_branch}}<br />
                         {{ $exp }}<br />
-                        <b>Retirement Date: </b>{{$retirement_date}}<br />
+                        {{$retirement_date}}<br />
+                      </div> 
                       </div>
+                      </div>
+
+      
+                  
                     </div>
                      
                   </div>
@@ -270,17 +299,18 @@
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-two-service_history" role="tabpanel" aria-labelledby="custom-tabs-two-service_history-tab">
                       @foreach($service_histories as $serv)
-                      <b>Workplace: </b>{{$serv->workplace}}<br />
+                        @if($serv->current_wp == 1)
+                        <b><u>Workplace (Current):</u> </b>{{$serv->workplace}}<br />
+                        @else
+                        <b>Workplace: </b>{{$serv->workplace}}<br />
+                        @endif
                       <b>Designation: </b>{{$serv->designation}}<br />
                       <b>Branch: </b>{{$serv->branch}}<br/>
                       <b>Start Date: </b>{{$serv->start_date}}<br/>
                       <b>End Date: </b>{{$serv->end_date}}<br />
-                      <b>Duration: </b>
-                      @php  
-                        $end = \Carbon\Carbon::parse($serv->end_date);
-                        $start = \Carbon\Carbon::parse($serv->start_date)
-                      @endphp
-                      {{$end->diffInYears($start)}} Years<br />
+                      <b>Duration: </b></b>
+                      {{Carbon\Carbon::parse($serv->start_date)->diff(Carbon\Carbon::parse($serv->end_date))->format('%y Year(s), %m Month(s) and %d Day(s)')}}
+                      <br />
                       <b>Service Name: </b>{{$serv->service_name}}<br />
                       <b>Service Class: </b>{{$serv->service_class}}<br />
                       <hr>
@@ -305,11 +335,29 @@
                   @endforeach
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-two-contact" role="tabpanel" aria-labelledby="custom-tabs-two-contact-tab">
-                      <b>Landline No: </b>+94{{$staff->landline_no}}<br />
-                      <b>Mobile No: </b>+94{{$staff->mobile_no}}<br />
-                      <b>Permanant Address: </b>{{$staff->permanant_address}}<br />
-                      <b>Temporary Address: </b>{{$staff->temporary_address}}<br />
-                      <b>Email: </b>{{$staff->email}}<br />
+                  <div class="row">
+                      <div class="col">
+                      <div class="row">
+                      <div class="col-4">                                         
+                      <b>Landline No: </b><br />
+                      <b>Mobile No: </b><br />
+                      <b>Permanant Address: </b><br />
+                      <b>Temporary Address: </b><br />
+                      <b>Email: </b><br />
+                      </div>
+
+                      <div class="col-8">
+                      {{$staff->landline_no}}<br />
+                      {{$staff->mobile_no}}<br />
+                      {{$staff->permanant_address}}<br />
+                      {{$staff->temporary_address}}<br />
+                      {{$staff->email}}<br />
+                      </div>
+                      </div>
+                      
+                      
+                      </div>
+
                    </div>
                 </div>
               </div>

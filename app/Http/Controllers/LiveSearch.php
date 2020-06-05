@@ -26,6 +26,7 @@ class LiveSearch extends Controller
          ->where('firstname', 'like', '%'.$query.'%')
          ->orWhere('lastname', 'like', '%'.$query.'%')
          ->orWhere('nic', 'like', '%'.$query.'%')
+         ->orWhere('officer_subject', 'like', '%'.$query.'%')
          ->orderBy('id', 'ASC')
          ->get();
          
@@ -51,8 +52,8 @@ class LiveSearch extends Controller
          <td>'. $row->firstname . ' ' . $row->lastname.'</td>
          <td>'.$row->designation.'</td>
          <td>
-         <a href="staff/' . $row->id . '" target="_blank" class="btn btn-primary btn-xs">View</a>
-         <a href="staff/' . $row->id . '/edit" target="_blank" class="btn btn-success btn-xs">Edit</a>
+         <a href="staff/' . $row->id . '" target="" class="btn btn-primary btn-xs">View</a>
+         <a href="staff/' . $row->id . '/edit" target="" class="btn btn-success btn-xs">Edit</a>
          <form action="staff/' . $row->id . '" method="POST" onclick= "return confirm(\'Are you sure?\')">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="' . csrf_token() . '">

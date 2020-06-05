@@ -17,7 +17,7 @@ class CreateStaffTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('firstname');
-            $table->string('lastname');
+            $table->string('lastname')->nullable();
             $table->string('gender');
             $table->string('civil_status');
             $table->string('religion');
@@ -32,6 +32,12 @@ class CreateStaffTable extends Migration
             $table->string('service');
             $table->string('designation');
             $table->string('class');
+            $table->string('recruitment_type')->nullable();
+            $table->string('appointment_no')->nullable();
+            $table->date('appointment_date')->nullable();
+            $table->string('personal_file_no')->nullable();
+            $table->string('officer_subject')->nullable();
+            $table->string('officer_branch')->nullable();
             $table->string('profile_pic')->nullable()->default('noimage.png');
             $table->timestamps();
 

@@ -70,6 +70,10 @@ class ServiceSeeder extends Seeder
            'name' => 'SRI LANKA TECHNOLOGICAL SERVICE'
            ],
 
+           ['id' => '15', 
+           'name' => 'GRAMA NILADHARI SERVICE'
+           ],
+
         ];
 
         foreach($services as $service){

@@ -50,13 +50,17 @@ class DesignationSeeder extends Seeder
             'name' => 'Deputy Director of Planning'
             ],
 
-           ['id' => '10', 
-           'name' => 'Technical Officer'
-           ],
+            ['id' => '10', 
+            'name' => 'Technical Officer'
+            ],
 
-           ['id' => '11', 
-           'name' => 'Cultural Officer'
-           ],
+            ['id' => '11', 
+            'name' => 'Cultural Officer'
+            ],
+
+            ['id' => '12', 
+            'name' => 'Grama Niladhari'
+            ]
         ];
         
         //\App\

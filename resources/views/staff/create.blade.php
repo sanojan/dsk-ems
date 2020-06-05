@@ -246,6 +246,56 @@
                   <div class="row">
                       <div class="col-sm-4">
                           <div class="form-group">
+                            {{Form::label('appointment_no', 'Appointment No.')}}
+                            {{Form::text('appointment_no', '', ['class' => 'form-control', 'placeholder' => 'Appointment No.'])}}
+                          </div>
+                      </div>
+                      <div class="col-sm-4">
+                          <div class="form-group">
+                            {{Form::label('appointment_date', 'Appointment Date')}}
+                            <div class="input-group date">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text">
+                              <i class="far fa-calendar-alt">
+                              </i>
+                              </span>
+                            </div>
+                          {{Form::date('appointment_date', \Carbon\Carbon::now())}}
+                          </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-4">
+                          <div class="form-group">
+                          {{Form::label('personal_file_no', 'Personal File No.')}}
+                          {{Form::text('personal_file_no', '', ['class' => 'form-control', 'placeholder' => 'Personal File No.'])}}
+                          </div>
+                      </div>                     
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-4">
+                          <div class="form-group">
+                            {{Form::label('recruitment_type', 'Recruitment Type')}}
+                            {{Form::select('recruitment_type', ['Permanant' => 'Permanant', 'Temporary' => 'Temporary', 'Graduate Trainee' => 'Graduate Trainee'], 'Permanant', ['class' => 'form-control'])}}
+                          </div>
+                      </div>
+                      <div class="col-sm-4">
+                          <div class="form-group">
+                            {{Form::label('officer_branch', 'Officer Branch')}}
+
+                            {{Form::select('officer_branch', ['Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Not Applicable' => 'Not Applicable'], 'Not Applicable', ['class' => 'form-control'])}}
+                            
+                          </div>
+                      </div>
+                      <div class="col-sm-4">
+                          <div class="form-group">
+                          {{Form::label('officer_subject', 'Officer Subject')}}
+                          {{Form::text('officer_subject', '', ['class' => 'form-control', 'placeholder' => 'Officer Subject'])}}
+                          </div>
+                      </div>                     
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-4">
+                          <div class="form-group">
                             {{Form::label('designation', 'Designation')}}
                               <select class="form-control" name="designation" id="designation">
                                   @foreach ($designations as $designation) 

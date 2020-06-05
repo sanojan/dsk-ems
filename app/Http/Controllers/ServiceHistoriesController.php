@@ -45,17 +45,35 @@ class ServiceHistoriesController extends Controller
         $this->validate($request, [
             'workplace' => 'bail|required|string',
             'designation' => 'string|required',
-            'start_date' => 'required'
+            'start_date' => 'required|before:today',
+            'end_date' => 'before:today'
         ],
         ['workplace.required' => 'Workplace is required']);
 
         $serv = new ServiceHistory;
+        $designations = Designation::all();
+        $services = Service::all();
         $serv->workplace = $request->workplace;
         $serv->designation = $request->designation;
         $serv->start_date = $request->start_date;
-        $serv->end_date = $request->end_date;
+        
+        if($request->current_wp){
+            $staff = Staff::find($request->staff_id);
+            foreach($staff->service_histories as $workplaces){
+                if($workplaces->current_wp == 1){
+                    return redirect('/servicehistories/create?staff_id=' . $request->staff_id)->with('staff', $staff)->with('designations', $designations)->with('services', $services)->with('error', 'Current workplace already exists!');
+                }
+            }
+            $serv->end_date = null;
+            $serv->current_wp = 1;
+        }else{
+            $serv->end_date = $request->end_date;
+            $serv->current_wp = 0;
+        }
+        
         $serv->service_name = $request->service;
         $serv->service_class = $request->class;
+        
         $serv->staff_id = $request->staff_id;
         $serv->save();
 

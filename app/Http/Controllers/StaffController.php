@@ -59,8 +59,8 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'firstname' => 'bail|required|alpha',
-            'lastname' => 'alpha|nullable',
+            'firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
+            'lastname' => 'regex:/^[\pL\s\-]+$/u|nullable',
             'mobile_no' => 'digits:10|nullable',
             'landline_no' => 'digits:10|nullable',
             'email' => 'email:rfc|nullable',
@@ -103,6 +103,11 @@ class StaffController extends Controller
         $staff->service = $request->service;
         $staff->designation = $request->designation;
         $staff->class = $request->class;
+        $staff->appointment_no = $request->appointment_no;
+        $staff->appointment_date = $request->appointment_date;
+        $staff->personal_file_no = $request->personal_file_no;
+        $staff->officer_subject = $request->officer_subject;
+        $staff->officer_branch = $request->officer_branch;
         $staff->profile_pic = $fileNameToStore;
 
         $staff->save();
@@ -125,12 +130,10 @@ class StaffController extends Controller
         $staff = Staff::find($id);
         $dt = Carbon::create($staff->dob)->addYears(60)->toDateString();
         
-        //$exp[] = '';
-        foreach($staff->service_histories as $serv){
-            $exp[] = $serv->start_date;
-        }
-        if(isset($exp)){
-            $xp = Carbon::now()->diffInYears(min($exp)) . ' Years';
+        //$xp= '';
+        
+        if(isset($staff->appointment_date)){
+            $xp = Carbon::now()->diff($staff->appointment_date)->format('%y Year(s), %m Month(s) and %d Day(s)');
         }else{
             $xp = 'Not Available';
         }
@@ -166,8 +169,8 @@ class StaffController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'firstname' => 'bail|required|alpha',
-            'lastname' => 'alpha|nullable',
+            'firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
+            'lastname' => 'regex:/^[\pL\s\-]+$/u|nullable',
             'mobile_no' => 'digits:10|nullable',
             'landline_no' => 'digits:10|nullable',
             'email' => 'email:rfc|nullable',
@@ -218,6 +221,11 @@ class StaffController extends Controller
         $staff->service = $request->service;
         $staff->designation = $request->designation;
         $staff->class = $request->class;
+        $staff->appointment_no = $request->appointment_no;
+        $staff->appointment_date = $request->appointment_date;
+        $staff->personal_file_no = $request->personal_file_no;
+        $staff->officer_subject = $request->officer_subject;
+        $staff->officer_branch = $request->officer_branch;
         $staff->profile_pic = $fileNameToStore;
         
         Rule::unique('nic')->ignore($staff);
