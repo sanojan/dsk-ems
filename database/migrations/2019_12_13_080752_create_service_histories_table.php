@@ -21,7 +21,6 @@ class CreateServiceHistoriesTable extends Migration
             $table->date('end_date')->nullable();
             $table->string('service_name');
             $table->string('service_class');
-            $table->boolean('current_wp');
             $table->timestamps();
             $table->unsignedBigInteger('staff_id');
 
