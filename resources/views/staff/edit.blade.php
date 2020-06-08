@@ -233,7 +233,7 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('religion', 'Religion')}}
-                            {{Form::select('religion', ['Buddhist' => 'Buddhist', 'Hindu' => 'Hindu', 'Muslim' => 'Muslim', 'Christian' => 'Christian', 'Other' => 'Other'], null, ['class' => 'form-control'])}}
+                            {{Form::select('religion', ['Buddhist' => 'Buddhist', 'Hindu' => 'Hindu', 'Islam' => 'Islam', 'Christian' => 'Christian', 'Other' => 'Other'], null, ['class' => 'form-control'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
@@ -299,6 +299,7 @@
                       <div class="form-group">
                         {{Form::label('designation', 'Designation')}}
                           <select class="form-control" name="designation" id="designation">
+                              <option value="{{$staff->designation}}" selected="selected">{{$staff->designation}}</option>
                               @foreach ($designations as $designation) 
                                   <option value="{{$designation->name}}">
                                     {{$designation->name}}
@@ -311,6 +312,7 @@
                           <div class="form-group">
                             {{Form::label('service', 'Service')}}
                             <select class="form-control" name="service" id="service">
+                              <option value="{{$staff->service}}" selected="selected">{{$staff->service}}</option>
                               @foreach ($services as $service) 
                                   <option value="{{$service->name}}">
                                     {{$service->name}}

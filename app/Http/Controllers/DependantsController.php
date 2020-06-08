@@ -9,6 +9,16 @@ use App\Dependant;
 class DependantsController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -38,8 +48,8 @@ class DependantsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'd_firstname' => 'bail|required|alpha',
-            'd_lastname' => 'alpha',
+            'd_firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
+            'd_lastname' => 'regex:/^[\pL\s\-]+$/u',
             'd_designation' => 'string|nullable',
             'd_workplace' => 'string|nullable'
         ],

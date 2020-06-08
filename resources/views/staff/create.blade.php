@@ -233,7 +233,7 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('religion', 'Religion')}}
-                            {{Form::select('religion', ['Buddhist' => 'Buddhist', 'Hindu' => 'Hindu', 'Muslim' => 'Muslim', 'Christian' => 'Christian', 'Other' => 'Other'], 'Other', ['class' => 'form-control'])}}
+                            {{Form::select('religion', ['Buddhist' => 'Buddhist', 'Hindu' => 'Hindu', 'Islam' => 'Islam', 'Christian' => 'Christian', 'Other' => 'Other'], 'Other', ['class' => 'form-control'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">

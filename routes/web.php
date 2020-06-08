@@ -49,3 +49,9 @@ Route::post('change-password', 'ChangePasswordController@store')->name('change.p
 
 //Route::get('/live_search', 'LiveSearch@index');
 Route::get('/livesearch', 'LiveSearch@action')->name('live_search.action');
+
+Route::get('reports', 'ReportController@index')->name('reports.index');
+
+Route::post('reports/generate', 'ReportController@get_staff_data')->name('reports.generate');
+
+Route::get('reports/pdf/{$results}', 'ReportController@pdf')->name('reports.pdf');
