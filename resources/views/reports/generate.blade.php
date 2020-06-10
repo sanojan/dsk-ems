@@ -174,8 +174,8 @@
                       <div class="card-header">
                         <h3 class="card-title">Search Results</h3>
                        
-                      
-                       <a href="{{ route('reports.pdf', [$results]) }}" class="btn btn-danger btn-sm" style="float: right" target="_blank">Create PDF</a> 
+                        <a href="">Export PDF</a>
+                       <a href="{{ URL::to('/reports/pdf') }}" class="btn btn-danger btn-sm" style="float: right" target="_blank">Create PDF</a> 
                       </div>
                       <!-- /.card-header -->
                       <div class="card-body p-0">

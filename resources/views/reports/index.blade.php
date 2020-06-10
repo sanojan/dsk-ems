@@ -168,14 +168,14 @@
               <!-- existing designations card -->
               
               <!-- existing designations end -->
-                  <div class="card card-dark">
+                  <div class="card card-danger">
                       <div class="card-header">
-                          <h3 class="card-title">Search Data</h3>
+                          <h3 class="card-title">Create Report</h3>
                       </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <div class="container">
-                        {!! Form::open(['action' => 'ReportController@get_staff_data', 'method' => 'POST']) !!} 
+                        {!! Form::open(['action' => 'ReportController@get_staff_data', 'method' => 'POST', 'target' => '_blank']) !!} 
                                   <div class="form-group">
                                     {{Form::label('designation', 'Select designation name')}}
                                       <select class="form-control" name="designation" id="designation">
@@ -188,7 +188,7 @@
                                   </div>
                         </div>
                         <div class="card-footer">          
-                            {{Form::submit('Search', ['class' =>  'btn btn-dark'])}}
+                            {{Form::submit('Export to PDF', ['class' =>  'btn btn-danger'])}}
                         </div>
                             {!! Form::close() !!}
                       

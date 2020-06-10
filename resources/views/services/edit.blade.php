@@ -57,6 +57,12 @@
                     <p>Add Staff Info</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{route('reports.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-file-pdf"></i>
+                    <p>Generate Reports</p>
+                  </a>
+                </li>
                 </ul>
               </li>
               

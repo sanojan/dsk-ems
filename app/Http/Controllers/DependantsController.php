@@ -101,8 +101,8 @@ class DependantsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'firstname' => 'bail|required|alpha',
-            'lastname' => 'alpha',
+            'firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
+            'lastname' => 'regex:/^[\pL\s\-]+$/u',
             'designation' => 'string|nullable',
             'workplace' => 'string|nullable'
         ],
