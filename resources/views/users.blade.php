@@ -145,21 +145,49 @@
 
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Users List to Approve</div>
+<div class="content-wrapper">
+  <!-- messages -->
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-10">
+            @include('inc.messages')
+      </div>
+      <div class="col"></div>
+    </div>
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Users</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item active">Users</li>
+            </ol>
+        </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <div class="container-fluid">
+        <div class="row">        
+            <!-- ./col -->
+            <div class="col"></div>
+            <div class="col-10">
+              <!-- Staff search card -->
+              
+              <!-- staff search end -->
 
-                    <div class="card-body">
-
-                        @if (session('message'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('message') }}
-                            </div>
-                        @endif
-
-                        <table class="table">
+                  <div class="card card-info">
+                      <div class="card-header">
+                      <h3 class="card-title">Users List</h3>
+                      </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <div class="container">
+                            <div class="row">
+                            <table class="table">
                             <tr>
                                 <th>User name</th>
                                 <th>Email</th>
@@ -180,10 +208,26 @@
                                 </tr>
                             @endforelse
                         </table>
+                            </div>
+                            
+                        </div>
+                        
+                            
+                      
                     </div>
-                </div>
+              <!-- col end -->    
+              </div>
+                <!-- /.card-body -->
+                <div class="col"></div>
+              </div>
+            
+                
+                
+            <!-- row end -->    
             </div>
-        </div>
-    </div>
-    
+<!-- containerfluid -->
+
+<!-- wrapper end -->
+</div>
+
 @endsection

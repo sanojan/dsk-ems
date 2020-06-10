@@ -215,7 +215,14 @@
                                             </td>
                                         <td>
                                             {{Form::select('class', ['Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], 'Class III', ['class' => 'form-control'])}}</td>
-                                      </tr>    
+                                      </tr> 
+                                      <tr>
+                                    <td colspan='6'>
+                                    
+                                    {{Form::checkbox('current_wp', '1')}} Currently work here
+                                    
+                                    </td>
+                                    </tr>    
                                     </tbody>
                                   </table>
                             </div>

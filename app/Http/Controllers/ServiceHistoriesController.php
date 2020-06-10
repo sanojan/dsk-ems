@@ -130,14 +130,29 @@ class ServiceHistoriesController extends Controller
             'start_date' => 'required'
         ],
         ['workplace.required' => 'Workplace is required']);
-
+        
+        $designations = Designation::all();
+        $services = Service::all();
         $serv = ServiceHistory::find($id);
+        $staff = Staff::find($serv->staff->id);
         $serv->workplace = $request->workplace;
         $serv->designation = $request->designation;
         $serv->start_date = $request->start_date;
         $serv->end_date = $request->end_date;
         $serv->service_name = $request->service;
         $serv->service_class = $request->class;
+        if($request->has('current_wp')){
+            foreach($staff->service_histories as $workplaces){
+                if($workplaces->current_wp == 1){
+                    return redirect('/servicehistories/' . $id . '/edit/')->with('staff', $staff)->with('designations', $designations)->with('services', $services)->with('error', 'Current workplace already exists for ' . $staff->firstname);
+                }else{
+                    $serv->current_wp = 1;
+                }
+            }
+        }else{
+            $serv->current_wp = 0;
+        }
+        
         $serv->save();
 
         return redirect('/staff/' . $serv->staff->id . '/edit')->with('success', 'Service updated sucessfully');

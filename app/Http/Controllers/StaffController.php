@@ -231,7 +231,7 @@ class StaffController extends Controller
         Rule::unique('nic')->ignore($staff);
 
         $staff->save();
-        return redirect('/staff/' . $id)->with('success', 'Staff profile updated sucessfully');
+        return redirect('/staff/' . $id . '/edit')->with('success', 'Staff profile updated sucessfully');
     }
 
     /**
