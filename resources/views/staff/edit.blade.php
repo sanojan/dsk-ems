@@ -183,19 +183,19 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         {{Form::label('title', 'Title')}}
-                        {{Form::select('title', ['Mr.' => 'Mr.', 'Mrs.' => 'Mrs.', 'Miss.' => 'Miss.'], null, ['class' => 'form-control'])}}
+                        {{Form::select('title', ['Mr.' => 'Mr.', 'Mrs.' => 'Mrs.', 'Miss.' => 'Miss.'], null, ['class' => 'form-control form-control-sm'])}}
                       </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                           {{Form::label('firstname', 'Firstname')}}
-                          {{Form::text('firstname', null, ['class' => 'form-control', 'placeholder' => 'Firstname'])}}
+                          {{Form::text('firstname', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Firstname'])}}
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                           {{Form::label('lastname', 'Lastname')}}
-                          {{Form::text('lastname', null, ['class' => 'form-control', 'placeholder' => 'Lastname'])}}
+                          {{Form::text('lastname', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Lastname'])}}
                         </div>
                     </div>
                   </div>
@@ -203,27 +203,21 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                           {{Form::label('gender', 'Gender')}}
-                          {{Form::select('gender', ['Male' => 'Male', 'Female' => 'Female', 'Non Specified' => 'Non Specified'], null, ['class' => 'form-control'])}}
+                          {{Form::select('gender', ['Male' => 'Male', 'Female' => 'Female', 'Non Specified' => 'Non Specified'], null, ['class' => 'form-control form-control-sm'])}}
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             {{Form::label('dob', 'Date Of Birth')}}
-                          <div class="input-group date">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text">
-                              <i class="far fa-calendar-alt">
-                              </i>
-                              </span>
-                            </div>
-                          {{Form::date('dob', \Carbon\Carbon::parse($staff->dob))}}
-                          </div>
+                          
+                          {{Form::date('dob', \Carbon\Carbon::parse($staff->dob), ['class' => 'form-control form-control-sm'])}}
+                          
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                           {{Form::label('cicil_status', 'Civil Status')}}
-                          {{Form::select('civil_status', ['Single' => 'Single', 'Married' => 'Married', 'Divorced' => 'Divorced', 'Widowed' => 'Widowed'], null, ['class' => 'form-control'])}}
+                          {{Form::select('civil_status', ['Single' => 'Single', 'Married' => 'Married', 'Divorced' => 'Divorced', 'Widowed' => 'Widowed'], null, ['class' => 'form-control form-control-sm'])}}
                         </div>
                     </div>
                   </div>
@@ -233,19 +227,19 @@
                             {{Form::label('nationality', 'Nationality')}}
                             {{Form::select('nationality', ['Sinhale' => 'Sinhale', 'Sri Lankan Tamil' => 'Sri Lankan Tamil', 'Sri Lankan Moor' => 'Sri Lankan Moor', 'Indian Tamil' => 'Indian Tamil', 'Sri Lankan Malay' => 'Sri Lankan Malay', 'Burgher/
                             Eurasian' => 'Burgher/
-                            Eurasian', 'Indian Moor' => 'Indian Moor'], null, ['class' => 'form-control'])}}
+                            Eurasian', 'Indian Moor' => 'Indian Moor'], null, ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('religion', 'Religion')}}
-                            {{Form::select('religion', ['Buddhist' => 'Buddhist', 'Hindu' => 'Hindu', 'Islam' => 'Islam', 'Christian' => 'Christian', 'Other' => 'Other'], null, ['class' => 'form-control'])}}
+                            {{Form::select('religion', ['Buddhist' => 'Buddhist', 'Hindu' => 'Hindu', 'Islam' => 'Islam', 'Christian' => 'Christian', 'Other' => 'Other'], null, ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                           {{Form::label('nic', 'NIC')}}
-                          {{Form::text('nic', null, ['class' => 'form-control', 'placeholder' => 'NIC'])}}
+                          {{Form::text('nic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'NIC'])}}
                           </div>
                       </div>                     
                   </div>
@@ -253,27 +247,21 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('appointment_no', 'Appointment No.')}}
-                            {{Form::text('appointment_no', null, ['class' => 'form-control', 'placeholder' => 'Appointment No.'])}}
+                            {{Form::text('appointment_no', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Appointment No.'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('appointment_date', 'Appointment Date')}}
-                            <div class="input-group date">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text">
-                              <i class="far fa-calendar-alt">
-                              </i>
-                              </span>
-                            </div>
-                          {{Form::date('appointment_date', \Carbon\Carbon::parse($staff->appointment_date))}}
-                          </div>
+                            
+                          {{Form::date('appointment_date', \Carbon\Carbon::parse($staff->appointment_date), ['class' => 'form-control form-control-sm'])}}
+                         
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                           {{Form::label('personal_file_no', 'Personal File No.')}}
-                          {{Form::text('personal_file_no', null, ['class' => 'form-control', 'placeholder' => 'Personal File No.'])}}
+                          {{Form::text('personal_file_no', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Personal File No.'])}}
                           </div>
                       </div>                     
                   </div>
@@ -281,21 +269,21 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('recruitment_type', 'Recruitment Type')}}
-                            {{Form::select('recruitment_type', ['Permanant' => 'Permanant', 'Temporary' => 'Temporary', 'Graduate Trainee' => 'Graduate Trainee'], 'Permanant', ['class' => 'form-control'])}}
+                            {{Form::select('recruitment_type', ['Permanant' => 'Permanant', 'Temporary' => 'Temporary', 'Graduate Trainee' => 'Graduate Trainee'], 'Permanant', ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('officer_branch', 'Officer Branch')}}
 
-                            {{Form::select('officer_branch', ['Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Not Applicable' => 'Not Applicable'], null, ['class' => 'form-control'])}}
+                            {{Form::select('officer_branch', ['Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Not Applicable' => 'Not Applicable'], null, ['class' => 'form-control form-control-sm'])}}
                             
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                           {{Form::label('officer_subject', 'Officer Subject')}}
-                          {{Form::text('officer_subject', null, ['class' => 'form-control', 'placeholder' => 'Officer Subject'])}}
+                          {{Form::text('officer_subject', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Officer Subject'])}}
                           </div>
                       </div>                     
                   </div>          
@@ -304,7 +292,7 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         {{Form::label('designation', 'Designation')}}
-                          <select class="form-control" name="designation" id="designation">
+                          <select class="form-control form-control-sm" name="designation" id="designation">
                               <option value="{{$staff->designation}}" selected="selected">{{$staff->designation}}</option>
                               @foreach ($designations as $designation) 
                                   <option value="{{$designation->name}}">
@@ -317,7 +305,7 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('service', 'Service')}}
-                            <select class="form-control" name="service" id="service">
+                            <select class="form-control form-control-sm" name="service" id="service">
                               <option value="{{$staff->service}}" selected="selected">{{$staff->service}}</option>
                               @foreach ($services as $service) 
                                   <option value="{{$service->name}}">
@@ -330,7 +318,7 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('class', 'Class')}}
-                            {{Form::select('class', ['Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], null, ['class' => 'form-control'])}}
+                            {{Form::select('class', ['Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], null, ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                   </div>
@@ -338,19 +326,19 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('mobile_no', 'Mobile No')}}
-                            {{Form::text('mobile_no', null, ['class' => 'form-control', 'placeholder' => 'Mobile'])}}
+                            {{Form::text('mobile_no', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Mobile'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('landline_no', 'Landline No')}}
-                            {{Form::text('landline_no', null, ['class' => 'form-control', 'placeholder' => 'Landline'])}}
+                            {{Form::text('landline_no', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Landline'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('email', 'Email')}}
-                            {{Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email'])}}
+                            {{Form::email('email', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Email'])}}
                           </div>
                       </div>
                   </div>   
@@ -358,13 +346,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             {{Form::label('permanant_address', 'Permanant Address')}}
-                            {{Form::textarea('permanant_address', null, ['class' => 'form-control', 'placeholder' => 'Permanant Address'])}}
+                            {{Form::textarea('permanant_address', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Permanant Address', 'rows' => '5'])}}
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             {{Form::label('temporary_address', 'Temporary Address')}}
-                            {{Form::textarea('temporary_address', null, ['class' => 'form-control', 'placeholder' => 'Temporary Address'])}}
+                            {{Form::textarea('temporary_address', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Temporary Address', 'rows' => '5'])}}
                         </div>
                     </div>
                   </div>
@@ -400,6 +388,7 @@
                               <thead>
                                 <tr>
                                   <th>Fullname</th>
+                                  <th>Relationship</th>
                                   <th>Occupation</th>
                                   <th>Action</th>
                                 </tr>
@@ -407,8 +396,9 @@
                               <tbody>  
                         @foreach($staff->dependants as $dep)
                           <tr>
-                              <td><b>{{$dep->firstname}} {{$dep->lastname}}</b></td>
-                              <td><b>{{$dep->designation}}</b></td>
+                              <td>{{$dep->firstname}} {{$dep->lastname}}</td>
+                              <td>{{$dep->relationship}}</td>
+                              <td>{{$dep->designation}} - {{$dep->workplace}}</td>
                               <td><a href="{{route('dependants.edit', $dep->id)}}">Edit</a></td>
                           </tr>
                         @endforeach
@@ -437,6 +427,7 @@
                                 <tr>
                                   <th>Workplace</th>
                                   <th>Designation</th>
+                                  <th>Duration</th>
                                   <th>Action</th>
                                 </tr>
                               </thead>
@@ -445,6 +436,7 @@
                           <tr>
                               <td><b>{{$serv->workplace}}</b></td>
                               <td><b>{{$serv->designation}}</b></td>
+                              <td>{{\Carbon\Carbon::parse($serv->end_date)->diff(\Carbon\Carbon::parse($serv->start_date))->format('%y Year(s), %m Month(s)')}}</td>
                               <td><a href="{{route('servicehistories.edit', $serv->id)}}">Edit</a></td>
                           </tr>
                         @endforeach
@@ -472,7 +464,8 @@
                               <thead>
                                 <tr>
                                   <th>Title</th>
-                                  <th>Category</th>
+                                  <th>Subject</th>
+                                  <th>Grade</th>
                                   <th>Actions</th>
                                 </tr>
                               </thead>
@@ -480,7 +473,8 @@
                         @foreach($staff->qualifications as $qualification)
                           <tr>
                               <td><b>{{$qualification->title}}</b></td>
-                              <td><b>{{$qualification->field}}</b></td>
+                              <td><b>{{$qualification->subject}}</b></td>
+                              <td><b>{{$qualification->grade}}</b></td>
                               <td><a href="{{route('qualifications.edit', $qualification->id)}}">Edit</a></td>
                           </tr>
                         @endforeach

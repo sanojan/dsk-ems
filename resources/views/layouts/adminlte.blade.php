@@ -153,4 +153,30 @@ $("[name='current_wp']").change(function(){
   
 }
 });
+
+$("[name='title']").change(function(){
+    if(($("[name='title']").val() == "G.C.E O/L") || ($("[name='title']").val() == "G.C.E A/L")){
+      $("[name='field']").prop("disabled", true);
+      $("[name='duration']").prop("disabled", true);
+      $("[name='effective_date']").prop("disabled", true);   
+      $("[name='index_no']").prop("disabled", false);
+      $("[name='center_no']").prop("disabled", false);  
+      $("[name='year']").prop("disabled", false);
+      $("[name='subject']").prop("disabled", false);
+      $("[name='grade']").prop("disabled", false);
+      $("[name='attempt']").prop("disabled", false);
+    }
+    
+    else{
+      $("[name='field']").prop("disabled", false);
+      $("[name='duration']").prop("disabled", false);
+      $("[name='effective_date']").prop("disabled", false);
+      $("[name='index_no']").prop("disabled", true);
+      $("[name='center_no']").prop("disabled", true);
+      $("[name='year']").prop("disabled", true);
+      $("[name='subject']").prop("disabled", true);
+      $("[name='grade']").prop("disabled", true);
+      $("[name='attempt']").prop("disabled", true);
+}
+});
   </script>

@@ -191,9 +191,9 @@
                                   <tbody>
                                     <tr>
                                       <td>
-                                          {{Form::text('workplace', '', ['class' => 'form-control'])}}</td>
+                                          {{Form::text('workplace', '', ['class' => 'form-control form-control-sm'])}}</td>
                                       <td>
-                                            <select class="form-control" name="designation" id="designation">
+                                            <select class="form-control form-control-sm" name="designation" id="designation">
                                                 @foreach ($designations as $designation) 
                                                     <option value="{{$designation->name}}">
                                                       {{$designation->name}}
@@ -202,11 +202,11 @@
                                             </select>
                                       </td>
                                       <td>
-                                          {{Form::date('start_date', \Carbon\Carbon::now(), array('id' => 'start_dt'))}}</td>
+                                          {{Form::date('start_date', \Carbon\Carbon::now(),  ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
-                                          {{Form::date('end_date', \Carbon\Carbon::now())}}</td>
+                                          {{Form::date('end_date', \Carbon\Carbon::now(), ['class' => 'form-control form-control-sm'])}}</td>
                                       <td>
-                                        <select class="form-control" name="service" id="service">
+                                        <select class="form-control form-control-sm" name="service" id="service">
                                           @foreach ($services as $service) 
                                               <option value="{{$service->name}}">
                                                 {{$service->name}}
@@ -214,8 +214,8 @@
                                           @endforeach
                                       </select></td>
                                       <td>
-                                          {{Form::select('class', ['Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], 'Class III', ['class' => 'form-control'])}}
-                                          {{Form::hidden('staff_id', $staff->id, ['class' => 'form-control'])}}</td>
+                                          {{Form::select('class', ['Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], 'Class III', ['class' => 'form-control form-control-sm'])}}
+                                          {{Form::hidden('staff_id', $staff->id, ['class' => 'form-control form-control-sm'])}}</td>
                                       
                                     </tr>   
                                     <tr>

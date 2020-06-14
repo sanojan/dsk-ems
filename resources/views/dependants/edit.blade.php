@@ -192,16 +192,16 @@
                                     <tbody id="dependant_table">
                                       <tr>
                                         <td>
-                                            {{Form::text('firstname', null, ['class' => 'form-control'])}}</td>
+                                            {{Form::text('firstname', null, ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
-                                            {{Form::text('lastname', null, ['class' => 'form-control'])}}</td>
+                                            {{Form::text('lastname', null, ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
-                                            {{Form::date('dob', \Carbon\Carbon::parse($dependants->dob))}}</td>
+                                            {{Form::date('dob', \Carbon\Carbon::parse($dependants->dob), ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
-                                            {{Form::select('relationship', ['Father' => 'Father', 'Mother' => 'Mother', 'Husband' => 'Husband', 'Wife' => 'Wife', 'Son' => 'Son', 'Daughter' => 'Daughter'], null, ['class' => 'form-control'])}}</td>
+                                            {{Form::select('relationship', ['Father' => 'Father', 'Mother' => 'Mother', 'Husband' => 'Husband', 'Wife' => 'Wife', 'Son' => 'Son', 'Daughter' => 'Daughter'], null, ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
-                                            {{Form::text('designation', null, ['class' => 'form-control'])}}</td>
-                                        <td>{{Form::text('workplace', null, ['class' => 'form-control'])}}</td>
+                                            {{Form::text('designation', null, ['class' => 'form-control form-control-sm'])}}</td>
+                                        <td>{{Form::text('workplace', null, ['class' => 'form-control form-control-sm'])}}</td>
                                       </tr>    
                                     </tbody>
                                   </table>
@@ -212,7 +212,7 @@
                             {{Form::submit('Submit', ['class' =>  'btn btn-success float-left'])}}
                             {!! Form::close() !!}
 
-                            {!! Form::open(['action' => ['DependantsController@destroy', $dependants->id], 'method' => 'POST', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
+                            {!! Form::open(['action' => ['DependantsController@destroy', $dependants->id], 'method' => 'POST', 'onclick' => 'return confirm(\'This cannot be reversed, Are you sure?\')']) !!}
                               {{Form::hidden('_method', 'DELETE')}}
                               {{Form::submit('Delete', ['class' =>  'btn btn-danger '])}}
                               

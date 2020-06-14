@@ -50,6 +50,7 @@ class ExamsController extends Controller
         $exam = new Exam;
         $exam->title = $request->title;
         $exam->completed_date = $request->completed_date;
+        $exam->remarks = $request->remarks;
         $exam->staff_id = $request->staff_id;
 
         $exam->save();
@@ -93,6 +94,7 @@ class ExamsController extends Controller
         $exam = Exam::find($id);
         $exam->title = $request->title;
         $exam->completed_date = $request->completed_date;
+        $exam->remarks = $request->remarks;
 
         $exam->save();
 

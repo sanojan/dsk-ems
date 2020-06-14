@@ -172,7 +172,7 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-2">
 
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
@@ -180,7 +180,7 @@
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
                 src="{{ Storage::url("profile_pics/{$staff->profile_pic}") }}"
-                       alt="User profile picture">
+                       alt="User profile picture" width="500" height="600">
                 </div>
 
               <h3 class="profile-username text-center">{{$staff->title}} {{$staff->firstname}} {{$staff->lastname}}</h3>
@@ -212,7 +212,7 @@
           </div>
 
           <!-- /.col -->
-          <div class="col-md-9">
+          <div class="col-md-10">
               <div class="card card-primary card-outline card-tabs">
               <div class="card-header p-0 pt-1 border-bottom-0">
                 <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
@@ -295,30 +295,61 @@
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-two-dependants" role="tabpanel" aria-labelledby="custom-tabs-two-dependants-tab">
                       @foreach($dependants as $dep)
-                        <b>{{$dep->firstname}} {{$dep->lastname}}</b><br />
-                        <hr>
-                        <b>Relationship: </b>{{$dep->relationship}}<br />
-                        <b>Date Of Birth: </b>{{$dep->dob}}<br />
-                        <b>Designation: </b>{{$dep->designation}}<br/>
-                        <b>Workplace: </b>{{$dep->workplace}}<br /><br />
+                      <div class="row">
+                      <div class="col">
+                      <div class="row">
+                      <div class="col-2">
+                        <b>Fullname:</b><br /> 
+                        <b>Relationship: </b><br />
+                        <b>Date Of Birth: </b><br />
+                        <b>Designation: </b><br/>
+                        <b>Workplace: </b><br />
+                      </div>
+                      <div class="col-4">
+                      {{$dep->firstname}} {{$dep->lastname}}<br />
+                      {{$dep->relationship}}<br />
+                      {{$dep->dob}}<br />
+                      {{$dep->designation}}<br />
+                      {{$dep->workplace}}<br />
+                      </div>
+                      </div>
+                      </div>
+                      </div>
                       @endforeach
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-two-service_history" role="tabpanel" aria-labelledby="custom-tabs-two-service_history-tab">
                       @foreach($service_histories as $serv)
+                      <div class="row">
+                      <div class="col">
+                      <div class="row">
+                      <div class="col-2">
                         @if($serv->current_wp == 1)
-                        <b><u>Workplace (Current):</u> </b>{{$serv->workplace}}<br />
+                        <b><u>Workplace (Current):</u> </b><br />
                         @else
-                        <b>Workplace: </b>{{$serv->workplace}}<br />
+                        <b>Workplace: </b><br />
                         @endif
-                      <b>Designation: </b>{{$serv->designation}}<br />
-                      <b>Branch: </b>{{$serv->branch}}<br/>
-                      <b>Start Date: </b>{{$serv->start_date}}<br/>
-                      <b>End Date: </b>{{$serv->end_date}}<br />
-                      <b>Duration: </b></b>
+                      <b>Designation: </b><br />
+                      <b>Start Date: </b><br />
+                      <b>End Date: </b><br />
+                      <b>Duration: </b><br />
+                      
+                      <b>Service Name: </b><br />
+                      <b>Service Class: </b><br />
+                      </div>
+
+                      <div class="col-4">
+                      {{$serv->workplace}}<br />
+                      {{$serv->designation}}<br />
+                      {{$serv->start_date}}<br />
+                      {{$serv->end_date}}<br/>
                       {{Carbon\Carbon::parse($serv->start_date)->diff(Carbon\Carbon::parse($serv->end_date))->format('%y Year(s), %m Month(s) and %d Day(s)')}}
                       <br />
-                      <b>Service Name: </b>{{$serv->service_name}}<br />
-                      <b>Service Class: </b>{{$serv->service_class}}<br />
+                      {{$serv->service_name}}<br />
+                      {{$serv->service_class}}<br />
+                      </div>
+                      </div>
+                      </div>
+                      </div>
                       <hr>
                     @endforeach
                   </div>
@@ -326,19 +357,47 @@
                     @foreach($staff->exams as $exam)
                       <b>Title: </b>{{$exam->title}}<br />
                       <b>Completed On: </b>{{$exam->completed_date}}<br />
+                      <b>Remarks: </b>{{$exam->remarks}}<br />
                       <hr>
                   @endforeach
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-two-qualifications" role="tabpanel" aria-labelledby="custom-tabs-two-qualifications-tab">
-                    @foreach($staff->qualifications as $qualification)
-                      <b>Title: </b>{{$qualification->title}}<br />
-                      <b>Field: </b>{{$qualification->field}}<br />
-                      <b>Medium: </b>{{$qualification->medium}}<br />
-                      <b>Duration: </b>{{$qualification->duration}}<br />
-                      <b>Effective Date: </b>{{$qualification->effective_date}}<br />
-                      <b>School/College/University: </b>{{$qualification->institute}}<br />
-                      <hr>
-                  @endforeach
+                    <div class="row">
+                      <table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                          <tr>
+                            <th class="sorting_asc">Title</th>
+                            <th>Medium</th>
+                            <th>Institute</th>
+                            <th>Center No</th>
+                            <th>Index No</th>
+                            <th>Subject</th>
+                            <th>Grade</th>
+                            <th>Attempt</th>
+                            <th>Duration</th>
+                            <th>Effective Date</th>
+                            <th>Year</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($staff->qualifications as $qualification)
+                          <tr>
+                            <td>{{$qualification->title}}</td>
+                            <td>{{$qualification->medium}}</td>
+                            <td>{{$qualification->institute}}</td>
+                            <td>{{$qualification->center_no}}</td>
+                            <td>{{$qualification->index_no}}</td>
+                            <td>{{$qualification->subject}}</td>
+                            <td>{{$qualification->grade}}</td>
+                            <td>{{$qualification->attempt}}</td>
+                            <td>{{$qualification->duration}}</td>
+                            <td>{{$qualification->effective_date}}</td>
+                            <td>{{$qualification->year}}</td>
+                          </tr>   
+                        @endforeach
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-two-contact" role="tabpanel" aria-labelledby="custom-tabs-two-contact-tab">
                   <div class="row">

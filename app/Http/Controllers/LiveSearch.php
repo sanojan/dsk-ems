@@ -58,7 +58,7 @@ class LiveSearch extends Controller
         <tr>
          <td>'.$row->id .'</td>
          <td><img src="storage/profile_pics/' . $row->profile_pic . '" alt="User Avatar" 
-         class="img-size-50 img-circle mr-3"></td>
+         class="img-size-50 img-circle mr-3" ></td>
          <td>'. $row->firstname . ' ' . $row->lastname.'</td>
          <td>'.$row->designation.'</td>
          <td>

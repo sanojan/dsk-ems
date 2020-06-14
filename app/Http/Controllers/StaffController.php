@@ -8,6 +8,7 @@ use App\Staff;
 use App\Dependant;
 use App\ServiceHistory;
 use App\Designation;
+use App\Qualification;
 use App\Service;
 use Carbon\Carbon;
 use File;
@@ -138,8 +139,8 @@ class StaffController extends Controller
             $xp = 'Not Available';
         }
         
-
         
+
         $dependants = $staff->dependants;
         $service_histories = collect($staff->service_histories)->sortByDesc('start_date');
         return view('staff.show')->with('staff', $staff)->with('dependants', $dependants)->with('service_histories', $service_histories)->with('retirement_date', $dt)->with('exp', $xp);

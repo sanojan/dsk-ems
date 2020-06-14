@@ -179,23 +179,24 @@
                   <!-- form start -->
                   <div class="container">
                   {!! Form::open(['action' => 'StaffController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                  @csrf
                   <div class="row">
                     <div class="col-sm-4">
                       <div class="form-group">
                         {{Form::label('title', 'Title')}}
-                        {{Form::select('title', ['Mr.' => 'Mr.', 'Mrs.' => 'Mrs.', 'Miss.' => 'Miss.'], 'Mr.', ['class' => 'form-control'])}}
+                        {{Form::select('title', ['Mr.' => 'Mr.', 'Mrs.' => 'Mrs.', 'Miss.' => 'Miss.'], 'Mr.', ['class' => 'form-control form-control-sm'])}}
                       </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                           {{Form::label('firstname', 'Firstname')}}
-                          {{Form::text('firstname', '', ['class' => 'form-control', 'placeholder' => 'Firstname'])}}
+                          {{Form::text('firstname', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Firstname'])}}
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                           {{Form::label('lastname', 'Lastname')}}
-                          {{Form::text('lastname', '', ['class' => 'form-control', 'placeholder' => 'Lastname'])}}
+                          {{Form::text('lastname', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Lastname'])}}
                         </div>
                     </div>
                   </div>
@@ -203,27 +204,21 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                           {{Form::label('gender', 'Gender')}}
-                          {{Form::select('gender', ['Male' => 'Male', 'Female' => 'Female', 'Non Specified' => 'Non Specified'], 'Male', ['class' => 'form-control'])}}
+                          {{Form::select('gender', ['Male' => 'Male', 'Female' => 'Female', 'Non Specified' => 'Non Specified'], 'Male', ['class' => 'form-control form-control-sm'])}}
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             {{Form::label('dob', 'Date Of Birth')}}
-                          <div class="input-group date">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text">
-                              <i class="far fa-calendar-alt">
-                              </i>
-                              </span>
-                            </div>
-                          {{Form::date('dob', \Carbon\Carbon::now())}}
-                          </div>
+                          
+                          {{Form::date('dob', \Carbon\Carbon::now(), ['class' => 'form-control form-control-sm'])}}
+                         
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                           {{Form::label('cicil_status', 'Civil Status')}}
-                          {{Form::select('civil_status', ['Single' => 'Single', 'Married' => 'Married', 'Divorced' => 'Divorced', 'Widowed' => 'Widowed'], 'Single', ['class' => 'form-control'])}}
+                          {{Form::select('civil_status', ['Single' => 'Single', 'Married' => 'Married', 'Divorced' => 'Divorced', 'Widowed' => 'Widowed'], 'Single', ['class' => 'form-control form-control-sm'])}}
                         </div>
                     </div>
                   </div>
@@ -233,19 +228,19 @@
                             {{Form::label('nationality', 'Nationality')}}
                             {{Form::select('nationality', ['Sinhale' => 'Sinhale', 'Sri Lankan Tamil' => 'Sri Lankan Tamil', 'Sri Lankan Moor' => 'Sri Lankan Moor', 'Indian Tamil' => 'Indian Tamil', 'Sri Lankan Malay' => 'Sri Lankan Malay', 'Burgher/
                             Eurasian' => 'Burgher/
-                            Eurasian', 'Indian Moor' => 'Indian Moor'], 'Sri Lankan Tamil', ['class' => 'form-control'])}}
+                            Eurasian', 'Indian Moor' => 'Indian Moor'], 'Sri Lankan Tamil', ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('religion', 'Religion')}}
-                            {{Form::select('religion', ['Buddhist' => 'Buddhist', 'Hindu' => 'Hindu', 'Islam' => 'Islam', 'Christian' => 'Christian', 'Other' => 'Other'], 'Other', ['class' => 'form-control'])}}
+                            {{Form::select('religion', ['Buddhist' => 'Buddhist', 'Hindu' => 'Hindu', 'Islam' => 'Islam', 'Christian' => 'Christian', 'Other' => 'Other'], 'Other', ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                           {{Form::label('nic', 'NIC')}}
-                          {{Form::text('nic', '', ['class' => 'form-control', 'placeholder' => 'NIC'])}}
+                          {{Form::text('nic', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'NIC'])}}
                           </div>
                       </div>                     
                   </div>
@@ -253,27 +248,21 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('appointment_no', 'Appointment No.')}}
-                            {{Form::text('appointment_no', '', ['class' => 'form-control', 'placeholder' => 'Appointment No.'])}}
+                            {{Form::text('appointment_no', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Appointment No.'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('appointment_date', 'Appointment Date')}}
-                            <div class="input-group date">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text">
-                              <i class="far fa-calendar-alt">
-                              </i>
-                              </span>
-                            </div>
-                          {{Form::date('appointment_date', \Carbon\Carbon::now())}}
+                            
+                          {{Form::date('appointment_date', \Carbon\Carbon::now(), ['class' => 'form-control form-control-sm'])}}
                           </div>
-                          </div>
+                          
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                           {{Form::label('personal_file_no', 'Personal File No.')}}
-                          {{Form::text('personal_file_no', '', ['class' => 'form-control', 'placeholder' => 'Personal File No.'])}}
+                          {{Form::text('personal_file_no', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Personal File No.'])}}
                           </div>
                       </div>                     
                   </div>
@@ -281,21 +270,21 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('recruitment_type', 'Recruitment Type')}}
-                            {{Form::select('recruitment_type', ['Permanant' => 'Permanant', 'Temporary' => 'Temporary', 'Graduate Trainee' => 'Graduate Trainee'], 'Permanant', ['class' => 'form-control'])}}
+                            {{Form::select('recruitment_type', ['Permanant' => 'Permanant', 'Temporary' => 'Temporary', 'Graduate Trainee' => 'Graduate Trainee'], 'Permanant', ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('officer_branch', 'Officer Branch')}}
 
-                            {{Form::select('officer_branch', ['Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Not Applicable' => 'Not Applicable'], 'Not Applicable', ['class' => 'form-control'])}}
+                            {{Form::select('officer_branch', ['Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Not Applicable' => 'Not Applicable'], 'Not Applicable', ['class' => 'form-control form-control-sm'])}}
                             
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                           {{Form::label('officer_subject', 'Officer Subject')}}
-                          {{Form::text('officer_subject', '', ['class' => 'form-control', 'placeholder' => 'Officer Subject'])}}
+                          {{Form::text('officer_subject', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Officer Subject'])}}
                           </div>
                       </div>                     
                   </div>
@@ -303,7 +292,7 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('designation', 'Designation')}}
-                              <select class="form-control" name="designation" id="designation">
+                              <select class="form-control form-control-sm" name="designation" id="designation">
                                   @foreach ($designations as $designation) 
                                       <option value="{{$designation->name}}">
                                         {{$designation->name}}
@@ -315,7 +304,7 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('service', 'Service')}}
-                            <select class="form-control" name="service" id="service">
+                            <select class="form-control form-control-sm" name="service" id="service">
                               @foreach ($services as $service) 
                                   <option value="{{$service->name}}">
                                     {{$service->name}}
@@ -327,7 +316,7 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('class', 'Class')}}
-                            {{Form::select('class', ['Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], 'Class III', ['class' => 'form-control'])}}
+                            {{Form::select('class', ['Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], 'Class III', ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                   </div>
@@ -335,19 +324,19 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('mobile_no', 'Mobile No')}}
-                            {{Form::text('mobile_no', '', ['class' => 'form-control', 'placeholder' => 'Mobile'])}}
+                            {{Form::text('mobile_no', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Mobile'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('landline_no', 'Landline No')}}
-                            {{Form::text('landline_no', '', ['class' => 'form-control', 'placeholder' => 'Landline'])}}
+                            {{Form::text('landline_no', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Landline'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('email', 'Email')}}
-                            {{Form::email('email', '', ['class' => 'form-control', 'placeholder' => 'Email'])}}
+                            {{Form::email('email', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Email'])}}
                           </div>
                       </div>
                   </div>   
@@ -355,13 +344,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             {{Form::label('permanant_address', 'Permanant Address')}}
-                            {{Form::textarea('permanant_address', '', ['class' => 'form-control', 'placeholder' => 'Permanant Address'])}}
+                            {{Form::textarea('permanant_address', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Permanant Address', 'rows' => '5'])}}
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             {{Form::label('temporary_address', 'Temporary Address')}}
-                            {{Form::textarea('temporary_address', '', ['class' => 'form-control', 'placeholder' => 'Temporary Address'])}}
+                            {{Form::textarea('temporary_address', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Temporary Address', 'rows' => '5'])}}
                         </div>
                     </div>
                   </div>

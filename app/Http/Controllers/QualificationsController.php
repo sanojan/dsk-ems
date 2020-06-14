@@ -51,7 +51,9 @@ class QualificationsController extends Controller
             'title' => 'bail|required|string',
             'field' => 'string|nullable',
             'duration' => 'string|nullable',
-            'effective_date' => 'nullable'
+            'effective_date' => 'nullable',
+            'year' => 'integer',
+            'center_no' => 'integer'
         ],
         ['title.required' => 'Title is required']);
 
@@ -62,11 +64,17 @@ class QualificationsController extends Controller
         $qualification->duration = $request->duration;
         $qualification->effective_date = $request->effective_date;
         $qualification->institute = $request->institute;
+        $qualification->subject = $request->subject;
+        $qualification->grade = $request->grade;
+        $qualification->index_no = $request->index_no;
+        $qualification->center_no = $request->center_no;
+        $qualification->year = $request->year;
+        $qualification->attempt = $request->attempt;
         $qualification->staff_id = $request->staff_id;
 
         $qualification->save();
 
-        return redirect('/staff/' . $request->staff_id . '/edit')->with('success', 'Qualification added sucessfully');
+        return redirect('/qualifications/create?staff_id=' . $request->staff_id)->with('success', 'Qualification added sucessfully');
 
     }
 
@@ -117,11 +125,11 @@ class QualificationsController extends Controller
         $qualification->duration = $request->duration;
         $qualification->effective_date = $request->effective_date;
         $qualification->institute = $request->institute;
-        $qualification->staff_id = $request->staff_id;
+        
 
         $qualification->save();
 
-        return redirect('/staff/' . $request->staff_id . '/edit')->with('success', 'Qualification updated sucessfully');
+        return redirect('/staff/' . $qualification->staff->id . '/edit')->with('success', 'Qualification updated sucessfully');
     }
 
     /**

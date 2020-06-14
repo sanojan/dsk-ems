@@ -192,9 +192,10 @@
                                     <tbody id="dependant_table">
                                       <tr>
                                         <td>
-                                            {{Form::text('workplace', null, ['class' => 'form-control'])}}</td>
+                                            {{Form::text('workplace', null, ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
-                                          <select class="form-control" name="designation" id="designation">
+                                          <select class="form-control form-control-sm" name="designation" id="designation">
+                                          <option value="{{$servicehistories->designation}}" selected="selected">{{$servicehistories->designation}}</option>
                                             @foreach ($designations as $designation) 
                                                 <option value="{{$designation->name}}">
                                                   {{$designation->name}}
@@ -202,10 +203,11 @@
                                             @endforeach
                                         </select></td>
                                         <td>
-                                            {{Form::date('start_date', \Carbon\Carbon::parse($servicehistories->start_date))}}</td>
+                                            {{Form::date('start_date', \Carbon\Carbon::parse($servicehistories->start_date), ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
-                                            {{Form::date('end_date', \Carbon\Carbon::parse($servicehistories->end_date))}}</td>
-                                        <td><select class="form-control" name="service" id="service">
+                                            {{Form::date('end_date', \Carbon\Carbon::parse($servicehistories->end_date), ['class' => 'form-control form-control-sm'])}}</td>
+                                        <td><select class="form-control form-control-sm" name="service" id="service">
+                                        <option value="{{$servicehistories->service_name}}" selected="selected">{{$servicehistories->service_name}}</option>
                                           @foreach ($services as $service) 
                                               <option value="{{$service->name}}">
                                                 {{$service->name}}
@@ -214,7 +216,7 @@
                                       </select>
                                             </td>
                                         <td>
-                                            {{Form::select('class', ['Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], 'Class III', ['class' => 'form-control'])}}</td>
+                                            {{Form::select('class', ['Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], null, ['class' => 'form-control form-control-sm'])}}</td>
                                       </tr> 
                                       <tr>
                                     <td colspan='6'>

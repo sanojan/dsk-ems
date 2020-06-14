@@ -177,19 +177,19 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         {{Form::label('title', 'Title')}}
-                        {{Form::select('title', ['G.C.E O/L' => 'G.C.E O/L', 'G.C.E A/L' => 'G.C.E A/L', 'Diploma' => 'Diploma', 'Higher National Diploma' => 'Higher National Diploma', 'Degree' => 'Degree', 'Vocational Qualification' => 'Vocational Qualification', 'Other' => 'Other'], null, ['class' => 'form-control'])}}
+                        {{Form::select('title', ['G.C.E O/L' => 'G.C.E O/L', 'G.C.E A/L' => 'G.C.E A/L', 'Diploma' => 'Diploma', 'Higher National Diploma' => 'Higher National Diploma', 'Degree' => 'Degree', 'Vocational Qualification' => 'Vocational Qualification', 'Other' => 'Other'], null, ['class' => 'form-control form-control-sm'])}}
                       </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                           {{Form::label('field', 'Category/Field/Stream')}}
-                          {{Form::text('field', null, ['class' => 'form-control'])}}
+                          {{Form::text('field', null, ['class' => 'form-control form-control-sm', 'disabled'])}}
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             {{Form::label('medium', 'Medium')}}
-                            {{Form::select('medium', ['Tamil' => 'Tamil', 'Sinhala' => 'Sinhala', 'English' => 'English', 'Other' => 'Other'], null, ['class' => 'form-control'])}}
+                            {{Form::select('medium', ['Tamil' => 'Tamil', 'Sinhala' => 'Sinhala', 'English' => 'English', 'Other' => 'Other'], null, ['class' => 'form-control form-control-sm'])}}
                         </div>
                     </div>
                   </div>
@@ -197,31 +197,71 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             {{Form::label('duration', 'Duration')}}
-                            {{Form::text('duration', null, ['class' => 'form-control'])}}
+                            {{Form::text('duration', null, ['class' => 'form-control form-control-sm', 'disabled'])}}
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             {{Form::label('effective_date', 'Effective Date')}}
-                          <div class="input-group date">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text">
-                              <i class="far fa-calendar-alt">
-                              </i>
-                              </span>
-                            </div>
-                          {{Form::date('effective_date', \Carbon\Carbon::now())}}
-                          </div>
+                          
+                          {{Form::date('effective_date', \Carbon\Carbon::parse($qualifications->effective_date), ['class' => 'form-control form-control-sm'])}}
+                          
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             {{Form::label('institute', 'School/College/University')}}
-                            {{Form::text('institute', null, ['class' => 'form-control'])}}
-                            {{Form::hidden('staff_id', $qualifications->staff->id, ['class' => 'form-control'])}}
+                            {{Form::text('institute', null, ['class' => 'form-control form-control-sm'])}}
+                            
                         </div>
                     </div>
-                  </div>              
+                  </div>  
+                  <div class="row">
+                  <div class="col-sm-4">
+                        <div class="form-group">
+                            {{Form::label('index_no', 'Index No.')}}
+                            {{Form::text('index_no', null, ['class' => 'form-control form-control-sm'])}}
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            {{Form::label('center_no', 'Center No.')}}
+                            {{Form::text('center_no', null, ['class' => 'form-control form-control-sm'])}}
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            {{Form::label('year', 'Year')}}
+                            {{Form::text('year', null, ['class' => 'form-control form-control-sm'])}}
+                            
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-sm-4">
+                        <div class="form-group">
+                            {{Form::label('subject', 'Subject')}}
+                            {{Form::text('subject', null, ['class' => 'form-control form-control-sm'])}}
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            {{Form::label('grade', 'Grade')}}
+                            {{Form::select('grade', ['A' => 'A', 'B' => 'B', 'C' => 'C', 'S' => 'S', 'W' => 'W', 'F' => 'F', 'D' => 'D'], '', ['class' => 'form-control form-control-sm'])}}
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            {{Form::label('attempt', 'Attempt')}}
+                            {{Form::select('attempt', ['Attempt-01' => 'Attempt-01', 'Attempt-02' => 'Attempt-02'], '', ['class' => 'form-control form-control-sm'])}}
+                            
+                        </div>
+                    </div>
+                  </div>            
                 </div> 
                 <div class="card-footer">          
                     {{Form::submit('Update', ['class' =>  'btn btn-warning float-left'])}}

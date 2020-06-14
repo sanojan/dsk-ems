@@ -177,21 +177,23 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         {{Form::label('title', 'Title')}}
-                        {{Form::select('title', ['Efficiency Bar Exam' => 'Efficiency Bar Exam', 'Language Proficiency - Tamil' => 'Language Proficiency - Tamil', 'Language Proficiency - Sinhala' => 'Language Proficiency - Sinhala', 'Language Proficiency - English' => 'Language Proficiency - English'], null, ['class' => 'form-control'])}}
+                        {{Form::select('title', ['Efficiency Bar Exam' => 'Efficiency Bar Exam', 'Language Proficiency - Tamil' => 'Language Proficiency - Tamil', 'Language Proficiency - Sinhala' => 'Language Proficiency - Sinhala', 'Language Proficiency - English' => 'Language Proficiency - English'], null, ['class' => 'form-control form-control-sm'])}}
                       </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             {{Form::label('completed_date', 'Completed On')}}
-                          <div class="input-group date">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text">
-                              <i class="far fa-calendar-alt">
-                              </i>
-                              </span>
-                            </div>
-                          {{Form::date('completed_date', \Carbon\Carbon::now())}}
-                          </div>
+                          
+                          {{Form::date('completed_date', \Carbon\Carbon::now(), ['class' => 'form-control form-control-sm'])}}
+                          
+                        </div>
+                      </div>
+                        <div class="col-sm-4">
+                        <div class="form-group">
+                            {{Form::label('remarks', 'Remarks')}}
+                          
+                            {{Form::text('remarks', null, ['class' => 'form-control form-control-sm'])}}
+                          
                         </div>
                     </div>
                   </div>          
