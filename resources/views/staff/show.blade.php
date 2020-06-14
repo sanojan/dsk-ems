@@ -380,7 +380,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                        @foreach($staff->qualifications as $qualification)
+                        @foreach($qualifications as $qualification)
                           <tr>
                             <td>{{$qualification->title}}</td>
                             <td>{{$qualification->medium}}</td>

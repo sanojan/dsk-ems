@@ -28,7 +28,7 @@ class CreateStaffTable extends Migration
             $table->string('mobile_no', 10)->nullable();
             $table->string('landline_no', 10)->nullable();
             $table->string('email')->nullable();
-            $table->string('nic', 12);
+            $table->string('nic', 12)->unique();
             $table->string('service');
             $table->string('designation');
             $table->string('class');            

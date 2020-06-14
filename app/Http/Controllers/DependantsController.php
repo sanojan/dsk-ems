@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Staff;
 use App\Dependant;
+use DB;
 
 class DependantsController extends Controller
 {
@@ -48,21 +49,28 @@ class DependantsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'd_firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
-            'd_lastname' => 'regex:/^[\pL\s\-]+$/u',
-            'd_designation' => 'string|nullable',
-            'd_workplace' => 'string|nullable'
+            'firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
+            'lastname' => 'regex:/^[\pL\s\-]+$/u',
+            'designation' => 'string|nullable',
+            'workplace' => 'string|nullable',
+            'nic' => 'alpha_num|unique:dependants|max:12'
         ],
         ['d_firstname.required' => 'Firstname is required']);
 
         $dep = new Dependant;
-        $dep->firstname = $request->d_firstname;
-        $dep->lastname = $request->d_lastname;
-        $dep->dob = $request->d_dob;
-        $dep->relationship = $request->d_relationship;
-        $dep->designation = $request->d_designation;
-        $dep->workplace = $request->d_workplace;
+        $staff = Staff::find($request->staff_id);
+        $dep->firstname = $request->firstname;
+        $dep->lastname = $request->lastname;
+        $dep->dob = $request->dob;
+        $dep->relationship = $request->relationship;
+        $dep->designation = $request->designation;
+        $dep->workplace = $request->workplace;
         $dep->staff_id = $request->staff_id;
+        
+        if($request->nic == $staff->nic){
+            return redirect('/dependants/create?staff_id=' . $request->staff_id)->with('error', 'Employee NIC and dependant NIC cannot be same');
+        }
+        $dep->nic = $request->nic;
         $dep->save();
 
         return redirect('/staff/' . $request->staff_id . '/edit')->with('success', 'Dependant added sucessfully');
@@ -104,7 +112,8 @@ class DependantsController extends Controller
             'firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
             'lastname' => 'regex:/^[\pL\s\-]+$/u',
             'designation' => 'string|nullable',
-            'workplace' => 'string|nullable'
+            'workplace' => 'string|nullable',
+            'nic' => 'alpha_num|unique:dependants|max:12'
         ],
         ['firstname.required' => 'Firstname is required']);
 
@@ -115,6 +124,11 @@ class DependantsController extends Controller
         $dep->relationship = $request->relationship;
         $dep->designation = $request->designation;
         $dep->workplace = $request->workplace;
+        //$staff_nic = DB::table('staff')->where('id', $dep->staff_id)->get();
+        if($request->nic == $dep->staff->nic){
+            return redirect('/dependants/'. $dep->staff_id . '/edit')->with('error', 'Employee NIC and dependant NIC cannot be same');
+        }
+        $dep->nic = $request->nic;
         $dep->save();
 
         return redirect('/staff/'. $dep->staff_id . '/edit')->with('success', 'Dependant updated sucessfully');

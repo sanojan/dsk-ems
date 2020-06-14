@@ -27,7 +27,7 @@
               <!-- Add icons to the links using the .nav-icon class
                    with font-awesome or any other icon font library -->
               <li class="nav-item">
-                <a href="/dashboard" class="nav-link active">
+                <a href="/dashboard" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                     Dashboard
@@ -184,6 +184,7 @@
                                       <tr>
                                         <th>Firstname</th>
                                         <th>Lastname</th>
+                                        <th>NIC No.</th>
                                         <th>Date of Birth</th>
                                         <th>Releationship</th>
                                         <th>Designation</th>
@@ -193,16 +194,18 @@
                                     <tbody id="dependant_table">
                                       <tr>
                                         <td>
-                                            {{Form::text('d_firstname', '', ['class' => 'form-control form-control-sm'])}}</td>
+                                            {{Form::text('firstname', '', ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
-                                            {{Form::text('d_lastname', '', ['class' => 'form-control form-control-sm'])}}</td>
+                                            {{Form::text('lastname', '', ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
-                                            {{Form::date('d_dob', \Carbon\Carbon::now(), ['class' => 'form-control form-control-sm'])}}</td>
+                                            {{Form::text('nic', '', ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
-                                            {{Form::select('d_relationship', ['Father' => 'Father', 'Mother' => 'Mother', 'Husband' => 'Husband', 'Wife' => 'Wife', 'Son' => 'Son', 'Daughter' => 'Daughter'], 'Son', ['class' => 'form-control form-control-sm'])}}</td>
+                                            {{Form::date('dob', \Carbon\Carbon::now(), ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
-                                            {{Form::text('d_designation', '', ['class' => 'form-control form-control-sm'])}}</td>
-                                        <td>{{Form::text('d_workplace', '', ['class' => 'form-control form-control-sm'])}}
+                                            {{Form::select('relationship', ['Father' => 'Father', 'Mother' => 'Mother', 'Husband' => 'Husband', 'Wife' => 'Wife', 'Son' => 'Son', 'Daughter' => 'Daughter'], 'Son', ['class' => 'form-control form-control-sm'])}}</td>
+                                        <td>
+                                            {{Form::text('designation', '', ['class' => 'form-control form-control-sm'])}}</td>
+                                        <td>{{Form::text('workplace', '', ['class' => 'form-control form-control-sm'])}}
                                           {{Form::hidden('staff_id', $staff->id, ['class' => 'form-control form-control-sm'])}}</td>
                                       </tr>    
                                     </tbody>

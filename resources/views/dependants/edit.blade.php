@@ -27,7 +27,7 @@
               <!-- Add icons to the links using the .nav-icon class
                    with font-awesome or any other icon font library -->
               <li class="nav-item">
-                <a href="/dashboard" class="nav-link active">
+                <a href="/dashboard" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                     Dashboard
@@ -35,7 +35,7 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item has-treeview">
+              <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
@@ -46,14 +46,14 @@
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{route('staff.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-circle"></i>
+                  <a href="{{route('staff.index')}}" class="nav-link active">
+                    <i class="nav-icon fas fa-table"></i>
                     <p>View Staff Info</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{route('staff.create')}}" class="nav-link">
-                    <i class="nav-icon fas fa-circle"></i>
+                    <i class="nav-icon fas fa-user-plus"></i>
                     <p>Add Staff Info</p>
                   </a>
                 </li>
@@ -183,6 +183,7 @@
                                       <tr>
                                         <th>Firstname</th>
                                         <th>Lastname</th>
+                                        <th>NIC No.</th>
                                         <th>Date of Birth</th>
                                         <th>Releationship</th>
                                         <th>Designation</th>
@@ -195,6 +196,8 @@
                                             {{Form::text('firstname', null, ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
                                             {{Form::text('lastname', null, ['class' => 'form-control form-control-sm'])}}</td>
+                                        <td>
+                                            {{Form::text('nic', null, ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
                                             {{Form::date('dob', \Carbon\Carbon::parse($dependants->dob), ['class' => 'form-control form-control-sm'])}}</td>
                                         <td>
