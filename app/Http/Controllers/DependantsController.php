@@ -53,7 +53,7 @@ class DependantsController extends Controller
             'lastname' => 'regex:/^[\pL\s\-]+$/u',
             'designation' => 'string|nullable',
             'workplace' => 'string|nullable',
-            'nic' => 'alpha_num|unique:dependants|max:12'
+            'nic' => 'alpha_num|unique:dependants|max:12|nullable'
         ],
         ['d_firstname.required' => 'Firstname is required']);
 
@@ -70,6 +70,8 @@ class DependantsController extends Controller
         if($request->nic == $staff->nic){
             return redirect('/dependants/create?staff_id=' . $request->staff_id)->with('error', 'Employee NIC and dependant NIC cannot be same');
         }
+
+        
         $dep->nic = $request->nic;
         $dep->save();
 
@@ -113,7 +115,7 @@ class DependantsController extends Controller
             'lastname' => 'regex:/^[\pL\s\-]+$/u',
             'designation' => 'string|nullable',
             'workplace' => 'string|nullable',
-            'nic' => 'alpha_num|unique:dependants|max:12'
+            'nic' => 'alpha_num|unique:dependants|max:12|nullable'
         ],
         ['firstname.required' => 'Firstname is required']);
 

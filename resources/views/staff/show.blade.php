@@ -322,7 +322,7 @@
                       <div class="row">
                       <div class="col">
                       <div class="row">
-                      <div class="col-2">
+                      <div class="col-4">
                         @if($serv->current_wp == 1)
                         <b><u>Workplace (Current):</u> </b><br />
                         @else
@@ -369,6 +369,7 @@
                             <th class="sorting_asc">Title</th>
                             <th>Medium</th>
                             <th>Institute</th>
+                            <th>Stream/Field</th>
                             <th>Center No</th>
                             <th>Index No</th>
                             <th>Subject</th>
@@ -385,6 +386,7 @@
                             <td>{{$qualification->title}}</td>
                             <td>{{$qualification->medium}}</td>
                             <td>{{$qualification->institute}}</td>
+                            <td>{{$qualification->field}}</td>
                             <td>{{$qualification->center_no}}</td>
                             <td>{{$qualification->index_no}}</td>
                             <td>{{$qualification->subject}}</td>
