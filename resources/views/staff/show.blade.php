@@ -315,6 +315,7 @@
                       </div>
                       </div>
                       </div>
+                      <hr>
                       @endforeach
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-two-service_history" role="tabpanel" aria-labelledby="custom-tabs-two-service_history-tab">
