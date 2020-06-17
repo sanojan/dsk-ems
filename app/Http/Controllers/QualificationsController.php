@@ -36,6 +36,7 @@ class QualificationsController extends Controller
     public function create(Request $request)
     {
         $staff = Staff::find($request->staff_id);
+        
         return view('qualifications.create')->with('staff', $staff);
     }
 
@@ -53,7 +54,7 @@ class QualificationsController extends Controller
             'duration' => 'string|nullable',
             'effective_date' => 'nullable',
             'year' => 'integer',
-            'center_no' => 'integer'
+            'center_no' => 'integer|nullable'
         ],
         ['title.required' => 'Title is required']);
 
@@ -73,6 +74,7 @@ class QualificationsController extends Controller
         $qualification->staff_id = $request->staff_id;
 
         $qualification->save();
+        $request->flashExcept(['subject', 'grade']);
 
         return redirect('/qualifications/create?staff_id=' . $request->staff_id)->with('success', 'Qualification added sucessfully');
 
@@ -114,7 +116,8 @@ class QualificationsController extends Controller
             'title' => 'bail|required|string',
             'field' => 'string|nullable',
             'duration' => 'string|nullable',
-            'effective_date' => 'nullable'
+            'effective_date' => 'nullable',
+            'center_no' => 'integer|nullable'
         ],
         ['title.required' => 'Title is required']);
 

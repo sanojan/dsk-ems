@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Staff;
 use App\Dependant;
 use DB;
@@ -110,16 +111,17 @@ class DependantsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $dep = Dependant::find($id);
         $this->validate($request, [
             'firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
             'lastname' => 'regex:/^[\pL\s\-]+$/u',
             'designation' => 'string|nullable',
             'workplace' => 'string|nullable',
-            'nic' => 'alpha_num|unique:dependants|max:12|nullable'
+            'nic' => 'max:12|alpha_num|nullable|unique:dependants,nic,' . $dep->id
         ],
         ['firstname.required' => 'Firstname is required']);
 
-        $dep = Dependant::find($id);
+        
         $dep->firstname = $request->firstname;
         $dep->lastname = $request->lastname;
         $dep->dob = $request->dob;
@@ -130,7 +132,9 @@ class DependantsController extends Controller
         if($request->nic == $dep->staff->nic){
             return redirect('/dependants/'. $dep->staff_id . '/edit')->with('error', 'Employee NIC and dependant NIC cannot be same');
         }
+        
         $dep->nic = $request->nic;
+        
         $dep->save();
 
         return redirect('/staff/'. $dep->staff_id . '/edit')->with('success', 'Dependant updated sucessfully');
