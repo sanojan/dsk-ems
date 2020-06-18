@@ -302,6 +302,7 @@
                         <b>Fullname:</b><br /> 
                         <b>Relationship: </b><br />
                         <b>Date Of Birth: </b><br />
+                        <b>NIC No: </b><br />
                         <b>Designation: </b><br/>
                         <b>Workplace: </b><br />
                       </div>
@@ -309,6 +310,7 @@
                       {{$dep->firstname}} {{$dep->lastname}}<br />
                       {{$dep->relationship}}<br />
                       {{$dep->dob}}<br />
+                      {{$dep->nic}}<br />
                       {{$dep->designation}}<br />
                       {{$dep->workplace}}<br />
                       </div>
