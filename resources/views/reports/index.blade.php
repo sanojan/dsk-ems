@@ -168,30 +168,24 @@
               <!-- existing designations card -->
               
               <!-- existing designations end -->
-                  <div class="card card-danger">
+                  
+
+                    <div class="card card-success">
                       <div class="card-header">
-                          <h3 class="card-title">Create Report</h3>
+                          <h3 class="card-title">Create Report in Excel</h3>
                       </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <div class="container">
-                        {!! Form::open(['action' => 'ReportController@get_staff_data', 'method' => 'POST', 'target' => '_blank']) !!} 
-                                  <div class="form-group">
-                                    {{Form::label('designation', 'Select designation name')}}
-                                      <select class="form-control" name="designation" id="designation">
-                                          @foreach ($designations as $designation) 
-                                              <option value="{{$designation->name}}">
-                                                {{$designation->name}}
-                                              </option>
-                                          @endforeach
-                              </select>
-                                  </div>
+                        {!! Form::open(['action' => 'ReportController@export', 'method' => 'GET']) !!} 
+                        {{Form::label('recruitment_type', 'Select Staff Category')}}
+                        {{Form::select('recruitment_type', ['Office Staff' => 'Office Staff', 'Development Officer' => 'Development Officer', 'Graduate Trainee' => 'Graduate Trainee', 'Samurdhi Officer' => 'Samurdhi Officer', 'Field Staff' => 'Field Staff'], '', ['class' => 'form-control form-control-sm'])}}
                         </div>
                         <div class="card-footer">          
-                            {{Form::submit('Export to PDF', ['class' =>  'btn btn-danger'])}}
+                            {{Form::submit('Export to Excel', ['class' =>  'btn btn-success'])}}
                         </div>
                             {!! Form::close() !!}
-                      
+                            
                     </div>
                    
                     

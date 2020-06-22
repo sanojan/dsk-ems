@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use DB;
 use App\Designation;
 use PDF;
+use Excel;
 use App\Staff;
+use App\Exports\StaffExport;
 
 class ReportController extends Controller
 {
@@ -89,5 +91,17 @@ class ReportController extends Controller
     public function pdf(Request $request)
     {
         
+    }
+
+    
+
+    public function export(Request $request) 
+    {
+        
+        return Excel::download(new StaffExport($request->recruitment_type), 'staff_report.xlsx');
+
+        
+            
+    
     }
 }

@@ -8,6 +8,10 @@ class Staff extends Model
 {
     protected $guarded = ['id']; //← the field name inside the array is not mass-assignable
 
+    protected $hidden = [
+        'profile_pic', 'created_at', 'updated_at',
+    ];
+
     //Table Name
     protected $table = 'staff';
     //Primary Key

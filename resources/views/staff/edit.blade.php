@@ -268,15 +268,15 @@
                   <div class="row">
                       <div class="col-sm-4">
                           <div class="form-group">
-                            {{Form::label('recruitment_type', 'Recruitment Type')}}
-                            {{Form::select('recruitment_type', ['Permanant' => 'Permanant', 'Temporary' => 'Temporary', 'Graduate Trainee' => 'Graduate Trainee'], 'Permanant', ['class' => 'form-control form-control-sm'])}}
+                            {{Form::label('recruitment_type', 'Staff Category')}}
+                            {{Form::select('recruitment_type', ['Office Staff' => 'Office Staff', 'Development Officer' => 'Development Officer', 'Graduate Trainee' => 'Graduate Trainee', 'Samurdhi Officer' => 'Samurdhi Officer', 'Field Staff' => 'Field Staff'], null, ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('officer_branch', 'Officer Branch')}}
 
-                            {{Form::select('officer_branch', ['Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Not Applicable' => 'Not Applicable'], null, ['class' => 'form-control form-control-sm'])}}
+                            {{Form::select('officer_branch', ['Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Samurdhi Branch' => 'Samurdhi Branch', 'Not Applicable' => 'Not Applicable'], null, ['class' => 'form-control form-control-sm'])}}
                             
                           </div>
                       </div>
@@ -353,6 +353,26 @@
                         <div class="form-group">
                             {{Form::label('temporary_address', 'Temporary Address')}}
                             {{Form::textarea('temporary_address', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Temporary Address', 'rows' => '5'])}}
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            {{Form::label('bank_acc_no', 'Bank Account No.')}}
+                            {{Form::text('bank_acc_no', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Bank Account No.'])}}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            {{Form::label('bank_branch', 'Bank Branch')}}
+                            {{Form::text('bank_branch', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Bank Branch'])}}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            {{Form::label('bank_name', 'Bank Name')}}
+                            {{Form::select('bank_name', ['Amana Bank' => 'Amana Bank', 'Bank of Ceylon' => 'Bank of Ceylon', 'Cargills Bank Ltd' => 'Cargills Bank Ltd', 'Commercial Bank of Ceylon PLC' => 'Commercial Bank of Ceylon PLC', 'Hatton National Bank PLC' => 'Hatton National Bank PLC', 'Nations Trust Bank PLC' => 'Nations Trust Bank PLC', 'People\'s Bank' => 'People\'s Bank', 'Sampath Bank PLC' => 'Sampath Bank PLC', 'Seylan Bank PLC' => 'Seylan Bank PLC', 'National Savings Bank' => 'National Savings Bank'], null, ['class' => 'form-control form-control-sm'])}}
                         </div>
                     </div>
                   </div>

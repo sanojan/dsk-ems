@@ -260,6 +260,8 @@
                         <b>Personal File No: </b><br />
                         <b>Officer Subject: </b><br />
                         <b>Officer Branch: </b><br />
+                        <b>Officer Category: </b><br />
+                        <b>Banking Details: </b><br />
                         <b>Total Service: </b><br />
                         <b>Retirement Date: </b><br />
                       </div>
@@ -282,6 +284,8 @@
                         {{$staff->personal_file_no}}<br />
                         {{$staff->officer_subject}}<br />
                         {{$staff->officer_branch}}<br />
+                        {{$staff->recruitment_type}}<br />
+                        Account No: {{$staff->bank_acc_no}} ({{$staff->bank_name}} - {{$staff->bank_branch}})<br />
                         {{ $exp }}<br />
                         {{$retirement_date}}<br />
                       </div> 

@@ -108,8 +108,12 @@ class StaffController extends Controller
         $staff->appointment_no = $request->appointment_no;
         $staff->appointment_date = $request->appointment_date;
         $staff->personal_file_no = $request->personal_file_no;
+        $staff->recruitment_type = $request->recruitment_type;
         $staff->officer_subject = $request->officer_subject;
         $staff->officer_branch = $request->officer_branch;
+        $staff->bank_acc_no = $request->bank_acc_no;
+        $staff->bank_branch = $request->bank_branch;
+        $staff->bank_name = $request->bank_name;
         $staff->profile_pic = $fileNameToStore;
 
         $staff->save();
@@ -226,8 +230,12 @@ class StaffController extends Controller
         $staff->appointment_no = $request->appointment_no;
         $staff->appointment_date = $request->appointment_date;
         $staff->personal_file_no = $request->personal_file_no;
+        $staff->recruitment_type = $request->recruitment_type;
         $staff->officer_subject = $request->officer_subject;
         $staff->officer_branch = $request->officer_branch;
+        $staff->bank_acc_no = $request->bank_acc_no;
+        $staff->bank_branch = $request->bank_branch;
+        $staff->bank_name = $request->bank_name;
         $staff->profile_pic = $fileNameToStore;
         
         Rule::unique('nic')->ignore($staff);
