@@ -125,6 +125,11 @@ class QualificationsController extends Controller
         $qualification->title = $request->title;
         $qualification->field = $request->field;
         $qualification->medium = $request->medium;
+        $qualification->grade = $request->grade;
+        $qualification->index_no = $request->index_no;
+        $qualification->center_no = $request->center_no;
+        $qualification->year = $request->year;
+        $qualification->attempt = $request->attempt;
         $qualification->duration = $request->duration;
         $qualification->effective_date = $request->effective_date;
         $qualification->institute = $request->institute;

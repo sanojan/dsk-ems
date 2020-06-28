@@ -250,14 +250,14 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             {{Form::label('grade', 'Grade')}}
-                            {{Form::select('grade', ['A' => 'A', 'B' => 'B', 'C' => 'C', 'S' => 'S', 'W' => 'W', 'F' => 'F', 'D' => 'D'], '', ['class' => 'form-control form-control-sm'])}}
+                            {{Form::select('grade', ['A' => 'A', 'B' => 'B', 'C' => 'C', 'S' => 'S', 'W' => 'W', 'F' => 'F', 'D' => 'D'], null, ['class' => 'form-control form-control-sm'])}}
                             
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             {{Form::label('attempt', 'Attempt')}}
-                            {{Form::select('attempt', ['Attempt-01' => 'Attempt-01', 'Attempt-02' => 'Attempt-02'], '', ['class' => 'form-control form-control-sm'])}}
+                            {{Form::select('attempt', ['Attempt-01' => 'Attempt-01', 'Attempt-02' => 'Attempt-02'], null, ['class' => 'form-control form-control-sm'])}}
                             
                         </div>
                     </div>
@@ -271,6 +271,7 @@
                               {{Form::hidden('_method', 'DELETE')}}
                               {{Form::submit('Delete', ['class' =>  'btn btn-danger '])}}     
                     {!! Form::close() !!}
+                    
                     </div>
                     
                 </div>

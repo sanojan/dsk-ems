@@ -66,6 +66,7 @@ class StaffController extends Controller
             'mobile_no' => 'digits:10|nullable',
             'landline_no' => 'digits:10|nullable',
             'email' => 'email:rfc|nullable',
+            'service' => 'required',
             'nic' => 'required|alpha_num|unique:staff|max:12',
             'profile_pic' => 'image|nullable|max:1999'
         ],

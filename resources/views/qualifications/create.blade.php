@@ -266,8 +266,10 @@
                 </div> 
                 <div class="card-footer">          
                     {{Form::submit('Submit', ['class' =>  'btn btn-dark'])}}
-                    </div>
                     {!! Form::close() !!}
+                    <a href="/staff/{{$staff->id}}/edit" target="" class="btn btn-success">Back</a>
+                    </div>
+                    
                 </div>
                       
                 </div>
