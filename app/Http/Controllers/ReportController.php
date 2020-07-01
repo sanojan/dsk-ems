@@ -93,15 +93,11 @@ class ReportController extends Controller
         
     }
 
-    
 
     public function export(Request $request) 
     {
         
-        return Excel::download(new StaffExport($request->recruitment_type), 'staff_report.xlsx');
-
-        
-            
+        return Excel::download(new StaffExport($request->designation), 'staff_report_' . $request->designation . '.xlsx');
     
     }
 }

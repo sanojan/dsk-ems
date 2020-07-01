@@ -58,4 +58,5 @@ Route::post('reports/excel', 'ReportController@excel')->name('reports.excel');
 
 Route::get('export', 'ReportController@export');
 
+
 //Route::post('/reports/','ReportController@pdf')->name('reports.pdf');

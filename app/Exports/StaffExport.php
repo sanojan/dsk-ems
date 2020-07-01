@@ -5,24 +5,23 @@ namespace App\Exports;
 use App\Staff;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\FromCollection;
 
-class StaffExport implements FromQuery, WithHeadings
+class StaffExport implements FromQuery, WithHeadings, 
 {
     
     /**
     * @return \Illuminate\Support\Collection
     */
-    protected $recruitment_type;
+    protected $designation;
 
-    function __construct($recruitment_type) 
+    
+    function __construct($designation) 
     {
-        $this->recruitment_type = $recruitment_type;
+        $this->designation = $designation;
     }
 
-    public function collection()
-    {
-        
-    }
+
     
     public function headings(): array
     {
@@ -62,7 +61,7 @@ class StaffExport implements FromQuery, WithHeadings
     public function query()
     {
         
-        return Staff::where('recruitment_type', $this->recruitment_type);
+        return Staff::where('designation', $this->designation);
     }
 
 }

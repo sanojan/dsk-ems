@@ -270,14 +270,14 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('recruitment_type', 'Staff Category')}}
-                            {{Form::select('recruitment_type', ['Office Staff' => 'Office Staff', 'Development Officer' => 'Development Officer', 'Graduate Trainee' => 'Graduate Trainee', 'Samurdhi Officer' => 'Samurdhi Officer', 'Field Staff' => 'Field Staff'], '', ['class' => 'form-control form-control-sm'])}}
+                            {{Form::select('recruitment_type', ['Office Staff' => 'Office Staff', 'Development Officer' => 'Development Officer', 'Graduate Trainee' => 'Graduate Trainee', 'Samurdhi Officer' => 'Samurdhi Officer', 'Field Staff' => 'Field Staff', 'Grama Niladhari' => 'Grama Niladhari'], '', ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('officer_branch', 'Officer Branch')}}
 
-                            {{Form::select('officer_branch', ['Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Samurdhi Branch' => 'Samurdhi Branch', 'Not Applicable' => 'Not Applicable'], 'Not Applicable', ['class' => 'form-control form-control-sm'])}}
+                            {{Form::select('officer_branch', ['Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Samurdhi Branch' => 'Samurdhi Branch', 'ADR Branch' => 'ADR Branch', 'Not Applicable' => 'Not Applicable'], 'Not Applicable', ['class' => 'form-control form-control-sm'])}}
                             
                           </div>
                       </div>

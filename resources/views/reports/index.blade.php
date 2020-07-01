@@ -172,14 +172,20 @@
 
                     <div class="card card-success">
                       <div class="card-header">
-                          <h3 class="card-title">Create Report in Excel</h3>
+                          <h3 class="card-title">Create Report by Staff Category</h3>
                       </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <div class="container">
                         {!! Form::open(['action' => 'ReportController@export', 'method' => 'GET']) !!} 
-                        {{Form::label('recruitment_type', 'Select Staff Category')}}
-                        {{Form::select('recruitment_type', ['Office Staff' => 'Office Staff', 'Development Officer' => 'Development Officer', 'Graduate Trainee' => 'Graduate Trainee', 'Samurdhi Officer' => 'Samurdhi Officer', 'Field Staff' => 'Field Staff'], '', ['class' => 'form-control form-control-sm'])}}
+                        {{Form::label('designation', 'Select Staff Category')}}
+                        <select class="form-control form-control-sm" name="designation" id="designation">
+                                  @foreach ($designations as $designation) 
+                                      <option value="{{$designation->name}}">
+                                        {{$designation->name}}
+                                      </option>
+                                  @endforeach
+                              </select>
                         </div>
                         <div class="card-footer">          
                             {{Form::submit('Export to Excel', ['class' =>  'btn btn-success'])}}
