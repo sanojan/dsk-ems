@@ -7,18 +7,18 @@ use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class StaffExport implements FromQuery, WithHeadings, 
+class StaffExport implements FromCollection, WithHeadings
 {
     
     /**
     * @return \Illuminate\Support\Collection
     */
-    protected $designation;
+    
 
     
-    function __construct($designation) 
+    public function collection()
     {
-        $this->designation = $designation;
+        return Staff::all();
     }
 
 
@@ -56,12 +56,5 @@ class StaffExport implements FromQuery, WithHeadings,
         ];
     }
 
-    
-
-    public function query()
-    {
-        
-        return Staff::where('designation', $this->designation);
-    }
 
 }

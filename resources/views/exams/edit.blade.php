@@ -184,7 +184,7 @@
                         <div class="form-group">
                             {{Form::label('completed_date', 'Completed On')}}
                           
-                          {{Form::date('completed_date', \Carbon\Carbon::now(), ['class' => 'form-control form-control-sm'])}}
+                          {{Form::date('completed_date', \Carbon\Carbon::parse($examinations->completed_date), ['class' => 'form-control form-control-sm'])}}
                           
                         </div>
                       </div>

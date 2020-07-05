@@ -52,11 +52,8 @@ Route::get('/livesearch', 'LiveSearch@action')->name('live_search.action');
 
 Route::get('reports', 'ReportController@index')->name('reports.index');
 
-Route::post('reports/pdf', 'ReportController@get_staff_data')->name('reports.pdf');
 
-Route::post('reports/excel', 'ReportController@excel')->name('reports.excel');
 
 Route::get('export', 'ReportController@export');
+Route::get('export_dep', 'ReportController@export_dep');
 
-
-//Route::post('/reports/','ReportController@pdf')->name('reports.pdf');

@@ -23,45 +23,51 @@
     
           <!-- Sidebar Menu -->
           <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
-        <li class="nav-item">
-          <a href="/dashboard" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Dashboard
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+                   with font-awesome or any other icon font library -->
+              <li class="nav-item">
+                <a href="/dashboard" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Dashboard
+                    
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon far fa-address-card"></i>
+                  <p>
+                    Staff Management
+                    <i class="fas fa-angle-left right"></i>
+                    <!--<span class="badge badge-info right">6</span>-->
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('staff.index')}}" class="nav-link active">
+                    <i class="nav-icon fas fa-table"></i>
+                    <p>View Staff Info</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('staff.create')}}" class="nav-link">
+                    <i class="nav-icon fas fa-user-plus"></i>
+                    <p>Add Staff Info</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+            <a href="{{route('reports.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-file-pdf"></i>
+              <p>Generate Reports</p>
+            </a>
+          </li>
+                </ul>
+              </li>
               
-            </p>
-          </a>
-        </li>
-        <li class="nav-item has-treeview menu-open">
-          <a href="#" class="nav-link">
-            <i class="nav-icon far fa-address-card"></i>
-            <p>
-              Staff Management
-              <i class="fas fa-angle-left right"></i>
-              <!--<span class="badge badge-info right">6</span>-->
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{route('staff.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>View Staff Info</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('staff.create')}}" class="nav-link active">
-              <i class="nav-icon fas fa-user-plus"></i>
-              <p>Add Staff Info</p>
-            </a>
-          </li>
-          </ul>
-        </li>
-        
-        
-        <li class="nav-header">ACCOUNT SETTINGS</li>
+              
+              <li class="nav-header">ACCOUNT SETTINGS</li>
           
           <li class="nav-item">
             <a href="{{route('change.passwordview')}}" class="nav-link">
@@ -97,40 +103,37 @@
               </li>            
               
             </ul>
-          </li>           
-            
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a href="{{route('admin.users.index')}}" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>
-              Users
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="https://adminlte.io/docs/3.0" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
-            <p>Documentation</p>
-          </a>
-        </li>
-        
-        
-        <li class="nav-item">
-          <a href="{{ route('logout') }}" class="nav-link" 
-          onclick="event.preventDefault();
-          document.getElementById('logout-form').submit();">
-          <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
-          {{ __('Logout') }}
-          </a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-           </form>
-          
-        </li>
-      </ul>
-    </nav>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('admin.users.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
+              <li class="nav-item">
+                <a href="https://adminlte.io/docs/3.0" class="nav-link">
+                  <i class="nav-icon fas fa-file"></i>
+                  <p>Documentation</p>
+                </a>
+              </li>
+              
+              
+              <li class="nav-item">
+                <a href="{{ route('logout') }}" class="nav-link" 
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                <i class="fas fa-sign-out-alt text-danger nav-icon "></i>
+                {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                 </form>
+                
+              </li>
+            </ul>
+          </nav>
           <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->

@@ -46,7 +46,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{route('staff.index')}}" class="nav-link active">
+                  <a href="{{route('staff.index')}}" class="nav-link">
                     <i class="nav-icon fas fa-table"></i>
                     <p>View Staff Info</p>
                   </a>
@@ -57,6 +57,12 @@
                     <p>Add Staff Info</p>
                   </a>
                 </li>
+                <li class="nav-item">
+            <a href="{{route('reports.index')}}" class="nav-link active">
+              <i class="nav-icon fas fa-file-pdf"></i>
+              <p>Generate Reports</p>
+            </a>
+          </li>
                 </ul>
               </li>
               
@@ -170,22 +176,44 @@
               <!-- existing designations end -->
                   
 
-                    <div class="card card-success">
+                    <div class="card card-primary">
                       <div class="card-header">
-                          <h3 class="card-title">Create Report by Staff Category</h3>
+                          <h3 class="card-title">Download All Staff Data</h3>
                       </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <div class="container">
                         {!! Form::open(['action' => 'ReportController@export', 'method' => 'GET']) !!} 
-                        {{Form::label('designation', 'Select Staff Category')}}
-                        <select class="form-control form-control-sm" name="designation" id="designation">
-                                  @foreach ($designations as $designation) 
-                                      <option value="{{$designation->name}}">
-                                        {{$designation->name}}
-                                      </option>
-                                  @endforeach
-                              </select>
+                        <p>Click Export button to download personal data of staff</p>
+                        </div>
+                        <div class="card-footer">          
+                            {{Form::submit('Export to Excel', ['class' =>  'btn btn-primary'])}}
+                        </div>
+                            {!! Form::close() !!}
+                            
+                    </div>
+                   
+                    
+                    <div class="card card-success">
+                      <div class="card-header">
+                          <h3 class="card-title">Download Staff Dependant Data</h3>
+                      </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <div class="container">
+                        {!! Form::open(['action' => 'ReportController@export_dep', 'method' => 'GET']) !!} 
+                        
+                        <div class="form-group">
+                            {{Form::label('staff_id', 'Select Staff Name')}}
+                            <select class="form-control form-control-sm" name="staff_id" id="staff_id">
+                              @foreach ($staff as $officer) 
+                                  <option value="{{$officer->id}}">
+                                    {{$officer->firstname}} ({{$officer->designation}})                               
+                                  </option>
+                              @endforeach
+                          </select>
+                          </div>
+                          
                         </div>
                         <div class="card-footer">          
                             {{Form::submit('Export to Excel', ['class' =>  'btn btn-success'])}}
@@ -193,9 +221,6 @@
                             {!! Form::close() !!}
                             
                     </div>
-                   
-                    
-                    
                     
                     
               <!-- col end -->    
