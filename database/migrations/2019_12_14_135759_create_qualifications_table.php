@@ -19,7 +19,7 @@ class CreateQualificationsTable extends Migration
             $table->string('field')->nullable();
             $table->string('medium');
             $table->string('duration')->nullable();
-            $table->string('effective_date')->nullable();
+            $table->date('effective_date')->nullable();
             $table->string('institute')->nullable();
             $table->unsignedBigInteger('staff_id');
             $table->timestamps();

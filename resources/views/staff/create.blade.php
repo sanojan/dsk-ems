@@ -184,7 +184,7 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         {{Form::label('title', 'Title')}}
-                        {{Form::select('title', ['Mr.' => 'Mr.', 'Mrs.' => 'Mrs.', 'Miss.' => 'Miss.'], 'Mr.', ['class' => 'form-control form-control-sm'])}}
+                        {{Form::select('title', ['' => '', 'Mr.' => 'Mr.', 'Mrs.' => 'Mrs.', 'Miss.' => 'Miss.'], '', ['class' => 'form-control form-control-sm'])}}
                       </div>
                     </div>
                     <div class="col-sm-4">
@@ -204,7 +204,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                           {{Form::label('gender', 'Gender')}}
-                          {{Form::select('gender', ['Male' => 'Male', 'Female' => 'Female', 'Non Specified' => 'Non Specified'], 'Male', ['class' => 'form-control form-control-sm'])}}
+                          {{Form::select('gender', ['' => '', 'Male' => 'Male', 'Female' => 'Female', 'Non Specified' => 'Non Specified'], '', ['class' => 'form-control form-control-sm'])}}
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -218,7 +218,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                           {{Form::label('cicil_status', 'Civil Status')}}
-                          {{Form::select('civil_status', ['Single' => 'Single', 'Married' => 'Married', 'Divorced' => 'Divorced', 'Widowed' => 'Widowed'], 'Single', ['class' => 'form-control form-control-sm'])}}
+                          {{Form::select('civil_status', ['' => '', 'Single' => 'Single', 'Married' => 'Married', 'Divorced' => 'Divorced', 'Widowed' => 'Widowed'], '', ['class' => 'form-control form-control-sm'])}}
                         </div>
                     </div>
                   </div>
@@ -226,15 +226,15 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('nationality', 'Nationality')}}
-                            {{Form::select('nationality', ['Sinhale' => 'Sinhale', 'Sri Lankan Tamil' => 'Sri Lankan Tamil', 'Sri Lankan Moor' => 'Sri Lankan Moor', 'Indian Tamil' => 'Indian Tamil', 'Sri Lankan Malay' => 'Sri Lankan Malay', 'Burgher/
+                            {{Form::select('nationality', ['' => '', 'Sinhale' => 'Sinhale', 'Sri Lankan Tamil' => 'Sri Lankan Tamil', 'Sri Lankan Moor' => 'Sri Lankan Moor', 'Indian Tamil' => 'Indian Tamil', 'Sri Lankan Malay' => 'Sri Lankan Malay', 'Burgher/
                             Eurasian' => 'Burgher/
-                            Eurasian', 'Indian Moor' => 'Indian Moor'], 'Sri Lankan Tamil', ['class' => 'form-control form-control-sm'])}}
+                            Eurasian', 'Indian Moor' => 'Indian Moor'], '', ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('religion', 'Religion')}}
-                            {{Form::select('religion', ['Buddhist' => 'Buddhist', 'Hindu' => 'Hindu', 'Islam' => 'Islam', 'Christian' => 'Christian', 'Other' => 'Other'], 'Other', ['class' => 'form-control form-control-sm'])}}
+                            {{Form::select('religion', ['' => '', 'Buddhist' => 'Buddhist', 'Hindu' => 'Hindu', 'Islam' => 'Islam', 'Christian' => 'Christian', 'Other' => 'Other'], '', ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
@@ -247,7 +247,7 @@
                   <div class="row">
                       <div class="col-sm-4">
                           <div class="form-group">
-                            {{Form::label('appointment_no', 'Appointment No.')}}
+                            {{Form::label('appointment_no', 'Appointment Letter No.')}}
                             {{Form::text('appointment_no', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Appointment No.'])}}
                           </div>
                       </div>
@@ -270,14 +270,14 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('recruitment_type', 'Staff Category')}}
-                            {{Form::select('recruitment_type', ['Office Staff' => 'Office Staff', 'Development Officer' => 'Development Officer', 'Graduate Trainee' => 'Graduate Trainee', 'Samurdhi Officer' => 'Samurdhi Officer', 'Field Staff' => 'Field Staff', 'Grama Niladhari' => 'Grama Niladhari'], '', ['class' => 'form-control form-control-sm'])}}
+                            {{Form::select('recruitment_type', ['' => '', 'Office Staff' => 'Office Staff', 'Development Officer' => 'Development Officer', 'Graduate Trainee' => 'Graduate Trainee', 'Samurdhi Officer' => 'Samurdhi Officer', 'Field Staff' => 'Field Staff', 'Grama Niladhari' => 'Grama Niladhari'], '', ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('officer_branch', 'Officer Branch')}}
 
-                            {{Form::select('officer_branch', ['Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Samurdhi Branch' => 'Samurdhi Branch', 'ADR Branch' => 'ADR Branch', 'Not Applicable' => 'Not Applicable'], 'Not Applicable', ['class' => 'form-control form-control-sm'])}}
+                            {{Form::select('officer_branch', ['' => '', 'Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Samurdhi Branch' => 'Samurdhi Branch', 'ADR Branch' => 'ADR Branch', 'Not Applicable' => 'Not Applicable'], '', ['class' => 'form-control form-control-sm'])}}
                             
                           </div>
                       </div>
@@ -293,6 +293,7 @@
                           <div class="form-group">
                             {{Form::label('designation', 'Designation')}}
                               <select class="form-control form-control-sm" name="designation" id="designation">
+                              <option value="" selected></option>
                                   @foreach ($designations as $designation) 
                                       <option value="{{$designation->name}}">
                                         {{$designation->name}}
@@ -305,6 +306,7 @@
                           <div class="form-group">
                             {{Form::label('service', 'Service')}}
                             <select class="form-control form-control-sm" name="service" id="service">
+                            <option value="" selected></option>
                               @foreach ($services as $service) 
                                   <option value="{{$service->name}}">
                                     {{$service->name}}
@@ -316,10 +318,31 @@
                       <div class="col-sm-4">
                           <div class="form-group">
                             {{Form::label('class', 'Class')}}
-                            {{Form::select('class', ['Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], 'Class III', ['class' => 'form-control form-control-sm'])}}
+                            {{Form::select('class', ['' => '', 'Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], '', ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                   </div>
+                  <div class="row">
+                      <div class="col-sm-4">
+                          <div class="form-group">
+                            {{Form::label('wop_no', 'W&OP No.')}}
+                            {{Form::text('wop_no', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'W&OP No.'])}}
+                      </div>
+                      </div>
+                      <div class="col-sm-4">
+                          <div class="form-group">
+                            {{Form::label('increment_date', 'Increment Date')}}
+                            {{Form::text('increment_date', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Increment Date'])}}
+                          </div>
+                      </div>
+                      <div class="col-sm-4">
+                          <div class="form-group">
+                            {{Form::label('salary_code', 'Salary Code')}}
+                            {{Form::select('salary_code', ['' => '', 'PL 1-2016' => 'PL 1-2016', 'PL 2-2016' => 'PL 2-2016', '	PL 3-2016' => '	PL 3-2016', 'MN 1-2016' => 'MN 1-2016', 'MN 2-2016' => 'MN 2-2016', 'MN 3-2016' => 'MN 3-2016', '	MN 4-2016' => '	MN 4-2016', 'MN 5-2016' => 'MN 5-2016', 'MN 6-2016' => 'MN 6-2016', 'MN 7-2016' => 'MN 7-2016', 'MT 1-2016' => 'MT 1-2016', 'MT 2-2016' => 'MT 2-2016', 'MT 3-2016' => 'MT 3-2016', 'MT 4-2016' => 'MT 4-2016', 'MT 5-2016' => 'MT 5-2016', 'MT 6-2016' => 'MT 6-2016', 'MT 7-2016' => 'MT 7-2016', 'MT 8-2016' => 'MT 8-2016', 'SL 1-2016' => 'SL 1-2016', 'SL 2-2016' => 'SL 2-2016', 'SL 3-2016' => 'SL 3-2016', 'SL 4-2016' => 'SL 4-2016', 'SL 5-2016' => 'SL 5-2016', 'SL 7-2016' => 'SL 7-2016'], '', ['class' => 'form-control form-control-sm'])}}
+                          </div>
+                      </div>
+                  </div>
+
                   <div class="row">
                       <div class="col-sm-4">
                           <div class="form-group">
@@ -370,7 +393,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             {{Form::label('bank_name', 'Bank Name')}}
-                            {{Form::select('bank_name', ['Amana Bank' => 'Amana Bank', 'Bank of Ceylon' => 'Bank of Ceylon', 'Cargills Bank Ltd' => 'Cargills Bank Ltd', 'Commercial Bank of Ceylon PLC' => 'Commercial Bank of Ceylon PLC', 'Hatton National Bank PLC' => 'Hatton National Bank PLC', 'Nations Trust Bank PLC' => 'Nations Trust Bank PLC', 'People\'s Bank' => 'People\'s Bank', 'Sampath Bank PLC' => 'Sampath Bank PLC', 'Seylan Bank PLC' => 'Seylan Bank PLC', 'National Savings Bank' => 'National Savings Bank'], '', ['class' => 'form-control form-control-sm'])}}
+                            {{Form::select('bank_name', ['' => '', 'Amana Bank' => 'Amana Bank', 'Bank of Ceylon' => 'Bank of Ceylon', 'Cargills Bank Ltd' => 'Cargills Bank Ltd', 'Commercial Bank of Ceylon PLC' => 'Commercial Bank of Ceylon PLC', 'Hatton National Bank PLC' => 'Hatton National Bank PLC', 'Nations Trust Bank PLC' => 'Nations Trust Bank PLC', 'People\'s Bank' => 'People\'s Bank', 'Sampath Bank PLC' => 'Sampath Bank PLC', 'Seylan Bank PLC' => 'Seylan Bank PLC', 'National Savings Bank' => 'National Savings Bank'], '', ['class' => 'form-control form-control-sm'])}}
                         </div>
                     </div>
                   </div>

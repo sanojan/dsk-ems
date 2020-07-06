@@ -246,7 +246,7 @@
                   <div class="row">
                       <div class="col-sm-4">
                           <div class="form-group">
-                            {{Form::label('appointment_no', 'Appointment No.')}}
+                            {{Form::label('appointment_no', 'Appointment Letter No.')}}
                             {{Form::text('appointment_no', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Appointment No.'])}}
                           </div>
                       </div>
@@ -319,6 +319,26 @@
                           <div class="form-group">
                             {{Form::label('class', 'Class')}}
                             {{Form::select('class', ['Class I' => 'Class I', 'Class II' => 'Class II', 'Class III' => 'Class III'], null, ['class' => 'form-control form-control-sm'])}}
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-4">
+                          <div class="form-group">
+                            {{Form::label('wop_no', 'W&OP No.')}}
+                            {{Form::text('wop_no', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'W&OP No.'])}}
+                      </div>
+                      </div>
+                      <div class="col-sm-4">
+                          <div class="form-group">
+                            {{Form::label('increment_date', 'Increment Date')}}
+                            {{Form::text('increment_date', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Increment Date'])}}
+                          </div>
+                      </div>
+                      <div class="col-sm-4">
+                          <div class="form-group">
+                            {{Form::label('salary_code', 'Salary Code')}}
+                            {{Form::select('salary_code', ['PL 1-2016' => 'PL 1-2016', 'PL 2-2016' => 'PL 2-2016', '	PL 3-2016' => '	PL 3-2016', 'MN 1-2016' => 'MN 1-2016', 'MN 2-2016' => 'MN 2-2016', 'MN 3-2016' => 'MN 3-2016', '	MN 4-2016' => '	MN 4-2016', 'MN 5-2016' => 'MN 5-2016', 'MN 6-2016' => 'MN 6-2016', 'MN 7-2016' => 'MN 7-2016', 'MT 1-2016' => 'MT 1-2016', 'MT 2-2016' => 'MT 2-2016', 'MT 3-2016' => 'MT 3-2016', 'MT 4-2016' => 'MT 4-2016', 'MT 5-2016' => 'MT 5-2016', 'MT 6-2016' => 'MT 6-2016', 'MT 7-2016' => 'MT 7-2016', 'MT 8-2016' => 'MT 8-2016', 'SL 1-2016' => 'SL 1-2016', 'SL 2-2016' => 'SL 2-2016', 'SL 3-2016' => 'SL 3-2016', 'SL 4-2016' => 'SL 4-2016', 'SL 5-2016' => 'SL 5-2016', 'SL 7-2016' => 'SL 7-2016'], null, ['class' => 'form-control form-control-sm'])}}
                           </div>
                       </div>
                   </div>

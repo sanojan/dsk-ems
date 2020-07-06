@@ -68,9 +68,10 @@ class StaffController extends Controller
             'email' => 'email:rfc|nullable',
             'service' => 'required',
             'nic' => 'required|alpha_num|unique:staff|max:12',
-            'profile_pic' => 'image|nullable|max:1999'
+            'profile_pic' => 'image|nullable|max:1999',
+            'wop_no' => 'alpha_num|nullable'
         ],
-        ['nic.required' => 'NIC is required']);
+        ['nic.required' => 'NIC is required', 'wop_no.alpha_num' => 'W&OP No. must contain letters and numbers only']);
 
         //Handle File Upload
         if($request->hasFile('profile_pic')){
@@ -112,6 +113,9 @@ class StaffController extends Controller
         $staff->recruitment_type = $request->recruitment_type;
         $staff->officer_subject = $request->officer_subject;
         $staff->officer_branch = $request->officer_branch;
+        $staff->wop_no = $request->wop_no;
+        $staff->increment_date = $request->increment_date;
+        $staff->salary_code = $request->salary_code; 
         $staff->bank_acc_no = $request->bank_acc_no;
         $staff->bank_branch = $request->bank_branch;
         $staff->bank_name = $request->bank_name;
@@ -182,9 +186,10 @@ class StaffController extends Controller
             'landline_no' => 'digits:10|nullable',
             'email' => 'email:rfc|nullable',
             'nic' => 'required|alpha_num|max:12',
-            'profile_pic' => 'image|nullable|max:1999'
+            'profile_pic' => 'image|nullable|max:1999',
+            'wop_no' => 'alpha_num|nullable'
         ],
-        ['nic.required' => 'NIC is required']);
+        ['nic.required' => 'NIC is required', 'wop_no.alpha_num' => 'W&OP No. must contain letters and numbers only']);
         
         $staff = Staff::find($id);
 
@@ -234,6 +239,9 @@ class StaffController extends Controller
         $staff->recruitment_type = $request->recruitment_type;
         $staff->officer_subject = $request->officer_subject;
         $staff->officer_branch = $request->officer_branch;
+        $staff->wop_no = $request->wop_no;
+        $staff->increment_date = $request->increment_date;
+        $staff->salary_code = $request->salary_code; 
         $staff->bank_acc_no = $request->bank_acc_no;
         $staff->bank_branch = $request->bank_branch;
         $staff->bank_name = $request->bank_name;
