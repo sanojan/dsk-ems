@@ -257,10 +257,14 @@
                         <b>Class: </b><br />                        
                         <b>Appointment Date: </b><br />
                         <b>Appointment No: </b><br />
+
                         <b>Personal File No: </b><br />
                         <b>Officer Subject: </b><br />
                         <b>Officer Branch: </b><br />
                         <b>Officer Category: </b><br />
+                        <b>W&OP No: </b><br />
+                        <b>Increment Date: </b><br />
+                        <b>Salary Code: </b><br />
                         <b>Banking Details: </b><br />
                         <b>Total Service: </b><br />
                         <b>Retirement Date: </b><br />
@@ -285,6 +289,9 @@
                         {{$staff->officer_subject}}<br />
                         {{$staff->officer_branch}}<br />
                         {{$staff->recruitment_type}}<br />
+                        {{$staff->wop_no}}<br />
+                        {{$staff->increment_date}}<br />
+                        {{$staff->salary_code}}<br />
                         Account No: {{$staff->bank_acc_no}} ({{$staff->bank_name}} - {{$staff->bank_branch}})<br />
                         {{ $exp }}<br />
                         {{$retirement_date}}<br />

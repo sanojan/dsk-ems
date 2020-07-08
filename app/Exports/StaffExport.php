@@ -52,7 +52,10 @@ class StaffExport implements FromCollection, WithHeadings
             'Officer Branch',
             'Bank Account No',
             'Bank Branch',
-            'Bank Name'
+            'Bank Name',
+            'W&OP No.',
+            'Increment Date',
+            'Salary Code'
         ];
     }
 
