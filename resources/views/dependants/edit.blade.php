@@ -181,8 +181,8 @@
                                 <table class="table table-hover" id="dependant_table">
                                     <thead>
                                       <tr>
-                                        <th>Firstname</th>
-                                        <th>Lastname</th>
+                                        <th>Name with Initials</th>
+                                        <th>Fullname</th>
                                         <th>NIC No.</th>
                                         <th>Date of Birth</th>
                                         <th>Releationship</th>

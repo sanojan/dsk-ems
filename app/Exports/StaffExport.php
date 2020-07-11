@@ -28,8 +28,8 @@ class StaffExport implements FromCollection, WithHeadings
         return [
             'ID',
             'Title',
-            'Firstname',
-            'Lastname',
+            'Name with Initials',
+            'Fullname',
             'Gender',
             'Civil Status',
             'Religion',

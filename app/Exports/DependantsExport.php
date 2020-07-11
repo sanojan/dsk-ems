@@ -24,8 +24,8 @@ class DependantsExport implements FromQuery, WithHeadings
     {
         return [
             'ID',
-            'Firstname',
-            'Lastname',
+            'Name with Initials',
+            'Fullname',
             'Date of Birth',
             'Relationship ',
             'Designaton',

@@ -189,13 +189,13 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                          {{Form::label('firstname', 'Firstname')}}
+                          {{Form::label('firstname', 'Name with Initials')}}
                           {{Form::text('firstname', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Firstname'])}}
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                          {{Form::label('lastname', 'Lastname')}}
+                          {{Form::label('lastname', 'Fullname')}}
                           {{Form::text('lastname', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Lastname'])}}
                         </div>
                     </div>

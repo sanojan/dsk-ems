@@ -244,8 +244,8 @@
                       <div class="row">
                       <div class="col-4">
                         
-                        <b>Firstname: </b><br />
-                        <b>Lastname: </b><br />
+                        <b>Name with Initials: </b><br />
+                        <b>Fullname: </b><br />
                         <b>Gender: </b><br />
                         <b>Date of Birth: </b><br />
                         <b>Civil Status: </b><br />
@@ -309,7 +309,8 @@
                       <div class="row">
                       <div class="col">
                       <div class="row">
-                      <div class="col-2">
+                      <div class="col-4">
+                        <b>Name with Initials:</b><br /> 
                         <b>Fullname:</b><br /> 
                         <b>Relationship: </b><br />
                         <b>Date Of Birth: </b><br />
@@ -318,7 +319,8 @@
                         <b>Workplace: </b><br />
                       </div>
                       <div class="col-4">
-                      {{$dep->firstname}} {{$dep->lastname}}<br />
+                      {{$dep->firstname}}<br />
+                      {{$dep->lastname}}<br />
                       {{$dep->relationship}}<br />
                       {{$dep->dob}}<br />
                       {{$dep->nic}}<br />

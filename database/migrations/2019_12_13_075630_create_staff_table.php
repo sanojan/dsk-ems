@@ -19,9 +19,9 @@ class CreateStaffTable extends Migration
             $table->string('firstname');
             $table->string('lastname')->nullable();
             $table->string('gender');
-            $table->string('civil_status');
-            $table->string('religion');
-            $table->string('nationality');
+            $table->string('civil_status')->nullable();
+            $table->string('religion')->nullable();
+            $table->string('nationality')->nullable();
             $table->date('dob');
             $table->mediumText('permanant_address')->nullable();
             $table->mediumText('temporary_address')->nullable();

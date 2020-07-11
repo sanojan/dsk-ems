@@ -188,14 +188,14 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                          {{Form::label('firstname', 'Firstname')}}
-                          {{Form::text('firstname', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Firstname'])}}
+                          {{Form::label('firstname', 'Name with Initals')}}
+                          {{Form::text('firstname', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Name with Initals'])}}
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                          {{Form::label('lastname', 'Lastname')}}
-                          {{Form::text('lastname', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Lastname'])}}
+                          {{Form::label('lastname', 'Fullname')}}
+                          {{Form::text('lastname', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Name denoted by Initials'])}}
                         </div>
                     </div>
                   </div>
@@ -276,7 +276,7 @@
                           <div class="form-group">
                             {{Form::label('officer_branch', 'Officer Branch')}}
 
-                            {{Form::select('officer_branch', ['' => '', 'Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Samurdhi Branch' => 'Samurdhi Branch', 'ADR Branch' => 'ADR Branch', 'Not Applicable' => 'Not Applicable'], null, ['class' => 'form-control form-control-sm'])}}
+                            {{Form::select('officer_branch', ['' => '', 'Administration Branch' => 'Administration Branch', 'Accounts Branch' => 'Accounts Branch', 'SSO Branch' => 'SSO Branch', 'Planning Branch' => 'Planning Branch', 'Land Branch' => 'Land Branch', 'Samurdhi Branch' => 'Samurdhi Branch', 'ADR Branch' => 'ADR Branch', 'Field Branch' => 'Field Branch', 'Not Applicable' => 'Not Applicable'], null, ['class' => 'form-control form-control-sm'])}}
                             
                           </div>
                       </div>

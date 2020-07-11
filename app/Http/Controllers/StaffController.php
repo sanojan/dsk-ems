@@ -61,12 +61,15 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
+            'firstname' => 'bail|required|regex:/^[a-z ,.\'-]+$/i',
             'lastname' => 'regex:/^[\pL\s\-]+$/u|nullable',
+            'gender' => 'required',
             'mobile_no' => 'digits:10|nullable',
             'landline_no' => 'digits:10|nullable',
             'email' => 'email:rfc|nullable',
             'service' => 'required',
+            'designation' => 'required',
+            'class' => 'required',
             'nic' => 'required|alpha_num|unique:staff|max:12',
             'profile_pic' => 'image|nullable|max:1999',
             'wop_no' => 'alpha_num|nullable'
@@ -180,11 +183,15 @@ class StaffController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
+            'firstname' => 'bail|required|regex:/^[a-z ,.\'-]+$/i',
             'lastname' => 'regex:/^[\pL\s\-]+$/u|nullable',
+            'gender' => 'required',
             'mobile_no' => 'digits:10|nullable',
             'landline_no' => 'digits:10|nullable',
             'email' => 'email:rfc|nullable',
+            'service' => 'required',
+            'designation' => 'required',
+            'class' => 'required',
             'nic' => 'required|alpha_num|max:12',
             'profile_pic' => 'image|nullable|max:1999',
             'wop_no' => 'alpha_num|nullable'
