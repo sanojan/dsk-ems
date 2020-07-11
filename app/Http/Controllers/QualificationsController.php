@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Staff;
 use App\Qualification;
-
+use Gate;
 class QualificationsController extends Controller
 {
     /**
@@ -35,9 +35,14 @@ class QualificationsController extends Controller
      */
     public function create(Request $request)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $staff = Staff::find($request->staff_id);
         
         return view('qualifications.create')->with('staff', $staff);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to add Qualifications');
+        }
     }
 
     /**
@@ -48,6 +53,7 @@ class QualificationsController extends Controller
      */
     public function store(Request $request)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $this->validate($request, [
             'title' => 'bail|required|string',
             'field' => 'string|nullable',
@@ -77,6 +83,10 @@ class QualificationsController extends Controller
         $request->flashExcept(['subject', 'grade']);
 
         return redirect('/qualifications/create?staff_id=' . $request->staff_id)->with('success', 'Qualification added sucessfully');
+    }
+    else{
+        return redirect('/dashboard')->with('error', 'You do not have permission to add Qualifications');
+    }
 
     }
 
@@ -99,8 +109,13 @@ class QualificationsController extends Controller
      */
     public function edit($id)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $qualifications = Qualification::find($id);
         return view('qualifications.edit')->with('qualifications', $qualifications);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to edit Qualifications');
+        }
     }
 
     /**
@@ -112,6 +127,7 @@ class QualificationsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $this->validate($request, [
             'title' => 'bail|required|string',
             'field' => 'string|nullable',
@@ -139,6 +155,10 @@ class QualificationsController extends Controller
 
         return redirect('/staff/' . $qualification->staff->id . '/edit')->with('success', 'Qualification updated sucessfully');
     }
+    else{
+        return redirect('/dashboard')->with('error', 'You do not have permission to edit Qualifications');
+    }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -148,9 +168,14 @@ class QualificationsController extends Controller
      */
     public function destroy($id)
     {
+        if (Gate::allows('admin')) {
         $qualification = Qualification::find($id);
         $qualification->delete();
 
         return redirect('/staff/' . $qualification->staff->id . '/edit')->with('success', 'Qualification deleted sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to delete Qualifications');
+        }
     }
 }

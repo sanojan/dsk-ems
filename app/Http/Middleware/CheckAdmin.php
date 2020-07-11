@@ -16,7 +16,7 @@ class CheckAdmin
     public function handle($request, Closure $next)
     {
         if (!auth()->user()->admin) {
-            return redirect()->route('home');
+            return redirect()->route('dashboard')->with('error', 'You do not have permission to view users page');
         }
         return $next($request);
     }

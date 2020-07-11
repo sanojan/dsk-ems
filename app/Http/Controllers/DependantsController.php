@@ -7,6 +7,7 @@ use Illuminate\Validation\Rule;
 use App\Staff;
 use App\Dependant;
 use DB;
+use Gate;
 
 class DependantsController extends Controller
 {
@@ -37,8 +38,13 @@ class DependantsController extends Controller
      */
     public function create(Request $request)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $staff = Staff::find($request->staff_id);
         return view('dependants.create')->with('staff', $staff);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to add dependants');
+        }
     }
 
     /**
@@ -49,6 +55,7 @@ class DependantsController extends Controller
      */
     public function store(Request $request)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $this->validate($request, [
             'firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
             'lastname' => 'regex:/^[\pL\s\-]+$/u',
@@ -78,6 +85,10 @@ class DependantsController extends Controller
 
         return redirect('/staff/' . $request->staff_id . '/edit')->with('success', 'Dependant added sucessfully');
     }
+    else{
+        return redirect('/dashboard')->with('error', 'You do not have permission to add dependants');
+    }
+    }
 
     /**
      * Display the specified resource.
@@ -98,8 +109,13 @@ class DependantsController extends Controller
      */
     public function edit($id)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $dependants = Dependant::find($id);
         return view('dependants.edit')->with('dependants', $dependants);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to edit dependants');
+        }
     }
 
     /**
@@ -111,6 +127,7 @@ class DependantsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $dep = Dependant::find($id);
         $this->validate($request, [
             'firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
@@ -139,6 +156,10 @@ class DependantsController extends Controller
 
         return redirect('/staff/'. $dep->staff_id . '/edit')->with('success', 'Dependant updated sucessfully');
     }
+    else{
+        return redirect('/dashboard')->with('error', 'You do not have permission to edit dependants');
+    }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -148,9 +169,14 @@ class DependantsController extends Controller
      */
     public function destroy($id)
     {
+        if (Gate::allows('admin')) {
         $dependant = Dependant::find($id);
         $dependant->delete();
 
         return redirect('/staff/' . $dependant->staff->id . '/edit')->with('success', 'Dependant deleted sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to delete dependants');
+        }
     }
 }

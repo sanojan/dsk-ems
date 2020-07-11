@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Exam;
 use App\Staff;
+use Gate;
 
 class ExamsController extends Controller
 {
@@ -35,8 +36,13 @@ class ExamsController extends Controller
      */
     public function create(Request $request)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $staff = Staff::find($request->staff_id);
         return view('exams.create')->with('staff', $staff);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to add Examinations');
+        }
     }
 
     /**
@@ -47,6 +53,7 @@ class ExamsController extends Controller
      */
     public function store(Request $request)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $exam = new Exam;
         $exam->title = $request->title;
         $exam->completed_date = $request->completed_date;
@@ -56,6 +63,10 @@ class ExamsController extends Controller
         $exam->save();
 
         return redirect('/staff/' . $request->staff_id . '/edit')->with('success', 'Exam added sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to add Examinations');
+        }
     }
 
     /**
@@ -77,8 +88,13 @@ class ExamsController extends Controller
      */
     public function edit($id)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $examinations = Exam::find($id);
         return view('exams.edit')->with('examinations', $examinations);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to edit Examinations');
+        }
 
     }
 
@@ -91,6 +107,7 @@ class ExamsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $exam = Exam::find($id);
         $exam->title = $request->title;
         $exam->completed_date = $request->completed_date;
@@ -99,6 +116,10 @@ class ExamsController extends Controller
         $exam->save();
 
         return redirect('/staff/' . $exam->staff->id . '/edit')->with('success', 'Exam Updated sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to edit Examinations');
+        }
     }
 
     /**
@@ -109,9 +130,14 @@ class ExamsController extends Controller
      */
     public function destroy($id)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $exams = Exam::find($id);
         $exams->delete();
 
         return redirect('/staff/' . $exams->staff->id . '/edit')->with('success', 'Exam deleted sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to delete Examinations');
+        }
     }
 }

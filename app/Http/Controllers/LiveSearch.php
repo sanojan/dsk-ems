@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use DB;
 use Staff;
+use Gate;
 
 class LiveSearch extends Controller
 {
@@ -62,16 +63,25 @@ class LiveSearch extends Controller
          <td>'. $row->title . $row->firstname . '</td>
          <td>'.$row->designation.'</td>
          <td>
-         <a href="staff/' . $row->id . '" target="" class="btn btn-primary btn-xs">View</a>
-         <a href="staff/' . $row->id . '/edit" target="" class="btn btn-success btn-xs">Edit</a>
-         <form action="staff/' . $row->id . '" method="POST" onclick= "return confirm(\'Are you sure?\')">
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="hidden" name="_token" value="' . csrf_token() . '">
-            <button class="btn btn-danger btn-xs">Delete User</button>
-        </form>
-         </td>
-        </tr>
-        ';
+         <a href="staff/' . $row->id . '" target="" class="btn btn-primary btn-xs">View</a> ';
+
+         if(Gate::check('manager')){
+
+          $output .= '<a href="staff/' . $row->id . '/edit" target="" class="btn btn-success btn-xs">Edit</a></td> ';
+        
+        }
+
+        if(Gate::check('admin')){
+
+          $output .= '<a href="staff/' . $row->id . '/edit" target="" class="btn btn-success btn-xs">Edit</a><br /> ';
+
+          $output .= '<form action="staff/' . $row->id . '" method="POST" onclick= "return confirm(\'Are you sure?\')">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="hidden" name="_token" value="' . csrf_token() . '">
+          <button class="btn btn-danger btn-xs">Delete User</button>
+            </form></td>';
+        }
+         $output .= '</tr>';
        }
       }
       else

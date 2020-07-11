@@ -8,6 +8,7 @@ use App\Dependant;
 use App\Designation;
 use App\ServiceHistory;
 use App\Service;
+use Gate;
 
 class ServiceHistoriesController extends Controller
 {
@@ -38,10 +39,15 @@ class ServiceHistoriesController extends Controller
      */
     public function create(Request $request)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $staff = Staff::find($request->staff_id);
         $designations = Designation::all();
         $services = Service::all();
         return view('servicehistories.create')->with('staff', $staff)->with('designations', $designations)->with('services', $services);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to add service history');
+        }
     }
 
     /**
@@ -52,6 +58,7 @@ class ServiceHistoriesController extends Controller
      */
     public function store(Request $request)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $this->validate($request, [
             'workplace' => 'bail|required|string',
             'designation' => 'string|required',
@@ -89,6 +96,10 @@ class ServiceHistoriesController extends Controller
 
         return redirect('/staff/' . $request->staff_id . '/edit')->with('success', 'Service added sucessfully');
     }
+    else{
+        return redirect('/dashboard')->with('error', 'You do not have permission to add service history');
+    }
+    }
 
     /**
      * Display the specified resource.
@@ -109,10 +120,15 @@ class ServiceHistoriesController extends Controller
      */
     public function edit($id)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $servicehistories = ServiceHistory::find($id);
         $designations = Designation::all();
         $services = Service::all();
         return view('servicehistories.edit')->with('servicehistories', $servicehistories)->with('designations', $designations)->with('services', $services);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to edit service history');
+        }
     }
 
     /**
@@ -124,6 +140,7 @@ class ServiceHistoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $this->validate($request, [
             'workplace' => 'bail|required|string',
             'designation' => 'string|required',
@@ -157,6 +174,10 @@ class ServiceHistoriesController extends Controller
 
         return redirect('/staff/' . $serv->staff->id . '/edit')->with('success', 'Service updated sucessfully');
     }
+    else{
+        return redirect('/dashboard')->with('error', 'You do not have permission to edit service history');
+    }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -166,9 +187,14 @@ class ServiceHistoriesController extends Controller
      */
     public function destroy($id)
     {
+        if (Gate::allows('admin')) {
         $service_histories = ServiceHistory::find($id);
         $service_histories->delete();
 
         return redirect('/staff/' . $service_histories->staff->id . '/edit')->with('success', 'Service history deleted sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to delete service history');
+        }
     }
 }

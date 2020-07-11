@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Service;
+use Gate;
 
 class ServiceController extends Controller
 {
@@ -34,8 +35,13 @@ class ServiceController extends Controller
      */
     public function create()
     {
+        if (Gate::allows('admin')) {
         $services = Service::paginate(5);
         return view('services.create')->with('services', $services);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to create services');
+        }
     }
 
     /**
@@ -46,6 +52,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        if (Gate::allows('admin')) {
         $this->validate($request, [
             'name' => 'bail|required|alpha_spaces',],
             
@@ -56,6 +63,11 @@ class ServiceController extends Controller
             $service->save();
     
             return redirect('/services/create')->with('success', 'Service added sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to create services');
+        }
+
     }
 
     /**
@@ -77,8 +89,13 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
+        if (Gate::allows('admin')) {
         $service = Service::find($id);
         return view('services.edit')->with('service', $service);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to edit services');
+        }
     }
 
     /**
@@ -90,6 +107,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Gate::allows('admin')) {
         $this->validate($request, [
             'name' => 'bail|required|alpha_spaces',],
             
@@ -100,6 +118,10 @@ class ServiceController extends Controller
             $service->save();
     
             return redirect('/services/create')->with('success', 'Service updated sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to edit services');
+        }
     }
 
     /**
@@ -110,9 +132,14 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
+        if (Gate::allows('admin')) {
         $service = Service::find($id);
         $service->delete();
 
         return redirect('/services/create')->with('success', 'Service deleted sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to delete services');
+        }
     }
 }

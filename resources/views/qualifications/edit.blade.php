@@ -69,7 +69,7 @@
             <p>Change Password</p>
           </a>
         </li>
-
+        @if(Gate::allows('admin'))
         <li class="nav-header">SYSTEM SETTINGS</li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
@@ -106,10 +106,11 @@
             </p>
           </a>
         </li>
+        @endif
         <li class="nav-item">
           <a href="https://adminlte.io/docs/3.0" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
-            <p>Documentation</p>
+            <p>About</p>
           </a>
         </li>
         
@@ -118,7 +119,7 @@
           <a href="{{ route('logout') }}" class="nav-link" 
           onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">
-          <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
+          <i class="nav-icon fas fa-sign-out-alt"></i>
           {{ __('Logout') }}
           </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

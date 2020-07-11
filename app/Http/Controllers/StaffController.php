@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use File;
 use Storage;
 use DB;
+use Gate;
 
 class StaffController extends Controller
 {
@@ -46,10 +47,15 @@ class StaffController extends Controller
      */
     public function create()
     {
-        $staff = new Staff;
-        $designations = Designation::all();
-        $services = Service::all();
-        return view('staff.create')->with('staff', $staff)->with('designations', $designations)->with('services', $services);
+        if (Gate::allows('admin') || Gate::allows('manager')) {
+            $staff = new Staff;
+            $designations = Designation::all();
+            $services = Service::all();
+            return view('staff.create')->with('staff', $staff)->with('designations', $designations)->with('services', $services);
+        }else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to add staff');
+        }
+        
     }
 
     /**
@@ -60,6 +66,7 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $this->validate($request, [
             'firstname' => 'bail|required|regex:/^[a-z ,.\'-]+$/i',
             'lastname' => 'regex:/^[\pL\s\-]+$/u|nullable',
@@ -129,7 +136,10 @@ class StaffController extends Controller
         
 
         return redirect('/staff')->with('success', 'Staff profile created sucessfully');
-
+    }
+    else{
+        return redirect('/dashboard')->with('error', 'You do not have permission to add staff');
+    }
         
     }
 
@@ -167,10 +177,15 @@ class StaffController extends Controller
      */
     public function edit($id)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $staff = Staff::find($id);
         $designations = Designation::all();
         $services = Service::all();
         return view('staff.edit')->with('staff', $staff)->with('designations', $designations)->with('services', $services);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to edit staff');
+        }
     }
 
     /**
@@ -182,6 +197,7 @@ class StaffController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Gate::allows('admin') || Gate::allows('manager')) {
         $this->validate($request, [
             'firstname' => 'bail|required|regex:/^[a-z ,.\'-]+$/i',
             'lastname' => 'regex:/^[\pL\s\-]+$/u|nullable',
@@ -259,6 +275,10 @@ class StaffController extends Controller
         $staff->save();
         return redirect('/staff/' . $id . '/edit')->with('success', 'Staff profile updated sucessfully');
     }
+    else{
+        return redirect('/dashboard')->with('error', 'You do not have permission to edit staff');
+    }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -268,9 +288,14 @@ class StaffController extends Controller
      */
     public function destroy($id)
     {
+        if (Gate::allows('admin')) {
         $staff = Staff::find($id);
         $staff->delete();
 
         return redirect('/staff')->with('success', 'Staff profile deleted sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to delete staff');
+        }
     }
 }
