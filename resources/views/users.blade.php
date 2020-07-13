@@ -118,7 +118,7 @@
               <li class="nav-item">
                 <a href="https://adminlte.io/docs/3.0" class="nav-link">
                   <i class="nav-icon fas fa-file"></i>
-                  <p>Documentation</p>
+                  <p>About</p>
                 </a>
               </li>
               
@@ -191,6 +191,7 @@
                             <tr>
                                 <th>User name</th>
                                 <th>Email</th>
+                                <th>Requested user type</th>
                                 <th>Registered at</th>
                                 <th></th>
                             </tr>
@@ -198,6 +199,7 @@
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->role }}</td>
                                     <td>{{ $user->created_at }}</td>
                                     <td><a href="{{ route('admin.users.approve', $user->id) }}"
                                            class="btn btn-primary btn-sm">Approve</a></td>

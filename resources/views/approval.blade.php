@@ -8,7 +8,7 @@
                     <div class="card-header">Waiting for Approval</div>
 
                     <div class="card-body">
-                        Your account is waiting for our administrator approval.
+                        Your account is waiting for system administrator approval.
                         <br />
                         Please check back later.
                     </div>
