@@ -429,7 +429,7 @@
                           <table class="table">
                               <thead>
                                 <tr>
-                                  <th>Fullname</th>
+                                  <th>Name with Initial</th>
                                   <th>Relationship</th>
                                   <th>Occupation</th>
                                   <th>Action</th>
@@ -438,7 +438,7 @@
                               <tbody>  
                         @foreach($staff->dependants as $dep)
                           <tr>
-                              <td>{{$dep->firstname}} {{$dep->lastname}}</td>
+                              <td>{{$dep->firstname}}</td>
                               <td>{{$dep->relationship}}</td>
                               <td>{{$dep->designation}} - {{$dep->workplace}}</td>
                               <td><a href="{{route('dependants.edit', $dep->id)}}">Edit</a></td>

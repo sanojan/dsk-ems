@@ -116,7 +116,7 @@
           <li class="nav-item">
             <a href="https://adminlte.io/docs/3.0" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
-              <p>Documentation</p>
+              <p>About</p>
             </a>
           </li>
           
@@ -183,7 +183,7 @@
                        alt="User profile picture" width="500" height="600">
                 </div>
 
-              <h3 class="profile-username text-center">{{$staff->title}} {{$staff->firstname}} {{$staff->lastname}}</h3>
+              <h3 class="profile-username text-center">{{$staff->title}} {{$staff->firstname}}</h3>
 
                 <p class="text-muted text-center">{{$staff->designation}}</p>
 

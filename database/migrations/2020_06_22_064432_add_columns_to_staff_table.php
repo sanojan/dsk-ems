@@ -14,9 +14,9 @@ class AddColumnsToStaffTable extends Migration
     public function up()
     {
         Schema::table('staff', function (Blueprint $table) {
-            $table->string('bank_acc_no')->nullable;
-            $table->string('bank_branch')->nullable;
-            $table->string('bank_name')->nullable;
+            $table->string('bank_acc_no')->nullable();
+            $table->string('bank_branch')->nullable();
+            $table->string('bank_name')->nullable();
         });
     }
 

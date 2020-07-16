@@ -50,7 +50,7 @@ class DependantsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
+            'firstname' => 'bail|required|regex:/^[a-z ,.\'-]+$/i',
             'lastname' => 'regex:/^[\pL\s\-]+$/u',
             'designation' => 'string|nullable',
             'workplace' => 'string|nullable',
@@ -113,7 +113,7 @@ class DependantsController extends Controller
     {
         $dep = Dependant::find($id);
         $this->validate($request, [
-            'firstname' => 'bail|required|regex:/^[\pL\s\-]+$/u',
+            'firstname' => 'bail|required|regex:/^[a-z ,.\'-]+$/i',
             'lastname' => 'regex:/^[\pL\s\-]+$/u',
             'designation' => 'string|nullable',
             'workplace' => 'string|nullable',
