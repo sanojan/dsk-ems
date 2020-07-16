@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Designation;
+use Gate;
 
 class DesignationController extends Controller
 {
@@ -34,8 +35,13 @@ class DesignationController extends Controller
      */
     public function create()
     {
+        if (Gate::allows('admin')) {
         $designations = Designation::paginate(5);
         return view('designations.create')->with('designations', $designations);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to create designations');
+        }
     }
 
     /**
@@ -46,6 +52,7 @@ class DesignationController extends Controller
      */
     public function store(Request $request)
     {
+        if (Gate::allows('admin')) {
         $this->validate($request, [
         'name' => 'bail|required|alpha_spaces',],
         
@@ -56,6 +63,10 @@ class DesignationController extends Controller
         $designation->save();
 
         return redirect('/designations/create')->with('success', 'Designation added sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to create designations');
+        }
     }
 
     /**
@@ -77,8 +88,13 @@ class DesignationController extends Controller
      */
     public function edit($id)
     {
+        if (Gate::allows('admin')) {
         $designation = Designation::find($id);
         return view('designations.edit')->with('designation', $designation);
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to edit designations');
+        }
     }
 
     /**
@@ -90,6 +106,7 @@ class DesignationController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Gate::allows('admin')) {
         $this->validate($request, [
             'name' => 'bail|required|alpha_spaces',],
             
@@ -100,6 +117,10 @@ class DesignationController extends Controller
             $designation->save();
     
             return redirect('/designations/create')->with('success', 'Designation updated sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to edit designations');
+        }
     }
 
     /**
@@ -110,9 +131,14 @@ class DesignationController extends Controller
      */
     public function destroy($id)
     {
+        if (Gate::allows('admin')) {
         $designation = Designation::find($id);
         $designation->delete();
 
         return redirect('/designations/create')->with('success', 'Designation deleted sucessfully');
+        }
+        else{
+            return redirect('/dashboard')->with('error', 'You do not have permission to delete designations');
+        }
     }
 }

@@ -61,6 +61,18 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="user_type" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="user_type" type="text" class="form-control" name="user_type">
+                                <option value="user">User</option>
+                                <option value="manager">Admin</option>
+                                <option value="admin">System Admin</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

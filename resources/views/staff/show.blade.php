@@ -52,6 +52,7 @@
                 <p>View Staff Info</p>
               </a>
             </li>
+            @if(Gate::allows('admin') || Gate::allows('manager'))
             <li class="nav-item">
               <a href="{{route('staff.create')}}" class="nav-link">
                 <i class="nav-icon fas fa-user-plus"></i>
@@ -64,6 +65,7 @@
               <p>Generate Reports</p>
             </a>
           </li>
+          @endif
             </ul>
           </li>
           
@@ -76,7 +78,7 @@
               <p>Change Password</p>
             </a>
           </li>
-  
+          @if(Gate::allows('admin'))
           <li class="nav-header">SYSTEM SETTINGS</li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -113,6 +115,7 @@
               </p>
             </a>
           </li>
+          @endif
           <li class="nav-item">
             <a href="https://adminlte.io/docs/3.0" class="nav-link">
               <i class="nav-icon fas fa-file"></i>

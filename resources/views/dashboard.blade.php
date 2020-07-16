@@ -51,18 +51,21 @@
               <p>View Staff Info</p>
             </a>
           </li>
+          @if(Gate::allows('admin') || Gate::allows('manager'))
           <li class="nav-item">
             <a href="{{route('staff.create')}}" class="nav-link">
               <i class="nav-icon fas fa-user-plus"></i>
               <p>Add Staff Info</p>
             </a>
           </li>
+         
           <li class="nav-item">
             <a href="{{route('reports.index')}}" class="nav-link">
               <i class="nav-icon fas fa-file-pdf"></i>
               <p>Generate Reports</p>
             </a>
           </li>
+          @endif
           </ul>
         </li>
         
@@ -77,7 +80,7 @@
                   <p>Change Password</p>
                 </a>
               </li>
-              
+              @if(Gate::allows('admin') || Gate::allows('manager'))
               <li class="nav-header">SYSTEM SETTINGS</li>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
@@ -106,6 +109,8 @@
                   
                 </ul>
               </li>
+              @endif
+              @if(Gate::allows('admin'))
               <li class="nav-item">
                 <a href="{{route('admin.users.index')}}" class="nav-link">
                   <i class="nav-icon fas fa-users"></i>
@@ -114,10 +119,11 @@
                   </p>
                 </a>
               </li>
+              @endif
         <li class="nav-item">
           <a href="https://adminlte.io/docs/3.0" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
-            <p>Documentation</p>
+            <p>About</p>
           </a>
         </li>
         
@@ -144,6 +150,13 @@
 
 @section('content')
 <div class="content-wrapper">
+<div class="row">
+        <div class="col"></div>
+        <div class="col-10">
+            @include('inc.messages')
+      </div>
+      <div class="col"></div>
+</div>
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">

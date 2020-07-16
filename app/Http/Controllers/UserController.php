@@ -19,6 +19,6 @@ class UserController extends Controller
         $user = User::findOrFail($user_id);
         $user->update(['approved_at' => now()]);
 
-        return redirect()->route('admin.users.index')->withMessage('User approved successfully');
+        return redirect()->route('admin.users.index')->with('success', 'User approved successfully');
     }
 }
