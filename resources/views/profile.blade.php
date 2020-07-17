@@ -27,7 +27,7 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item">
-          <a href="/dashboard" class="nav-link active">
+          <a href="/dashboard" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
@@ -162,12 +162,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Dashboard</h1>
+          <h1 class="m-0 text-dark">User Profile</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item active">User Profile</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -176,87 +176,48 @@
 
 <section class="content">
   <div class="container-fluid">
-    <!-- Small boxes (Stat box) -->
     <div class="row">        
-      <!-- ./col -->
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-warning">
-          <div class="inner">
-          <h3>{{count($staff)}}</h3>
+    <div class="col"></div>
+    <div class="col-10">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Welcome, {{auth()->user()->name}}!</h3>
+        </div>
+        <div class="container">
+            <p><b>Your account details</b></p>
+            <div class="row">
+                
+                <div class="col-md-3">
+                    Email:<br />
+                    System Admin privileges: <br />
+                    Account Type: <br />
+                    Account Permissions: <br />
+                </div>
+                <div class="col-md-3">
+                {{ $user->email }}<br />
+                @if($user->admin == 1)
+                Yes<br />
+                @else
+                No<br />
+                @endif
 
-            <p>Staff Profiles</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-android-contacts"></i>
-          </div>
-          <a href="/staff" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          
-        </div>
-      </div>
-      <div class="col-lg-3 col-6">
-        <div class="small-box bg-danger">
-            <div class="inner">
-            <h3>0</h3>
-  
-              <p>Staff Leaves</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-calendar"></i>
-            </div>
-            <a href="#" class="small-box-footer">Coming Soon <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-      </div>
-      <div class="col-lg-3 col-6">
-          <div class="small-box bg-success">
-              <div class="inner">
-              <h3>0</h3>
-    
-                <p>Staff Salary</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-cash"></i>
-              </div>
-              <a href="#" class="small-box-footer">Coming Soon <i class="fas fa-arrow-circle-right"></i></a>
+                @if($user->role == "user")
+                Standard User <br/>
+                You can view staff data only.
+                @elseif($user->role == "manager")
+                Admin <br/>
+                You can view, edit staff data and generate reports.
+                @elseif($user->role == "admin")
+                System Admin <br/>
+                You have full control over the system
+                @endif
+                </div>
+                
             </div>
         </div>
-      
-      <!-- ./col -->
     </div>
-    <!-- /.row -->
-    <!-- Main row -->
-    <div class="row">
-      <!-- Left col -->
-      <section class="col-lg-7 connectedSortable">
-        <!-- Custom tabs (Charts with tabs)-->
-        
-        <!-- /.card -->
-
-        <!-- DIRECT CHAT -->
-        
-        <!--/.direct-chat -->
-
-        <!-- TO DO List -->
-        
-        <!-- /.card -->
-      </section>
-      <!-- /.Left col -->
-      <!-- right col (We are only adding the ID to make the widgets sortable)-->
-      <section class="col-lg-5 connectedSortable">
-
-        <!-- Map card -->
-        
-        <!-- /.card -->
-
-        <!-- solid sales graph -->
-        
-        <!-- /.card -->
-
-        <!-- Calendar -->
-        
-        <!-- /.card -->
-      </section>
-      <!-- right col -->
+    </div>
+    <div class="col"></div>
     </div>
     <!-- /.row (main row) -->
   </div><!-- /.container-fluid -->

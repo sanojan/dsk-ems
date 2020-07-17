@@ -52,7 +52,7 @@ Route::get('/livesearch', 'LiveSearch@action')->name('live_search.action');
 
 Route::get('reports', 'ReportController@index')->name('reports.index');
 
-
+Route::get('profile', 'UserController@profile')->name('users.profile');
 
 Route::get('export', 'ReportController@export');
 Route::get('export_dep', 'ReportController@export_dep');

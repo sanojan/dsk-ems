@@ -17,7 +17,7 @@
         <img src="{{ Storage::url('profile_pics/noimage.png') }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">{{auth()->user()->name}}</a>
+        <a href="{{route('users.profile')}}" class="d-block">{{auth()->user()->name}}</a>
       </div>
     </div>
 
@@ -181,14 +181,13 @@
             <div class="card-header">
                   <h3 class="card-title">Staff List</h3>
                   <div class="card-tools">
-                      <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" id="search" class="form-control float-right" placeholder="Search">
-                        <div class="input-group-append">
-                          <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                        </div>
+                      <div class="" style="width: 150px;">
+                        <input type="text" name="table_search" id="search" class="form-control" placeholder="Search">
                       </div>
                   </div>
+                 
                   <div class="card-body table-responsive p-0">
+                  <hr>
                     <table class="table table-hover">
                       <thead>
                         <tr>

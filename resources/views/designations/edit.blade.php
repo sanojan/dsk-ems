@@ -17,7 +17,7 @@
             <img src="{{ Storage::url('profile_pics/noimage.png') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-              <a href="#" class="d-block">{{auth()->user()->name}}</a>
+              <a href="{{route('users.profile')}}" class="d-block">{{auth()->user()->name}}</a>
             </div>
           </div>
     
@@ -117,7 +117,7 @@
               <li class="nav-item">
                 <a href="https://adminlte.io/docs/3.0" class="nav-link">
                   <i class="nav-icon fas fa-file"></i>
-                  <p>Documentation</p>
+                  <p>About</p>
                 </a>
               </li>
               

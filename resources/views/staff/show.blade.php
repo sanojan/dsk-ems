@@ -18,7 +18,7 @@
         <img src="{{ Storage::url('profile_pics/noimage.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{auth()->user()->name}}</a>
+          <a href="{{route('users.profile')}}" class="d-block">{{auth()->user()->name}}</a>
         </div>
       </div>
 
@@ -175,7 +175,7 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-2">
+          <div class="col-md-3">
 
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
@@ -215,7 +215,7 @@
           </div>
 
           <!-- /.col -->
-          <div class="col-md-10">
+          <div class="col-md-9">
               <div class="card card-primary card-outline card-tabs">
               <div class="card-header p-0 pt-1 border-bottom-0">
                 <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">

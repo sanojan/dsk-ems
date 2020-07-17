@@ -7,6 +7,11 @@ use App\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $users = User::whereNull('approved_at')->get();
@@ -20,5 +25,13 @@ class UserController extends Controller
         $user->update(['approved_at' => now()]);
 
         return redirect()->route('admin.users.index')->with('success', 'User approved successfully');
+    }
+
+    public function profile()
+    {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+        return view('profile')->with('user', $user);
     }
 }

@@ -17,7 +17,7 @@
             <img src="{{ Storage::url('profile_pics/noimage.png') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-              <a href="#" class="d-block">{{auth()->user()->name}}</a>
+              <a href="{{route('users.profile')}}" class="d-block">{{auth()->user()->name}}</a>
             </div>
           </div>
     
