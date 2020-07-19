@@ -34,7 +34,11 @@ class ReportController extends Controller
         return view('reports.index')->with('designations', $designations)->with('staff', $staff);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to generate reports');
+            $notification = array(
+                'message' => 'You do not have permission to generate reports',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
 
     }
@@ -48,7 +52,11 @@ class ReportController extends Controller
         return Excel::download(new StaffExport, 'staff_data.xlsx');
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to generate reports');
+            $notification = array(
+                'message' => 'You do not have permission to generate reports',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     
     }
@@ -60,7 +68,11 @@ class ReportController extends Controller
         return Excel::download(new DependantsExport($request->staff_id), 'dep_data_of_' . $staff->firstname . '.xlsx');
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to generate reports');
+            $notification = array(
+                'message' => 'You do not have permission to generate reports',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     
     }

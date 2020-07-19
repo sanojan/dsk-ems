@@ -9,6 +9,9 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
+
+<link rel="stylesheet" type="text/css" href=" {{ asset('plugins/toastr/toastr.min.css') }}">
+
 <link rel="stylesheet" href="{{ asset('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css') }}">
   <!-- Tempusdominus Bbootstrap 4 -->
 <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
@@ -90,6 +93,7 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+<script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- ChartJS -->
@@ -116,9 +120,43 @@
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js')  }}"></script>
+
+
 </body>
+@toastr_js
+@toastr_render
+
 </html>
 <script>
+
+ @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type', 'info') }}";
+    switch(type){
+        case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
+
+        case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
+
+        case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+
+        case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+    }
+  @endif
+
+    @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+            toastr.error("{{ $error }}");
+        @endforeach
+    @endif
+
+
   $(document).ready(function(){
   
    fetch_staff_data();

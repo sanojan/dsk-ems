@@ -234,12 +234,13 @@
                         <div class="card-footer">          
                             {{Form::submit('Submit', ['class' =>  'btn btn-info float-left'])}}
                             {!! Form::close() !!}
-
+                            @if(Gate::check('admin'))
                             {!! Form::open(['action' => ['ServiceHistoriesController@destroy', $servicehistories->id], 'method' => 'POST', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
                               {{Form::hidden('_method', 'DELETE')}}
                               {{Form::submit('Delete', ['class' =>  'btn btn-danger '])}}
                               
                             {!! Form::close() !!}
+                            @endif
                         </div>
                             
                       
