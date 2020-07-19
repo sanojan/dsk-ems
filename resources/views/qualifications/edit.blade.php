@@ -267,12 +267,12 @@
                 <div class="card-footer">          
                     {{Form::submit('Update', ['class' =>  'btn btn-warning float-left'])}}
                     {!! Form::close() !!}
-
+                    @if(Gate::check('admin'))
                     {!! Form::open(['action' => ['QualificationsController@destroy', $qualifications->id], 'method' => 'POST', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
                               {{Form::hidden('_method', 'DELETE')}}
                               {{Form::submit('Delete', ['class' =>  'btn btn-danger '])}}     
                     {!! Form::close() !!}
-                    
+                    @endif
                     </div>
                     
                 </div>

@@ -41,7 +41,12 @@ class ExamsController extends Controller
         return view('exams.create')->with('staff', $staff);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to add Examinations');
+
+             $notification = array(
+                'message' => 'You do not have permission to add Examinations',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -61,11 +66,20 @@ class ExamsController extends Controller
         $exam->staff_id = $request->staff_id;
 
         $exam->save();
+        
+        $notification = array(
+            'message' => 'Exam has been added sucessfully',
+            'alert-type' => 'success'
+        );
 
-        return redirect('/staff/' . $request->staff_id . '/edit')->with('success', 'Exam added sucessfully');
+        return redirect('/staff/' . $request->staff_id . '/edit')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to add Examinations');
+            $notification = array(
+                'message' => 'You do not have permission to add Exams',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -93,7 +107,11 @@ class ExamsController extends Controller
         return view('exams.edit')->with('examinations', $examinations);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to edit Examinations');
+            $notification = array(
+                'message' => 'You do not have permission to edit Exams',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
 
     }
@@ -114,11 +132,18 @@ class ExamsController extends Controller
         $exam->remarks = $request->remarks;
 
         $exam->save();
-
-        return redirect('/staff/' . $exam->staff->id . '/edit')->with('success', 'Exam Updated sucessfully');
+        $notification = array(
+            'message' => 'Exam has been updated sucessfully',
+            'alert-type' => 'success'
+        );
+        return redirect('/staff/' . $exam->staff->id . '/edit')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to edit Examinations');
+            $notification = array(
+                'message' => 'You do not have permission to edit Exams',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -133,11 +158,20 @@ class ExamsController extends Controller
         if (Gate::allows('admin') || Gate::allows('manager')) {
         $exams = Exam::find($id);
         $exams->delete();
+        
+        $notification = array(
+            'message' => 'Exam has been deleted sucessfully',
+            'alert-type' => 'success'
+        );
 
-        return redirect('/staff/' . $exams->staff->id . '/edit')->with('success', 'Exam deleted sucessfully');
+        return redirect('/staff/' . $exams->staff->id . '/edit')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to delete Examinations');
+            $notification = array(
+                'message' => 'You do not have permission to delete Exams',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 }

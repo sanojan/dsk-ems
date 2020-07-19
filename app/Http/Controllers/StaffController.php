@@ -15,6 +15,7 @@ use File;
 use Storage;
 use DB;
 use Gate;
+use Toastr;
 
 class StaffController extends Controller
 {
@@ -53,7 +54,12 @@ class StaffController extends Controller
             $services = Service::all();
             return view('staff.create')->with('staff', $staff)->with('designations', $designations)->with('services', $services);
         }else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to add staff');
+            $notification = array(
+                'message' => 'You do not have permission to create Staff',
+                'alert-type' => 'warning'
+            );
+            
+            return redirect('/dashboard')->with($notification);
         }
         
     }
@@ -79,9 +85,9 @@ class StaffController extends Controller
             'class' => 'required',
             'nic' => 'required|alpha_num|unique:staff|max:12',
             'profile_pic' => 'image|nullable|max:1999',
-            'wop_no' => 'alpha_num|nullable'
+            'wop_no' => 'regex:([A-Za-z0-9\-\_]+)|nullable'
         ],
-        ['nic.required' => 'NIC is required', 'wop_no.alpha_num' => 'W&OP No. must contain letters and numbers only']);
+        ['nic.required' => 'NIC is required']);
 
         //Handle File Upload
         if($request->hasFile('profile_pic')){
@@ -133,12 +139,19 @@ class StaffController extends Controller
 
         $staff->save();
         
-        
+        $notification = array(
+            'message' => 'Staff profile has been created sucessfully',
+            'alert-type' => 'success'
+        );
 
-        return redirect('/staff')->with('success', 'Staff profile created sucessfully');
+        return redirect('/staff')->with($notification);
     }
     else{
-        return redirect('/dashboard')->with('error', 'You do not have permission to add staff');
+        $notification = array(
+            'message' => 'You do not have permission to add staff',
+            'alert-type' => 'warning'
+        );
+        return redirect('/dashboard')->with($notification);
     }
         
     }
@@ -184,7 +197,11 @@ class StaffController extends Controller
         return view('staff.edit')->with('staff', $staff)->with('designations', $designations)->with('services', $services);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to edit staff');
+            $notification = array(
+                'message' => 'You do not have permission to edit staff',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -210,9 +227,9 @@ class StaffController extends Controller
             'class' => 'required',
             'nic' => 'required|alpha_num|max:12',
             'profile_pic' => 'image|nullable|max:1999',
-            'wop_no' => 'alpha_num|nullable'
+            'wop_no' => 'regex:([A-Za-z0-9\-\_]+)|nullable'
         ],
-        ['nic.required' => 'NIC is required', 'wop_no.alpha_num' => 'W&OP No. must contain letters and numbers only']);
+        ['nic.required' => 'NIC is required']);
         
         $staff = Staff::find($id);
 
@@ -273,9 +290,17 @@ class StaffController extends Controller
         Rule::unique('nic')->ignore($staff);
 
         $staff->save();
-        return redirect('/staff/' . $id . '/edit')->with('success', 'Staff profile updated sucessfully');
+        $notification = array(
+            'message' => 'Staff profile has been updated sucessfully',
+            'alert-type' => 'success'
+        );
+        return redirect('/staff/' . $id . '/edit')->with($notification);
     }
     else{
+        $notification = array(
+            'message' => 'You do not have permission to edit staff',
+            'alert-type' => 'warning'
+        );
         return redirect('/dashboard')->with('error', 'You do not have permission to edit staff');
     }
     }
@@ -291,11 +316,20 @@ class StaffController extends Controller
         if (Gate::allows('admin')) {
         $staff = Staff::find($id);
         $staff->delete();
+        
+        $notification = array(
+            'message' => 'Staff profile has been deleted sucessfully',
+            'alert-type' => 'success'
+        );
 
-        return redirect('/staff')->with('success', 'Staff profile deleted sucessfully');
+        return redirect('/staff')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to delete staff');
+            $notification = array(
+                'message' => 'You do not have permission to delete staff',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 }

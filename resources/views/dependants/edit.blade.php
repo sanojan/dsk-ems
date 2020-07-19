@@ -214,12 +214,13 @@
                         <div class="card-footer">          
                             {{Form::submit('Submit', ['class' =>  'btn btn-success float-left'])}}
                             {!! Form::close() !!}
-
+                            @if(Gate::check('admin'))
                             {!! Form::open(['action' => ['DependantsController@destroy', $dependants->id], 'method' => 'POST', 'onclick' => 'return confirm(\'This cannot be reversed, Are you sure?\')']) !!}
                               {{Form::hidden('_method', 'DELETE')}}
                               {{Form::submit('Delete', ['class' =>  'btn btn-danger '])}}
                               
                             {!! Form::close() !!}
+                            @endif
                         </div>
                            
                       

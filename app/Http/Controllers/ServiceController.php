@@ -40,7 +40,11 @@ class ServiceController extends Controller
         return view('services.create')->with('services', $services);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to create services');
+            $notification = array(
+                'message' => 'You do not have permission to create services',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -61,11 +65,20 @@ class ServiceController extends Controller
             $service = new Service;
             $service->name = $request->name;
             $service->save();
-    
-            return redirect('/services/create')->with('success', 'Service added sucessfully');
+            
+            $notification = array(
+                'message' => 'Service has been added sucessfully',
+                'alert-type' => 'success'
+            );
+
+            return redirect('/services/create')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to create services');
+            $notification = array(
+                'message' => 'You do not have permission to create services',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
 
     }
@@ -94,7 +107,11 @@ class ServiceController extends Controller
         return view('services.edit')->with('service', $service);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to edit services');
+            $notification = array(
+                'message' => 'You do not have permission to edit services',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -116,11 +133,19 @@ class ServiceController extends Controller
             $service = Service::find($id);
             $service->name = $request->name;
             $service->save();
-    
-            return redirect('/services/create')->with('success', 'Service updated sucessfully');
+            
+            $notification = array(
+                'message' => 'Service has been updated sucessfully',
+                'alert-type' => 'success'
+            );
+            return redirect('/services/create')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to edit services');
+            $notification = array(
+                'message' => 'You do not have permission to edit services',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -135,11 +160,20 @@ class ServiceController extends Controller
         if (Gate::allows('admin')) {
         $service = Service::find($id);
         $service->delete();
+        
+        $notification = array(
+            'message' => 'Service has been deleted sucessfully',
+            'alert-type' => 'success'
+        );
 
-        return redirect('/services/create')->with('success', 'Service deleted sucessfully');
+        return redirect('/services/create')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to delete services');
+            $notification = array(
+                'message' => 'You do not have permission to delete services',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 }

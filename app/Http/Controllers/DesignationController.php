@@ -40,7 +40,11 @@ class DesignationController extends Controller
         return view('designations.create')->with('designations', $designations);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to create designations');
+            $notification = array(
+                'message' => 'You do not have permission to add Designation',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -61,11 +65,16 @@ class DesignationController extends Controller
         $designation = new Designation;
         $designation->name = $request->name;
         $designation->save();
+        
+        $notification = array(
+            'message' => 'Designation has been added sucessfully',
+            'alert-type' => 'success'
+        );
 
-        return redirect('/designations/create')->with('success', 'Designation added sucessfully');
+        return redirect('/designations/create')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to create designations');
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -93,7 +102,11 @@ class DesignationController extends Controller
         return view('designations.edit')->with('designation', $designation);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to edit designations');
+            $notification = array(
+                'message' => 'You do not have permission to edit Designations',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -115,11 +128,20 @@ class DesignationController extends Controller
             $designation = Designation::find($id);
             $designation->name = $request->name;
             $designation->save();
+
+            $notification = array(
+                'message' => 'Designation has been updated sucessfully',
+                'alert-type' => 'success'
+            );
     
-            return redirect('/designations/create')->with('success', 'Designation updated sucessfully');
+            return redirect('/designations/create')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to edit designations');
+            $notification = array(
+                'message' => 'You do not have permission to edit Designation',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -134,11 +156,19 @@ class DesignationController extends Controller
         if (Gate::allows('admin')) {
         $designation = Designation::find($id);
         $designation->delete();
-
-        return redirect('/designations/create')->with('success', 'Designation deleted sucessfully');
+        
+        $notification = array(
+            'message' => 'Designation has been deleted sucessfully',
+            'alert-type' => 'success'
+        );
+        return redirect('/designations/create')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to delete designations');
+            $notification = array(
+                'message' => 'You do not have permission to delete designations',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 }

@@ -41,7 +41,11 @@ class QualificationsController extends Controller
         return view('qualifications.create')->with('staff', $staff);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to add Qualifications');
+            $notification = array(
+                'message' => 'You do not have permission to add Qualifications',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -82,10 +86,18 @@ class QualificationsController extends Controller
         $qualification->save();
         $request->flashExcept(['subject', 'grade']);
 
-        return redirect('/qualifications/create?staff_id=' . $request->staff_id)->with('success', 'Qualification added sucessfully');
+        $notification = array(
+            'message' => 'Qualification has been added sucessfully',
+            'alert-type' => 'success'
+        );
+        return redirect('/qualifications/create?staff_id=' . $request->staff_id)->with($notification);
     }
     else{
-        return redirect('/dashboard')->with('error', 'You do not have permission to add Qualifications');
+        $notification = array(
+            'message' => 'You do not have permission to add Qualifications',
+            'alert-type' => 'warning'
+        );
+        return redirect('/dashboard')->with($notification);
     }
 
     }
@@ -114,7 +126,11 @@ class QualificationsController extends Controller
         return view('qualifications.edit')->with('qualifications', $qualifications);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to edit Qualifications');
+            $notification = array(
+                'message' => 'You do not have permission to edit Qualifications',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -152,11 +168,18 @@ class QualificationsController extends Controller
         
 
         $qualification->save();
-
-        return redirect('/staff/' . $qualification->staff->id . '/edit')->with('success', 'Qualification updated sucessfully');
+        $notification = array(
+            'message' => 'Qualification has been updated sucessfully',
+            'alert-type' => 'success'
+        );
+        return redirect('/staff/' . $qualification->staff->id . '/edit')->with($notification);
     }
     else{
-        return redirect('/dashboard')->with('error', 'You do not have permission to edit Qualifications');
+        $notification = array(
+            'message' => 'You do not have permission to edit Qualifications',
+            'alert-type' => 'warning'
+        );
+        return redirect('/dashboard')->with($notification);
     }
     }
 
@@ -171,11 +194,20 @@ class QualificationsController extends Controller
         if (Gate::allows('admin')) {
         $qualification = Qualification::find($id);
         $qualification->delete();
+        
+        $notification = array(
+            'message' => 'Qualification has been deleted sucessfully',
+            'alert-type' => 'success'
+        );
 
-        return redirect('/staff/' . $qualification->staff->id . '/edit')->with('success', 'Qualification deleted sucessfully');
+        return redirect('/staff/' . $qualification->staff->id . '/edit')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to delete Qualifications');
+            $notification = array(
+                'message' => 'You do not have permission to delete Qualifications',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 }

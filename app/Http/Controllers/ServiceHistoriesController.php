@@ -46,7 +46,11 @@ class ServiceHistoriesController extends Controller
         return view('servicehistories.create')->with('staff', $staff)->with('designations', $designations)->with('services', $services);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to add service history');
+            $notification = array(
+                'message' => 'You do not have permission to add service history',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -78,7 +82,11 @@ class ServiceHistoriesController extends Controller
             $staff = Staff::find($request->staff_id);
             foreach($staff->service_histories as $workplaces){
                 if($workplaces->current_wp == 1){
-                    return redirect('/servicehistories/create?staff_id=' . $request->staff_id)->with('staff', $staff)->with('designations', $designations)->with('services', $services)->with('error', 'Current workplace already exists!');
+                    $notification = array(
+                        'message' => 'Current workplace already exists!',
+                        'alert-type' => 'info'
+                    );
+                    return redirect('/servicehistories/create?staff_id=' . $request->staff_id)->with('staff', $staff)->with('designations', $designations)->with('services', $services)->with($notification);
                 }
             }
             $serv->end_date = null;
@@ -94,10 +102,18 @@ class ServiceHistoriesController extends Controller
         $serv->staff_id = $request->staff_id;
         $serv->save();
 
-        return redirect('/staff/' . $request->staff_id . '/edit')->with('success', 'Service added sucessfully');
+        $notification = array(
+            'message' => 'Service has been added sucessfully',
+            'alert-type' => 'success'
+        );
+        return redirect('/staff/' . $request->staff_id . '/edit')->with($notification);
     }
     else{
-        return redirect('/dashboard')->with('error', 'You do not have permission to add service history');
+        $notification = array(
+            'message' => 'You do not have permission to add service history',
+            'alert-type' => 'warning'
+        );
+        return redirect('/dashboard')->with($notification);
     }
     }
 
@@ -127,7 +143,11 @@ class ServiceHistoriesController extends Controller
         return view('servicehistories.edit')->with('servicehistories', $servicehistories)->with('designations', $designations)->with('services', $services);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to edit service history');
+            $notification = array(
+                'message' => 'You do not have permission to edit service history',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -161,21 +181,36 @@ class ServiceHistoriesController extends Controller
         if($request->has('current_wp')){
             foreach($staff->service_histories as $workplaces){
                 if($workplaces->current_wp == 1){
-                    return redirect('/servicehistories/' . $id . '/edit/')->with('staff', $staff)->with('designations', $designations)->with('services', $services)->with('error', 'Current workplace already exists for ' . $staff->firstname);
-                }else{
+                    if($workplaces->id == $id){
                     $serv->current_wp = 1;
+                }else{
+                    $notification = array(
+                        'message' => 'Current workplace already exists for ' . $staff->firstname,
+                        'alert-type' => 'info'
+                    );
+                    return redirect('/servicehistories/' . $id . '/edit/')->with('staff', $staff)->with('designations', $designations)->with('services', $services)->with($notification);
+                    
                 }
             }
+            }
+            $serv->current_wp = 1;
         }else{
             $serv->current_wp = 0;
         }
         
         $serv->save();
-
-        return redirect('/staff/' . $serv->staff->id . '/edit')->with('success', 'Service updated sucessfully');
+        $notification = array(
+            'message' => 'Service has been updated sucessfully',
+            'alert-type' => 'success'
+        );
+        return redirect('/staff/' . $serv->staff->id . '/edit')->with($notification);
     }
     else{
-        return redirect('/dashboard')->with('error', 'You do not have permission to edit service history');
+        $notification = array(
+            'message' => 'You do not have permission to edit service history',
+            'alert-type' => 'warning'
+        );
+        return redirect('/dashboard')->with($notification);
     }
     }
 
@@ -190,11 +225,20 @@ class ServiceHistoriesController extends Controller
         if (Gate::allows('admin')) {
         $service_histories = ServiceHistory::find($id);
         $service_histories->delete();
+        
+        $notification = array(
+            'message' => 'Service history has been deleted sucessfully',
+            'alert-type' => 'success'
+        );
 
-        return redirect('/staff/' . $service_histories->staff->id . '/edit')->with('success', 'Service history deleted sucessfully');
+        return redirect('/staff/' . $service_histories->staff->id . '/edit')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to delete service history');
+            $notification = array(
+                'message' => 'You do not have permission to delete service history',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 }

@@ -43,7 +43,11 @@ class DependantsController extends Controller
         return view('dependants.create')->with('staff', $staff);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to add dependants');
+            $notification = array(
+                'message' => 'You do not have permission to add Qualifications',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -76,17 +80,29 @@ class DependantsController extends Controller
         $dep->staff_id = $request->staff_id;
         
         if($request->nic == $staff->nic){
-            return redirect('/dependants/create?staff_id=' . $request->staff_id)->with('error', 'Employee NIC and dependant NIC cannot be same');
+            $notification = array(
+                'message' => 'Employee NIC and dependant NIC cannot be same',
+                'alert-type' => 'warning'
+            );
+
+            return redirect('/dependants/create?staff_id=' . $request->staff_id)->with($notification);
         }
 
         
         $dep->nic = $request->nic;
         $dep->save();
-
-        return redirect('/staff/' . $request->staff_id . '/edit')->with('success', 'Dependant added sucessfully');
+        $notification = array(
+            'message' => 'Depndant has been added sucessfully',
+            'alert-type' => 'success'
+        );
+        return redirect('/staff/' . $request->staff_id . '/edit')->with($notification);
     }
     else{
-        return redirect('/dashboard')->with('error', 'You do not have permission to add dependants');
+        $notification = array(
+            'message' => 'You do not have permission to add Dependants',
+            'alert-type' => 'warning'
+        );
+        return redirect('/dashboard')->with($notification);
     }
     }
 
@@ -114,7 +130,11 @@ class DependantsController extends Controller
         return view('dependants.edit')->with('dependants', $dependants);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to edit dependants');
+            $notification = array(
+                'message' => 'You do not have permission to edit Dependants',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 
@@ -147,17 +167,28 @@ class DependantsController extends Controller
         $dep->workplace = $request->workplace;
         //$staff_nic = DB::table('staff')->where('id', $dep->staff_id)->get();
         if($request->nic == $dep->staff->nic){
-            return redirect('/dependants/'. $dep->staff_id . '/edit')->with('error', 'Employee NIC and dependant NIC cannot be same');
+            $notification = array(
+                'message' => 'Employee NIC and dependant NIC cannot be same',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dependants/'. $dep->staff_id . '/edit')->with($notification);
         }
         
         $dep->nic = $request->nic;
         
         $dep->save();
-
-        return redirect('/staff/'. $dep->staff_id . '/edit')->with('success', 'Dependant updated sucessfully');
+        $notification = array(
+            'message' => 'Dependant has been updated sucessfully',
+            'alert-type' => 'success'
+        );
+        return redirect('/staff/'. $dep->staff_id . '/edit')->with($notification);
     }
     else{
-        return redirect('/dashboard')->with('error', 'You do not have permission to edit dependants');
+        $notification = array(
+            'message' => 'You do not have permission to edit Dependant',
+            'alert-type' => 'warning'
+        );
+        return redirect('/dashboard')->with($notification);
     }
     }
 
@@ -172,11 +203,19 @@ class DependantsController extends Controller
         if (Gate::allows('admin')) {
         $dependant = Dependant::find($id);
         $dependant->delete();
-
-        return redirect('/staff/' . $dependant->staff->id . '/edit')->with('success', 'Dependant deleted sucessfully');
+        $notification = array(
+            'message' => 'Qualification has been deleted sucessfully',
+            'alert-type' => 'success'
+        );
+        return redirect('/staff/' . $dependant->staff->id . '/edit')->with($notification);
         }
         else{
-            return redirect('/dashboard')->with('error', 'You do not have permission to delete dependants');
+
+            $notification = array(
+                'message' => 'You do not have permission to delete Dependants',
+                'alert-type' => 'warning'
+            );
+            return redirect('/dashboard')->with($notification);
         }
     }
 }

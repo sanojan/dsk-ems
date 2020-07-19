@@ -23,8 +23,11 @@ class UserController extends Controller
     {
         $user = User::findOrFail($user_id);
         $user->update(['approved_at' => now()]);
-
-        return redirect()->route('admin.users.index')->with('success', 'User approved successfully');
+        $notification = array(
+            'message' => 'User has been approved successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('admin.users.index')->with($notification);
     }
 
     public function profile()
