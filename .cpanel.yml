@@ -1,5 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/dsemsnet/public_html/
-    - /bin/cp -a public $DEPLOYPATH
