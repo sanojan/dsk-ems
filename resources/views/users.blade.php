@@ -191,18 +191,51 @@
                             <tr>
                                 <th>User name</th>
                                 <th>Email</th>
-                                <th>Requested user type</th>
+                                <th>User type</th>
                                 <th>Registered at</th>
-                                <th></th>
+                                <th>Account Status</th>
+                                <th>Action(s)</th>
                             </tr>
                             @forelse ($users as $user)
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role }}</td>
+                                    <td>
+                                    <select>
+                                      <option selected>{{$user->role}}</option>
+                                      <option value="user">User</option>
+                                      <option value="manager">Admin</option>
+                                      <option value="admin">System Admin</option>
+                                    </select>
+                                    </td>
                                     <td>{{ $user->created_at }}</td>
-                                    <td><a href="{{ route('admin.users.approve', $user->id) }}"
-                                           class="btn btn-primary btn-sm">Approve</a></td>
+                                    <td>
+                                    @if(!$user->updated_at)
+                                    <b>Disabled</b>
+                                    @elseif(!$user->approved_at)
+                                    <b>Inactive</b>
+                                    @else
+                                    <b>Active</b>
+                                    @endif
+                                    </td>
+                                    <td>
+                                    @if(!$user->updated_at)
+                                    <a href="{{ route('admin.users.approve', $user->id) }}"
+                                           class="btn btn-warning btn-sm">Enable</a>
+                                    <a href="{{ route('admin.users.approve', $user->id) }}"
+                                           class="btn btn-primary btn-sm">Change User type</a>
+                                    @elseif(!$user->approved_at)
+                                    <a href="{{ route('admin.users.approve', $user->id) }}"
+                                           class="btn btn-success btn-sm">Approve</a>
+                                    <a href="{{ route('admin.users.approve', $user->id) }}"
+                                           class="btn btn-primary btn-sm">Change User type</a>
+                                    @else
+                                    <a href="{{ route('admin.users.approve', $user->id) }}"
+                                           class="btn btn-danger btn-sm">Revoke</a>
+                                    <a href="{{ route('admin.users.approve', $user->id) }}"
+                                           class="btn btn-primary btn-sm">Change User type</a>
+                                    </td>
+                                    @endif
                                 </tr>
                             @empty
                                 <tr>
