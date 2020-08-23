@@ -107,12 +107,19 @@
             </a>
           </li>
           @endif
-              <li class="nav-item">
-                <a href="https://adminlte.io/docs/3.0" class="nav-link">
-                  <i class="nav-icon fas fa-file"></i>
-                  <p>About</p>
-                </a>
-              </li>
+          <li class="nav-item">
+          <a href="{{route('about')}}" class="nav-link">
+            <i class="nav-icon fas fa-file"></i>
+            <p>About</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-question-circle"></i>
+            <p>Help</p>
+          </a>
+        </li>
               
               
               <li class="nav-item">

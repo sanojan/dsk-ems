@@ -197,16 +197,13 @@
                                 <th>Action(s)</th>
                             </tr>
                             @forelse ($users as $user)
+                            {!! Form::open(['action' => ['UserController@usertype', $user->id], 'method' => 'GET', 'enctype' => 'multipart/form-data']) !!}
+                            @csrf
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>
-                                    <select>
-                                      <option selected>{{$user->role}}</option>
-                                      <option value="user">User</option>
-                                      <option value="manager">Admin</option>
-                                      <option value="admin">System Admin</option>
-                                    </select>
+                                    {{Form::select('user_role', ['user' => 'User', 'manager' => 'Admin', 'admin' => 'System Admin'], $user->role, ['class' => 'form-control form-control-sm'])}}
                                     </td>
                                     <td>{{ $user->created_at }}</td>
                                     <td>
@@ -220,20 +217,20 @@
                                     </td>
                                     <td>
                                     @if(!$user->updated_at)
-                                    <a href="{{ route('admin.users.approve', $user->id) }}"
-                                           class="btn btn-warning btn-sm">Enable</a>
-                                    <a href="{{ route('admin.users.approve', $user->id) }}"
-                                           class="btn btn-primary btn-sm">Change User type</a>
+                                    <a href="{{ route('admin.users.enable', $user->id) }}"
+                                           class="btn btn-warning btn-xs">Enable</a><br />
+                                    {{Form::submit('Change User type', ['class' =>  'btn btn-primary btn-xs'])}}
+                                    {!! Form::close() !!}
                                     @elseif(!$user->approved_at)
                                     <a href="{{ route('admin.users.approve', $user->id) }}"
-                                           class="btn btn-success btn-sm">Approve</a>
-                                    <a href="{{ route('admin.users.approve', $user->id) }}"
-                                           class="btn btn-primary btn-sm">Change User type</a>
+                                           class="btn btn-success btn-xs">Approve</a><br />
+                                    {{Form::submit('Change User type', ['class' =>  'btn btn-primary btn-xs'])}}
+                                    {!! Form::close() !!}
                                     @else
-                                    <a href="{{ route('admin.users.approve', $user->id) }}"
-                                           class="btn btn-danger btn-sm">Revoke</a>
-                                    <a href="{{ route('admin.users.approve', $user->id) }}"
-                                           class="btn btn-primary btn-sm">Change User type</a>
+                                    <a href="{{ route('admin.users.revoke', $user->id) }}"
+                                           class="btn btn-danger btn-xs">Revoke Access</a><br />
+                                    {{Form::submit('Change User type', ['class' =>  'btn btn-primary btn-xs'])}}
+                                    {!! Form::close() !!}
                                     </td>
                                     @endif
                                 </tr>

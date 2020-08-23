@@ -117,11 +117,18 @@
           </li>
           @endif
           <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.0" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
-              <p>About</p>
-            </a>
-          </li>
+          <a href="{{route('about')}}" class="nav-link">
+            <i class="nav-icon fas fa-file"></i>
+            <p>About</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-question-circle"></i>
+            <p>Help</p>
+          </a>
+        </li>
           
           
           <li class="nav-item">
@@ -216,7 +223,7 @@
 
           <!-- /.col -->
           <div class="col-md-9">
-              <div class="card card-primary card-outline card-tabs">
+            <div class="card card-primary card-outline card-tabs">
               <div class="card-header p-0 pt-1 border-bottom-0">
                 <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
                   <li class="nav-item">
@@ -242,150 +249,192 @@
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-two-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-two-personal" role="tabpanel" aria-labelledby="custom-tabs-two-personal-tab">
-                    <div class="row">
-                      <div class="col">
-                      <div class="row">
-                      <div class="col-4">
-                        
-                        <b>Name with Initials: </b><br />
-                        <b>Fullname: </b><br />
-                        <b>Gender: </b><br />
-                        <b>Date of Birth: </b><br />
-                        <b>Civil Status: </b><br />
-                        <b>Religion: </b><br />
-                        <b>Nationality: </b><br />
-                        <b>NIC No: </b><br />
-                        <b>Designation: </b><br />
-                        <b>Service: </b><br />
-                        <b>Class: </b><br />                        
-                        <b>Appointment Date: </b><br />
-                        <b>Appointment No: </b><br />
-
-                        <b>Personal File No: </b><br />
-                        <b>Officer Subject: </b><br />
-                        <b>Officer Branch: </b><br />
-                        <b>Officer Category: </b><br />
-                        <b>W&OP No: </b><br />
-                        <b>Increment Date: </b><br />
-                        <b>Salary Code: </b><br />
-                        <b>Banking Details: </b><br />
-                        <b>Total Service: </b><br />
-                        <b>Retirement Date: </b><br />
-                      </div>
-
-                      <div class="col-8">
-                        
-                        {{$staff->firstname}}<br />
-                        {{$staff->lastname}}<br />
-                        {{$staff->gender}}<br />
-                        {{$staff->dob}}<br />
-                        {{$staff->civil_status}}<br />
-                        {{$staff->religion}}<br />
-                        {{$staff->nationality}}<br />
-                        {{$staff->nic}}<br />
-                        {{$staff->designation}}<br />
-                        {{$staff->service}}<br />
-                        {{$staff->class}}<br />
-                        {{$staff->appointment_date}}<br />
-                        {{$staff->appointment_no}}<br />
-                        {{$staff->personal_file_no}}<br />
-                        {{$staff->officer_subject}}<br />
-                        {{$staff->officer_branch}}<br />
-                        {{$staff->recruitment_type}}<br />
-                        {{$staff->wop_no}}<br />
-                        {{$staff->increment_date}}<br />
-                        {{$staff->salary_code}}<br />
-                        Account No: {{$staff->bank_acc_no}} ({{$staff->bank_name}} - {{$staff->bank_branch}})<br />
-                        {{ $exp }}<br />
-                        {{$retirement_date}}<br />
-                      </div> 
-                      </div>
-                      </div>
-
-      
-                  
-                    </div>
-                     
+                      <table class="table table-sm table-hover">
+                      <tbody>
+                        <tr>
+                        <td>Name with Initials:</td>
+                        <td>{{$staff->firstname}}</td>
+                        </tr>
+                        <tr>
+                        <td>Fullname:</td>
+                        <td>{{$staff->lastname}} {{$staff->firstname}}</td>
+                        </tr>
+                        <tr>
+                        <td>Gender:</td>
+                        <td>{{$staff->gender}}</td>
+                        </tr>
+                        <tr>
+                        <td>Date of Birth:</td>
+                        <td>{{$staff->dob}}</td>
+                        </tr>
+                        <tr>
+                        <td>Civil Status:</td>
+                        <td>{{$staff->civil_status}}</td>
+                        </tr>
+                        <tr>
+                        <td>Religion:</td>
+                        <td>{{$staff->religion}}</td>
+                        </tr>
+                        <tr>
+                        <td>Nationality:</td>
+                        <td>{{$staff->nationality}}</td>
+                        </tr>
+                        <tr>
+                        <td>NIC No:</td>
+                        <td>{{$staff->nic}}</td>
+                        </tr>
+                        <tr>
+                        <td>Designation:</td>
+                        <td>{{$staff->designation}}</td>
+                        </tr>
+                        <tr>
+                        <td>Service:</td>
+                        <td>{{$staff->service}}</td>
+                        </tr>
+                        <tr>
+                        <td>Class:</td>
+                        <td>{{$staff->class}}</td>
+                        </tr>
+                        <tr>
+                        <td>Appointment Date:</td>
+                        <td>{{$staff->appointment_no}}</td>
+                        </tr>
+                        <tr>
+                        <td>Appointment No: </td> 
+                        <td>{{$staff->appointment_no}}</td> 
+                        </tr>
+                        <tr>
+                        <td>Personal File No:</td>    
+                        <td>{{$staff->personal_file_no}}</td>
+                        </tr>
+                        <tr>
+                        <td>Officer Branch:</td>
+                        <td>{{$staff->officer_branch}}</td>
+                        </tr>
+                        <td>Officer Category:</td>
+                        <td>{{$staff->recruitment_type}}</td>
+                        </tr>
+                        <tr>
+                        <td>W&OP No:</td>
+                        <td>{{$staff->wop_no}}</td>
+                        </tr>
+                        <tr>
+                        <td>Officer Subject:</td>
+                        <td>{{$staff->officer_subject}}</td>
+                        </tr>
+                        <tr>
+                        <td>Increment Date:</td>
+                        <td>{{$staff->increment_date}}</td>
+                        </tr>
+                        <tr>
+                        <td>Salary Code:</td>
+                        <td>{{$staff->salary_code}}</td>
+                        </tr>
+                        <tr>
+                        <td>Banking Details:</td>
+                        <td>Account No: {{$staff->bank_acc_no}} ({{$staff->bank_name}} - {{$staff->bank_branch}})</td>
+                        </tr>
+                        <td>Total Service:</td>
+                        <td>{{ $exp }}</td>
+                        </tr>
+                        <tr>
+                        <td>Retirement Date:</td>
+                        <td>{{$retirement_date}}</td>
+                        </tr>
+                        </tbody>
+                        </table>  
                   </div>
+
                   <div class="tab-pane fade" id="custom-tabs-two-dependants" role="tabpanel" aria-labelledby="custom-tabs-two-dependants-tab">
-                      @foreach($dependants as $dep)
-                      <div class="row">
-                      <div class="col">
-                      <div class="row">
-                      <div class="col-4">
-                        <b>Name with Initials:</b><br /> 
-                        <b>Fullname:</b><br /> 
-                        <b>Relationship: </b><br />
-                        <b>Date Of Birth: </b><br />
-                        <b>NIC No: </b><br />
-                        <b>Designation: </b><br/>
-                        <b>Workplace: </b><br />
-                      </div>
-                      <div class="col-4">
-                      {{$dep->firstname}}<br />
-                      {{$dep->lastname}}<br />
-                      {{$dep->relationship}}<br />
-                      {{$dep->dob}}<br />
-                      {{$dep->nic}}<br />
-                      {{$dep->designation}}<br />
-                      {{$dep->workplace}}<br />
-                      </div>
-                      </div>
-                      </div>
-                      </div>
-                      <hr>
-                      @endforeach
-                  </div>
-                  <div class="tab-pane fade" id="custom-tabs-two-service_history" role="tabpanel" aria-labelledby="custom-tabs-two-service_history-tab">
-                      @foreach($service_histories as $serv)
-                      <div class="row">
-                      <div class="col">
-                      <div class="row">
-                      <div class="col-4">
-                        @if($serv->current_wp == 1)
-                        <b><u>Workplace (Current):</u> </b><br />
-                        @else
-                        <b>Workplace: </b><br />
-                        @endif
-                      <b>Designation: </b><br />
-                      <b>Start Date: </b><br />
-                      <b>End Date: </b><br />
-                      <b>Duration: </b><br />
-                      
-                      <b>Service Name: </b><br />
-                      <b>Service Class: </b><br />
-                      </div>
-
-                      <div class="col-4">
-                      {{$serv->workplace}}<br />
-                      {{$serv->designation}}<br />
-                      {{$serv->start_date}}<br />
-                      {{$serv->end_date}}<br/>
-                      {{Carbon\Carbon::parse($serv->start_date)->diff(Carbon\Carbon::parse($serv->end_date))->format('%y Year(s), %m Month(s) and %d Day(s)')}}
-                      <br />
-                      {{$serv->service_name}}<br />
-                      {{$serv->service_class}}<br />
-                      </div>
-                      </div>
-                      </div>
-                      </div>
-                      <hr>
+                  <table class="table table-sm table-hover">
+                  <thead>
+                  <tr>
+                  <th>Name with Initials</th>
+                  <th>Fullname</th>
+                  <th>Relationship</th>
+                  <th>Date Of Birth</th>
+                  <th>NIC No</th>
+                  <th>Designation</th>
+                  <th>Workplace</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($dependants as $dep)
+                      <tr>
+                      <td>{{$dep->firstname}}</td>
+                      <td>{{$dep->lastname}}</td>
+                      <td>{{$dep->relationship}}</td>
+                      <td>{{$dep->dob}}</td>
+                      <td>{{$dep->nic}}</td>
+                      <td>{{$dep->designation}}</td>
+                      <td>{{$dep->workplace}}</td>
+                      </tr>
                     @endforeach
+                  </tbody>
+                  </table>
                   </div>
-                  <div class="tab-pane fade" id="custom-tabs-two-examinations" role="tabpanel" aria-labelledby="custom-tabs-two-examinations-tab">
-                    @foreach($staff->exams as $exam)
-                      <b>Title: </b>{{$exam->title}}<br />
-                      <b>Completed On: </b>{{$exam->completed_date}}<br />
-                      <b>Remarks: </b>{{$exam->remarks}}<br />
-                      <hr>
+            
+                  <div class="tab-pane fade" id="custom-tabs-two-service_history" role="tabpanel" aria-labelledby="custom-tabs-two-service_history-tab">
+                  <table class="table table-sm table-hover">
+                  <thead>
+                  <tr>
+                  <th>Workplace</th>
+                  <th>Designation</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Duration</th>
+                  <th>Service Name</th>
+                  <th>Service Class</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  @foreach($service_histories as $serv)                   
+                  <tr>
+                  <td>{{$serv->workplace}}</td>
+                  <td>{{$serv->designation}}</td>  
+                  <td>{{$serv->start_date}}</td>
+                  <td>@if($serv->current_wp == 1)
+                      Up to date
+                      @else
+                      {{$serv->end_date}}
+                      @endif
+                  </td>
+                  <td>{{Carbon\Carbon::parse($serv->start_date)->diff(Carbon\Carbon::parse($serv->end_date))->format('%y Year(s), %m Month(s) and %d Day(s)')}}
+                  </td>
+                  <td>{{$serv->service_name}}</td>
+                  <td>{{$serv->service_class}}</td>
+                  </tr>
                   @endforeach
+                  </tbody>
+                  </table>
                   </div>
+              
+                  <div class="tab-pane fade" id="custom-tabs-two-examinations" role="tabpanel" aria-labelledby="custom-tabs-two-examinations-tab">
+                  <table class="table table-sm table-hover">
+                  <thead>
+                  <tr>
+                  <th>Title</th>
+                  <th>Completed On</th>
+                  <th>Remarks</th>
+                  </tr>
+                  </thead>
+                  <tbody>  
+                  @foreach($staff->exams as $exam)
+                  <tr>
+                  <td>{{$exam->title}}</td>
+                  <td>{{$exam->completed_date}}</td>
+                  <td>{{$exam->remarks}}</td>
+                  </tr>
+                  @endforeach
+                  </tbody>
+                  </table>
+                  </div>
+
                   <div class="tab-pane fade" id="custom-tabs-two-qualifications" role="tabpanel" aria-labelledby="custom-tabs-two-qualifications-tab">
-                    <div class="row">
-                      <table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                      <table class="table table-sm table-hover">
                         <thead>
                           <tr>
-                            <th class="sorting_asc">Title</th>
+                            <th>Title</th>
                             <th>Medium</th>
                             <th>Institute</th>
                             <th>Stream/Field</th>
@@ -419,32 +468,32 @@
                         </tbody>
                       </table>
                     </div>
-                  </div>
                   <div class="tab-pane fade" id="custom-tabs-two-contact" role="tabpanel" aria-labelledby="custom-tabs-two-contact-tab">
-                  <div class="row">
-                      <div class="col">
-                      <div class="row">
-                      <div class="col-4">                                         
-                      <b>Landline No: </b><br />
-                      <b>Mobile No: </b><br />
-                      <b>Permanant Address: </b><br />
-                      <b>Temporary Address: </b><br />
-                      <b>Email: </b><br />
-                      </div>
-
-                      <div class="col-8">
-                      {{$staff->landline_no}}<br />
-                      {{$staff->mobile_no}}<br />
-                      {{$staff->permanant_address}}<br />
-                      {{$staff->temporary_address}}<br />
-                      {{$staff->email}}<br />
-                      </div>
-                      </div>
-                      
-                      
-                      </div>
-
-                   </div>
+                  <table class="table table-sm table-hover">
+                  <tbody>
+                  <tr>
+                  <td>Landline No:</td>
+                  <td>{{$staff->landline_no}}</td>
+                  </tr>
+                  <tr>
+                  <td>Mobile No:</td>
+                  <td>{{$staff->mobile_no}}</td>
+                  </tr>
+                  <tr>
+                  <td>Permanant Address:</td>
+                  <td>{{$staff->permanant_address}}</td>
+                  </tr>
+                  <tr>
+                  <td>Temporary Address:</td>
+                  <td>{{$staff->temporary_address}}</td>
+                  </tr>
+                  <tr>
+                  <td>Email:</td>
+                  <td>{{$staff->email}}</td>
+                  </tr>
+                  </tbody>
+                  </table>
+                  </div>
                 </div>
               </div>
               <!-- /.card -->

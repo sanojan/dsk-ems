@@ -6,7 +6,7 @@
   <a href="#" class="brand-link">
     <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
          style="opacity: .8">
-    <span class="brand-text font-weight-light">DS-EMS</span>
+    <span class="brand-text font-weight-light">DSK-EMS</span>
   </a>
 
   <!-- Sidebar -->
@@ -120,7 +120,7 @@
                 </a>
               </li>
               @endif
-        <li class="nav-item">
+              <li class="nav-item">
           <a href="{{route('about')}}" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
             <p>About</p>
@@ -157,116 +157,55 @@
 
 @section('content')
 <div class="content-wrapper">
-<div class="row">
-        <div class="col"></div>
-        <div class="col-10">
-            @include('inc.messages')
-      </div>
-      <div class="col"></div>
-</div>
+  <div class="row">
+          <div class="col"></div>
+          <div class="col-10">
+              @include('inc.messages')
+          </div>
+          <div class="col"></div>
+  </div>
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Dashboard</h1>
+          <h1 class="m-0 text-dark">About</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
+            <li class="breadcrumb-item active">About</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
 
-<section class="content">
-  <div class="container-fluid">
-    <!-- Small boxes (Stat box) -->
-    <div class="row">        
-      <!-- ./col -->
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-warning">
-          <div class="inner">
-          <h3>{{count($staff)}}</h3>
-
-            <p>Staff Profiles</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-android-contacts"></i>
-          </div>
-          <a href="/staff" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          
-        </div>
-      </div>
-      <div class="col-lg-3 col-6">
-        <div class="small-box bg-danger">
-            <div class="inner">
-            <h3>0</h3>
-  
-              <p>Staff Leaves</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-calendar"></i>
-            </div>
-            <a href="#" class="small-box-footer">Coming Soon <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-      </div>
-      <div class="col-lg-3 col-6">
-          <div class="small-box bg-success">
-              <div class="inner">
-              <h3>0</h3>
-    
-                <p>Staff Salary</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-cash"></i>
-              </div>
-              <a href="#" class="small-box-footer">Coming Soon <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-      
-      <!-- ./col -->
-    </div>
-    <!-- /.row -->
-    <!-- Main row -->
+  <section class="content">
+    <div class="container-fluid">
     <div class="row">
-      <!-- Left col -->
-      <section class="col-lg-7 connectedSortable">
-        <!-- Custom tabs (Charts with tabs)-->
-        
-        <!-- /.card -->
-
-        <!-- DIRECT CHAT -->
-        
-        <!--/.direct-chat -->
-
-        <!-- TO DO List -->
-        
-        <!-- /.card -->
-      </section>
-      <!-- /.Left col -->
-      <!-- right col (We are only adding the ID to make the widgets sortable)-->
-      <section class="col-lg-5 connectedSortable">
-
-        <!-- Map card -->
-        
-        <!-- /.card -->
-
-        <!-- solid sales graph -->
-        
-        <!-- /.card -->
-
-        <!-- Calendar -->
-        
-        <!-- /.card -->
-      </section>
-      <!-- right col -->
+      <!-- Small boxes (Stat box) -->
+      <!-- /.container-fluid -->
+      <div class="card">
+              <div class="card-header">
+                
+                  
+                    About DS-EMS
+              
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                I (Mr. Alagurasa Sanojan) who has been serving as an ICT Assistant at Divisional Secretariat, Kalmunai for over a year developed this employee management system (EMS) for the usage of divisinal secretariats.
+                One thing I have noticed since the first day at my job, Administration section of almost every divisional secretariat is lacking efficient management of data. The main reason was, usage of manual file based data management. Even though Divisional secretariats are dealing with enormous type of data, when it comes to Admin area or branch the officers ,specially management service officers have to deal with personal files of all the employees. In file based system when there's a need for providing staff details they have to go through bunch of files in the racks and it is a time consuming job. Therefore, I came up with the idea of developing a web based EMS to store and manage staff data at divisional secretariats and started the developing work on August 2019. After, all most six months I was able to present a EMS with basic functionalities. I introduced this system as a trial at Kalmunai Divisional Secretariat Administration branch to store staff details during this period I had hosted this system on a local server. In September 2020 I recieved the approval from Mr.Nazeer the divisional secretary and my reporting officer to use this system as a official way to manage data during day to day tasks. Now, this system is up and running on a shared hosted server and can be accessed from anywhere in the world over internet. In the mean time I have added siginificant feature such as generating reports from the data, controlling users in the system and along the way I am looking to add staff leave and salary management to this EMS. Finally, I hope this system will serve to get better results at our divisional secretariat and that will lead to introduce this to all other divisions in our district.
+                <br />
+                <i>Feel free to share your thoughts on this project and send your suggestions on the sytem</i>
+                <br />
+                <i>If you have good knowledge on web applications development and want to collaborate on this project please send your details to dsk.ict@gmail.com</i>
+              </div>
+              <!-- /.card-body -->
+        </div>
+        </div>
     </div>
-    <!-- /.row (main row) -->
-  </div><!-- /.container-fluid -->
-</section>
+  </section>
 </div>
 @endsection

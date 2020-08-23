@@ -84,9 +84,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Divisional Secretariat Kalmunai
+                    DS-EMS
                 </div>
-                <div class="">Employee Management System</div>
+                <div class="">Developed By: A.Sanojan (ICTA, Divisional Secretariat-Kalmunai)</div>
                 <!--
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>

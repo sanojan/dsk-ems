@@ -33,4 +33,14 @@ class HomeController extends Controller
     {
         return view('approval');
     }
+
+    public function denial()
+    {
+        return view('denial');
+    }
+
+    public function about()
+    {
+        return view('about');
+    }
 }
