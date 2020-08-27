@@ -257,7 +257,7 @@
                         </tr>
                         <tr>
                         <td>Fullname:</td>
-                        <td>{{$staff->lastname}} {{$staff->firstname}}</td>
+                        <td>{{$staff->lastname}}</td>
                         </tr>
                         <tr>
                         <td>Gender:</td>
@@ -297,7 +297,7 @@
                         </tr>
                         <tr>
                         <td>Appointment Date:</td>
-                        <td>{{$staff->appointment_no}}</td>
+                        <td>{{$staff->appointment_date}}</td>
                         </tr>
                         <tr>
                         <td>Appointment No: </td> 
