@@ -86,7 +86,7 @@
                 <div class="title m-b-md">
                     DS-EMS
                 </div>
-                <div class="">Developed By: A.Sanojan (ICTA, Divisional Secretariat-Kalmunai)</div>
+                <div class="">Developed By: A.Sanojan (SLICTS-III, Divisional Secretariat-Navithanveli)</div>
                 <!--
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
